@@ -302,7 +302,7 @@ function WhatGuidesUs() {
   return (
     <section
       id="guides"
-      className="border-y border-white/10 bg-[#0e0e11] text-white px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24"
+      className="border-y border-white/10 bg-brand-night text-white px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24"
     >
       {/* Header row */}
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -322,7 +322,7 @@ function WhatGuidesUs() {
       {/* 2 Mission & Vision Cards */}
       <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Mission Card */}
-        <div className="flex flex-col justify-between rounded-[24px] border border-white/12 bg-[#18181D] p-8 sm:p-10 transition hover:border-white/25">
+        <div className="flex flex-col justify-between rounded-[24px] border border-white/12 bg-[#183344] p-8 sm:p-10 transition hover:border-white/25">
           <div className="flex items-center justify-between">
             <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">
               Our mission
@@ -341,7 +341,7 @@ function WhatGuidesUs() {
         </div>
 
         {/* Vision Card */}
-        <div className="flex flex-col justify-between rounded-[24px] border border-white/12 bg-[#18181D] p-8 sm:p-10 transition hover:border-white/25">
+        <div className="flex flex-col justify-between rounded-[24px] border border-white/12 bg-[#183344] p-8 sm:p-10 transition hover:border-white/25">
           <div className="flex items-center justify-between">
             <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">
               Our vision
@@ -403,15 +403,12 @@ function Leadership() {
         <div className="lg:col-span-5">
           <div className="relative aspect-[4/5] max-w-[420px] overflow-hidden rounded-[28px] border border-brand-line bg-brand-sand shadow-sm">
             <img
-              src="/about-founder-placeholder.jpg"
-              alt="Founder workspace portrait placeholder"
+              src="/about-founder.jpg"
+              alt="PlaceValue Founder executive portrait"
               className="h-full w-full object-cover"
             />
             <div className="absolute top-4 left-4 z-10 rounded-full bg-white/90 backdrop-blur-xs px-3.5 py-1 text-[11px] font-bold text-brand-night shadow-xs">
-              Portrait placeholder
-            </div>
-            <div className="absolute bottom-4 left-4 z-10 rounded-full bg-white/90 backdrop-blur-xs px-3 py-1 text-[10px] sm:text-[11px] font-medium text-brand-muted shadow-xs">
-              Replace with approved professional portrait
+              Founder & Director
             </div>
           </div>
         </div>
@@ -449,15 +446,12 @@ function Leadership() {
           <div className="md:col-span-4 lg:col-span-3">
             <div className="relative aspect-square sm:aspect-[4/5] overflow-hidden rounded-[22px] border border-brand-line bg-brand-sand shadow-xs">
               <img
-                src="/about-cofounder-placeholder.jpg"
-                alt="Co-Founder workspace portrait placeholder"
+                src="/about-cofounder.jpg"
+                alt="PlaceValue Co-Founder executive portrait"
                 className="h-full w-full object-cover"
               />
               <div className="absolute top-3 left-3 z-10 rounded-full bg-white/90 backdrop-blur-xs px-3 py-0.5 text-[10px] font-bold text-brand-night shadow-xs">
-                Portrait placeholder
-              </div>
-              <div className="absolute bottom-3 left-3 z-10 rounded-full bg-white/90 backdrop-blur-xs px-2.5 py-0.5 text-[9px] sm:text-[10px] font-medium text-brand-muted shadow-xs">
-                Replace with approved professional portrait
+                Co-Founder & VP
               </div>
             </div>
           </div>
@@ -743,7 +737,7 @@ function AchievementsAndPartners() {
 
 function AboutCta() {
   return (
-    <section className="relative overflow-hidden border-t border-white/10 bg-[#0e0e11] px-6 py-20 text-center text-white md:px-12 md:py-28 lg:px-16 xl:px-24">
+    <section className="relative overflow-hidden border-t border-white/10 bg-brand-night px-6 py-20 text-center text-white md:px-12 md:py-28 lg:px-16 xl:px-24">
       {/* Ambient background glows */}
       <div
         aria-hidden="true"
@@ -793,7 +787,7 @@ function AboutCta() {
 
 function SiteFooter() {
   return (
-    <footer className="border-t border-white/10 bg-[#0e0e11] px-6 pt-16 pb-12 text-white md:px-12 lg:px-16 xl:px-24">
+    <footer className="border-t border-white/10 bg-brand-footer px-6 pt-16 pb-12 text-white md:px-12 lg:px-16 xl:px-24">
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
         {/* Col 1: Brand */}
         <div className="flex flex-col gap-4">

@@ -807,7 +807,7 @@ function WhatCanWeHelpWith({
 
 function PreFooterConversation() {
   return (
-    <section className="relative overflow-hidden border-t border-white/10 bg-[#0e0e11] px-6 py-20 text-white md:px-12 md:py-28 lg:px-16 xl:px-24">
+    <section className="relative overflow-hidden border-t border-white/10 bg-brand-night px-6 py-20 text-white md:px-12 md:py-28 lg:px-16 xl:px-24">
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14 items-center max-w-7xl mx-auto">
         {/* Left: Meeting Scene Photo */}
         <div className="lg:col-span-5">
@@ -858,7 +858,7 @@ function PreFooterConversation() {
 
 function SiteFooter() {
   return (
-    <footer className="border-t border-white/10 bg-[#0e0e11] px-6 pt-16 pb-12 text-white md:px-12 lg:px-16 xl:px-24">
+    <footer className="border-t border-white/10 bg-brand-footer px-6 pt-16 pb-12 text-white md:px-12 lg:px-16 xl:px-24">
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
         {/* Col 1: Brand */}
         <div className="flex flex-col gap-4">

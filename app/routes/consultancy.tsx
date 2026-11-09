@@ -513,31 +513,32 @@ function ProcessSection() {
         </span>
         <h2 className="mt-6 font-display text-[40px] sm:text-[50px] lg:text-[58px] leading-[1.0] font-extrabold tracking-[-0.03em]">
           <span>From a better question to </span>
-          <span className="text-outline">a better solution.</span>
+          <span className="text-brand-orange">a better solution.</span>
         </h2>
-        <p className="mt-4 max-w-2xl text-[15px] sm:text-[16px] leading-[1.6] text-white/60">
+        <p className="mt-4 max-w-2xl text-[15px] sm:text-[16px] leading-[1.6] text-white/70">
           A clear, collaborative journey. No unnecessary complexity — just
           considered steps that turn ambition into action.
         </p>
 
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {PROCESS_STEPS.map((step) => (
-            <div
-              key={step.step}
-              className="flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-6 lg:p-7 hover:border-white/20 transition-colors"
-            >
-              <div>
-                <span className="flex size-10 items-center justify-center rounded-full border border-white/20 text-xs font-bold text-white/70">
+        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+          {PROCESS_STEPS.map((step, idx) => (
+            <div key={step.step} className="flex flex-col relative">
+              <div className="flex items-center gap-4 mb-6">
+                <span className="flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-2.5 py-1 text-xs font-bold text-brand-orange">
                   {step.step}
                 </span>
-                <h3 className="mt-6 font-display text-[22px] font-bold text-white">
-                  {step.title}
-                </h3>
-                <p className="mt-2.5 text-[13px] leading-[1.6] text-white/60">
-                  {step.body}
-                </p>
+                {idx < PROCESS_STEPS.length - 1 && (
+                  <div className="hidden lg:block h-px flex-1 bg-white/15" />
+                )}
               </div>
-              <p className="mt-6 text-[11px] font-semibold text-brand-orange uppercase tracking-wider">
+
+              <h3 className="font-display text-[22px] lg:text-[24px] font-bold text-white">
+                {step.title}
+              </h3>
+              <p className="mt-3 text-[13.5px] leading-[1.65] text-white/70">
+                {step.body}
+              </p>
+              <p className="mt-6 text-[11.5px] font-semibold text-white/50 tracking-wider">
                 {step.highlight}
               </p>
             </div>
