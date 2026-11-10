@@ -24,17 +24,9 @@ export function Layout({ children }: LayoutProps) {
     }
   }, [location.pathname]);
 
-  // Forward wheel events from outer background margins to the inner scroll canvas
-  const handleBackdropWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    if (mainRef.current && e.target !== mainRef.current && !mainRef.current.contains(e.target as Node)) {
-      mainRef.current.scrollTop += e.deltaY;
-    }
-  };
-
   return (
     <HeaderActionsProvider>
       <div
-        onWheel={handleBackdropWheel}
         className="relative h-screen w-screen overflow-hidden presentation-backdrop select-none flex items-center justify-center p-1 sm:p-1.5 md:p-2"
       >
         {/* Architectural drafting arc line matching reference image */}
@@ -52,11 +44,11 @@ export function Layout({ children }: LayoutProps) {
         </div>
 
         {/* Centered elevated floating website canvas: occupies ~99% of the screen with a slim ~0.50% framing background border */}
-        <div className="relative z-10 w-full h-full flex flex-col overflow-hidden rounded-[14px] sm:rounded-[18px] md:rounded-[22px] border border-black/15 bg-background text-foreground presentation-card-shadow ring-1 ring-white/80 select-text">
+        <div className="relative z-10 w-full h-full flex flex-col overflow-hidden rounded-[14px] sm:rounded-[18px] md:rounded-[22px] border border-black/15 bg-background text-foreground presentation-card-shadow ring-1 ring-white/80 select-text transform-gpu">
           <main
             ref={mainRef}
             tabIndex={0}
-            className="agent-native-app-main min-w-0 flex-1 overflow-y-auto overflow-x-hidden scroll-smooth mockup-scrollbar focus:outline-none"
+            className="agent-native-app-main min-w-0 flex-1 overflow-y-auto overflow-x-hidden mockup-scrollbar focus:outline-none"
           >
             {children}
           </main>

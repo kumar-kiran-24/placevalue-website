@@ -179,13 +179,12 @@ export function WordReveal({
   };
 
   const wordVariants = {
-    hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
+    hidden: { opacity: 0, y: 8 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: {
-        duration: 0.42,
+        duration: 0.38,
         ease: [0.16, 1, 0.3, 1] as const,
       },
     },
@@ -272,7 +271,7 @@ function AnimatedLetter({
     <span className="inline-block overflow-hidden leading-[0.88] pt-2 pb-6 -mb-6 select-none">
       <motion.span
         style={{ y, opacity, scale }}
-        className="inline-block will-change-transform"
+        className="inline-block will-change-transform transform-gpu"
       >
         {char}
       </motion.span>
@@ -316,7 +315,11 @@ export function WatermarkText({
     // Scroll container reference
     const mainEl = document.querySelector<HTMLElement>(".agent-native-app-main");
 
+    let isVisible = false;
+    let isFullyRevealed = false;
+
     const updateProgress = () => {
+      if (isFullyRevealed) return;
       const rect = sectionEl.getBoundingClientRect();
       const viewportHeight = window.innerHeight || 800;
 
@@ -328,12 +331,30 @@ export function WatermarkText({
       const raw = (enterPoint - rect.top) / (enterPoint - fullPoint);
       const clamped = Math.min(Math.max(raw, 0), 1);
       scrollProgress.set(clamped);
+
+      // Lock when fully revealed and top is past fullPoint
+      if (clamped >= 1 && rect.top <= fullPoint) {
+        isFullyRevealed = true;
+      }
     };
 
     updateProgress();
 
+    // Use IntersectionObserver to completely suspend scroll updates when offscreen
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = Boolean(entry?.isIntersecting);
+        if (isVisible) {
+          updateProgress();
+        }
+      },
+      { root: mainEl ?? null, rootMargin: "300px 0px" }
+    );
+    observer.observe(sectionEl);
+
     let ticking = false;
     const handleScroll = () => {
+      if (!isVisible || isFullyRevealed) return;
       if (!ticking) {
         requestAnimationFrame(() => {
           updateProgress();
@@ -347,15 +368,14 @@ export function WatermarkText({
       mainEl.addEventListener("scroll", handleScroll, { passive: true });
     }
     window.addEventListener("scroll", handleScroll, { passive: true });
-    document.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll, { passive: true });
 
     return () => {
+      observer.disconnect();
       if (mainEl) {
         mainEl.removeEventListener("scroll", handleScroll);
       }
       window.removeEventListener("scroll", handleScroll);
-      document.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
   }, [scrollProgress, shouldReduceMotion]);

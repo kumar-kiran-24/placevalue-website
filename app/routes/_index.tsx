@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
 import {
   IconArrowRight,
@@ -153,20 +153,48 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function Hero() {
   const shouldReduceMotion = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Pause heavy 1080p video when scrolled completely out of view to save GPU cycles
+  useEffect(() => {
+    const video = videoRef.current;
+    const hero = heroRef.current;
+    if (!video || !hero) return;
+
+    const mainEl = document.querySelector<HTMLElement>(".agent-native-app-main");
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { root: mainEl ?? null, threshold: 0.05 }
+    );
+    observer.observe(hero);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
+      ref={heroRef}
       id="hero"
       data-node-id="3311:1376"
       className="relative w-full h-[100svh] min-h-[100svh] flex flex-col justify-between overflow-hidden bg-[#0A0D11] text-white"
     >
       {/* Animated MP4 Video Background spanning 100% full screen */}
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden transform-gpu will-change-transform" aria-hidden="true">
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
+          preload="metadata"
           poster="/hero-video-fallback.jpg"
           className="hero-bg-video motion-reduce:hidden absolute inset-0 h-full w-full object-cover object-center"
         >

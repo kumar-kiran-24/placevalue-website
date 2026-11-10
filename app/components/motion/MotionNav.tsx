@@ -36,7 +36,7 @@ export function MotionNav({ activeNav = "Home", theme = "dark" }: MotionNavProps
           ease: [0.16, 1, 0.3, 1],
         }}
         className={cn(
-          "pointer-events-auto flex items-center justify-between transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "pointer-events-auto flex items-center justify-between transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu isolate",
           isScrolled
             ? "mt-2.5 sm:mt-3 w-[94%] max-w-[1060px] h-[52px] sm:h-[56px] px-4 sm:px-6 rounded-full bg-brand-night/92 backdrop-blur-xl border border-white/15 shadow-[0_12px_36px_-6px_rgba(0,0,0,0.35)] text-white"
             : "w-full h-[74px] md:h-[84px] px-6 md:px-10 lg:px-14 xl:px-20 bg-transparent"

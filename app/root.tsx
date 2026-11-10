@@ -10,6 +10,7 @@ import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import type { LinksFunction } from "react-router";
 
 import { Layout as AppLayout } from "@/components/layout/Layout";
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { AppToolkitProvider } from "@/components/ui/toolkit-provider";
 import { useNavigationState } from "@/hooks/use-navigation-state";
 import { APP_NAME, APP_TITLE } from "@/lib/app-config";
@@ -91,9 +92,11 @@ export default function Root() {
     <AppToolkitProvider>
       <AppProviders queryClient={queryClient}>
         <DbSyncSetup />
-        <AppLayout>
-          <Outlet />
-        </AppLayout>
+        <SmoothScrollProvider>
+          <AppLayout>
+            <Outlet />
+          </AppLayout>
+        </SmoothScrollProvider>
       </AppProviders>
     </AppToolkitProvider>
   );
