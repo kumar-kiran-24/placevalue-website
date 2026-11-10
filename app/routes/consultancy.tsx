@@ -27,6 +27,7 @@ import {
 
 import { cn } from "@/lib/utils";
 import { PlainHero } from "@/components/layout/PlainHero";
+import { FaqSection, CONSULTANCY_FAQS } from "@/components/ui/FaqSection";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
@@ -676,6 +677,12 @@ export default function ConsultancyRoute() {
       <ProcessSection />
       <WhoWeWorkWithSection />
       <WhyChooseSection />
+      <FaqSection
+        badge="CONSULTANCY FAQS"
+        items={CONSULTANCY_FAQS}
+        watermarkText="SOLUTIONS"
+        accentDotColor="orange"
+      />
       <ConsultancyCta />
       <SiteFooter />
     </div>

@@ -23,6 +23,7 @@ import {
 
 import { cn } from "@/lib/utils";
 import { PlainHero } from "@/components/layout/PlainHero";
+import { FaqSection, ABOUT_FAQS } from "@/components/ui/FaqSection";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
@@ -817,6 +818,12 @@ export default function AboutRoute() {
       <OurJourney />
       <ContextSection />
       <AchievementsAndPartners />
+      <FaqSection
+        badge="ORGANISATION FAQS"
+        items={ABOUT_FAQS}
+        watermarkText="PURPOSE"
+        accentDotColor="blue"
+      />
       <AboutCta />
       <SiteFooter />
     </div>

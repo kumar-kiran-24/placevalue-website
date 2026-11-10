@@ -26,6 +26,7 @@ import {
 
 import { cn } from "@/lib/utils";
 import { PlainHero } from "@/components/layout/PlainHero";
+import { FaqSection, CONTACT_FAQS } from "@/components/ui/FaqSection";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
@@ -899,6 +900,13 @@ export default function ContactRoute() {
         onTypeChange={setSelectedEnquiry}
       />
       <WhatCanWeHelpWith onSelectType={setSelectedEnquiry} />
+      <FaqSection
+        badge="ENGAGEMENT FAQS"
+        items={CONTACT_FAQS}
+        watermarkText="CONNECT"
+        accentDotColor="orange"
+        showContactPrompt={false}
+      />
       <PreFooterConversation />
       <SiteFooter />
     </div>

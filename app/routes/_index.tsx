@@ -22,6 +22,7 @@ import {
 import { cn } from "@/lib/utils";
 import { motion, useReducedMotion } from "framer-motion";
 import { MotionNav } from "@/components/motion/MotionNav";
+import { FaqSection } from "@/components/ui/FaqSection";
 import {
   DrawingUnderline,
   MaskedLine,
@@ -793,6 +794,7 @@ export default function HomeRoute() {
       <About />
       <Impact />
       <TaskverseSection />
+      <FaqSection />
       <ProjectCta />
       <SiteFooter />
     </div>

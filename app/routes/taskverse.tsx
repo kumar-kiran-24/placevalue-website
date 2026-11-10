@@ -23,6 +23,7 @@ import {
 
 import { cn } from "@/lib/utils";
 import { PlainHero } from "@/components/layout/PlainHero";
+import { FaqSection, TASKVERSE_FAQS } from "@/components/ui/FaqSection";
 import { NAV_ITEMS } from "@/components/motion/MotionNav";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
@@ -359,6 +360,12 @@ export default function TaskverseRoute() {
       <TaskversePlatformOverview />
       <TaskverseStatsBand />
       <TaskverseEnterpriseStandards />
+      <FaqSection
+        badge="PLATFORM FAQS"
+        items={TASKVERSE_FAQS}
+        watermarkText="TASKVERSE"
+        accentDotColor="blue"
+      />
       <TaskverseCta />
       <SiteFooter />
     </div>
