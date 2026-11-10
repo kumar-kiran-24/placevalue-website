@@ -27,10 +27,10 @@ export function Layout({ children }: LayoutProps) {
   return (
     <HeaderActionsProvider>
       <div
-        className="relative h-screen w-screen overflow-hidden presentation-backdrop select-none flex items-center justify-center p-1 sm:p-1.5 md:p-2"
+        className="relative h-screen w-screen overflow-hidden presentation-backdrop select-none flex items-center justify-center p-0 sm:p-1.5 md:p-2"
       >
         {/* Architectural drafting arc line matching reference image */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden select-none" aria-hidden="true">
+        <div className="hidden sm:block pointer-events-none absolute inset-0 overflow-hidden select-none" aria-hidden="true">
           <svg
             className="absolute -top-[100px] left-1/2 -translate-x-1/2 w-[1400px] max-w-none h-[760px] text-black/[0.12] sm:text-black/[0.15]"
             fill="none"
@@ -43,8 +43,8 @@ export function Layout({ children }: LayoutProps) {
           </svg>
         </div>
 
-        {/* Centered elevated floating website canvas: occupies ~99% of the screen with a slim ~0.50% framing background border */}
-        <div className="relative z-10 w-full h-full flex flex-col overflow-hidden rounded-[14px] sm:rounded-[18px] md:rounded-[22px] border border-black/15 bg-background text-foreground presentation-card-shadow ring-1 ring-white/80 select-text transform-gpu">
+        {/* Centered elevated floating website canvas: true edge-to-edge full screen on mobile, elegantly framed on desktop */}
+        <div className="relative z-10 w-full h-full flex flex-col overflow-hidden rounded-none sm:rounded-[18px] md:rounded-[22px] border-0 sm:border border-black/15 bg-background text-foreground presentation-card-shadow ring-0 sm:ring-1 ring-white/80 select-text transform-gpu">
           <main
             ref={mainRef}
             tabIndex={0}

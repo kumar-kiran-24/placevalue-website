@@ -249,7 +249,7 @@ function Leadership() {
         <div className="lg:col-span-5">
           <div className="relative aspect-square sm:aspect-[4/5] max-w-[420px] overflow-hidden rounded-[28px] border border-brand-line bg-brand-sand shadow-sm group">
             <img
-              src="/src/about/founder.jpg"
+              src="/about-founder.jpg"
               alt="Abhishek Sarangapani, Founder & CEO of PlaceValue"
               className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
             />
@@ -307,7 +307,7 @@ function Leadership() {
         <div className="lg:col-span-5">
           <div className="relative aspect-square sm:aspect-[4/5] max-w-[420px] overflow-hidden rounded-[28px] border border-brand-line bg-brand-sand shadow-sm group">
             <img
-              src="/src/about/co-founder.jpeg"
+              src="/about-cofounder.jpg"
               alt="Nikita Valke, Director and Co-founder of PlaceValue"
               className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
             />

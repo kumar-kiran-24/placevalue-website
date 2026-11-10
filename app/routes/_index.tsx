@@ -159,24 +159,37 @@ function Hero() {
   // Pause heavy 1080p video when scrolled completely out of view to save GPU cycles
   useEffect(() => {
     const video = videoRef.current;
-    const hero = heroRef.current;
-    if (!video || !hero) return;
+    if (!video) return;
 
-    const mainEl = document.querySelector<HTMLElement>(".agent-native-app-main");
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry) return;
-        if (entry.isIntersecting) {
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      },
-      { root: mainEl ?? null, threshold: 0.05 }
-    );
-    observer.observe(hero);
+    // Explicitly guarantee playback at startup and handle any browser autoplay policies
+    const playVideo = () => {
+      if (video.paused) {
+        video.play().catch(() => {});
+      }
+    };
+    playVideo();
 
-    return () => observer.disconnect();
+    // Listen to scroll on the main scrollable container
+    const mainEl =
+      document.querySelector<HTMLElement>(".agent-native-app-main") ||
+      document.documentElement;
+
+    const handleScroll = () => {
+      // Only pause when scrolled more than 1.1x viewport heights away
+      if (mainEl.scrollTop > window.innerHeight * 1.1) {
+        if (!video.paused) video.pause();
+      } else {
+        if (video.paused) playVideo();
+      }
+    };
+
+    mainEl.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      mainEl.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -194,16 +207,15 @@ function Hero() {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           poster="/hero-video-fallback.jpg"
-          className="hero-bg-video motion-reduce:hidden absolute inset-0 h-full w-full object-cover object-center"
+          className="hero-bg-video motion-reduce:hidden absolute inset-0 h-full w-full object-cover object-[68%_center] sm:object-center"
         >
-          <source src="/Glass_sculpture_rotating_pingpong_1080p.mp4" type="video/mp4" />
           <source src="/Glass_sculpture_rotating_in_space_e9e1fb0a_1080p.mp4" type="video/mp4" />
           <img
             src="/hero-video-fallback.jpg"
             alt=""
-            className="absolute inset-0 h-full w-full object-cover object-center"
+            className="absolute inset-0 h-full w-full object-cover object-[68%_center] sm:object-center"
           />
         </video>
 
@@ -212,20 +224,20 @@ function Hero() {
           src="/hero-video-fallback.jpg"
           alt=""
           aria-hidden="true"
-          className="hero-bg-fallback hidden motion-reduce:block absolute inset-0 h-full w-full object-cover object-center"
+          className="hero-bg-fallback hidden motion-reduce:block absolute inset-0 h-full w-full object-cover object-[68%_center] sm:object-center"
         />
 
-        {/* Subtle, restrained cinematic vignettes: keeping the center unobstructed so the 3D rotating glass sculpture remains the primary focal point */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/65 pointer-events-none" />
-        {/* Top-Right corner vignette for editorial label legibility */}
-        <div className="absolute top-0 right-0 w-full max-w-xl h-72 bg-gradient-to-bl from-black/75 via-black/25 to-transparent pointer-events-none" />
-        {/* Bottom-Left corner vignette for headline legibility */}
-        <div className="absolute bottom-0 left-0 w-full max-w-2xl h-[420px] bg-gradient-to-tr from-black/85 via-black/40 to-transparent pointer-events-none" />
+        {/* Subtle, restrained cinematic vignettes balancing the video with PlaceValue warm charcoal identity */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/75 sm:from-black/45 sm:via-transparent sm:to-black/65 pointer-events-none" />
+        {/* Top-Right corner vignette for desktop editorial label legibility */}
+        <div className="hidden sm:block absolute top-0 right-0 w-full max-w-xl h-72 bg-gradient-to-bl from-black/75 via-black/25 to-transparent pointer-events-none" />
+        {/* Bottom-Left corner vignette for desktop headline legibility */}
+        <div className="hidden sm:block absolute bottom-0 left-0 w-full max-w-2xl h-[420px] bg-gradient-to-tr from-black/85 via-black/40 to-transparent pointer-events-none" />
       </div>
 
       {/* 1. TOP-RIGHT FLOATING EDITORIAL COMPOSITION */}
-      <div className="relative z-10 w-full flex justify-end px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 pt-24 sm:pt-28 md:pt-32 lg:pt-36">
-        <div className="flex flex-col items-end text-right">
+      <div className="relative z-10 w-full flex justify-center sm:justify-end px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 pt-20 sm:pt-28 md:pt-32 lg:pt-36">
+        <div className="flex flex-col items-center sm:items-end text-center sm:text-right">
           <motion.div
             initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: -14 }}
             animate={{ opacity: 1, y: 0 }}
@@ -234,9 +246,9 @@ function Hero() {
               delay: shouldReduceMotion ? 0 : 0.2,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="flex flex-col items-end"
+            className="flex flex-col items-center sm:items-end"
           >
-            <span className="text-[11px] sm:text-[12px] md:text-[12.5px] font-semibold tracking-[0.28em] text-[#F5EFEB] uppercase font-sans">
+            <span className="text-[10px] xs:text-[11px] sm:text-[12px] md:text-[12.5px] font-semibold tracking-[0.24em] sm:tracking-[0.28em] text-[#F5EFEB] uppercase font-sans">
               EDUCATION • TECHNOLOGY • INNOVATION
             </span>
           </motion.div>
@@ -244,16 +256,16 @@ function Hero() {
           <DrawingUnderline
             delay={0.45}
             duration={0.85}
-            className="mt-2.5 sm:mt-3 h-[1.5px] w-48 sm:w-60 md:w-72 bg-gradient-to-r from-transparent via-[#DFCFB6] to-[#DFCFB6]"
+            className="mt-2 sm:mt-2.5 sm:mt-3 h-[1.5px] w-40 sm:w-60 md:w-72 bg-gradient-to-r from-transparent via-[#DFCFB6] to-transparent sm:to-[#DFCFB6]"
           />
         </div>
       </div>
 
-      {/* 2. BOTTOM-LEFT FLOATING HEADLINE COMPOSITION */}
-      <div className="relative z-10 w-full px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 pb-12 sm:pb-16 md:pb-20 lg:pb-24 mt-auto">
-        <div className="max-w-2xl lg:max-w-3xl xl:max-w-4xl flex flex-col items-start text-left">
+      {/* 2. HEADLINE COMPOSITION: Lifted higher & centered on mobile, anchored bottom-left on desktop */}
+      <div className="relative z-10 w-full px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 my-auto sm:my-0 sm:mt-auto pt-6 sm:pt-0 pb-10 sm:pb-16 md:pb-20 lg:pb-24">
+        <div className="max-w-2xl lg:max-w-3xl xl:max-w-4xl flex flex-col items-center text-center sm:items-start sm:text-left mx-auto sm:mx-0">
           {/* Main Headline with Staggered Line-by-Line Reveal out of clipping mask */}
-          <h1 className="font-display font-extrabold tracking-[-0.035em] text-white text-[38px] sm:text-[50px] md:text-[62px] lg:text-[72px] xl:text-[80px] leading-[1.02]">
+          <h1 className="font-display font-extrabold tracking-[-0.035em] text-white text-[32px] xs:text-[36px] sm:text-[50px] md:text-[62px] lg:text-[72px] xl:text-[80px] leading-[1.04] sm:leading-[1.02]">
             <MaskedLine delay={0.1}>
               <span className="block text-[#F5EFEB]">Empowering</span>
             </MaskedLine>
@@ -269,7 +281,7 @@ function Hero() {
 
           {/* Short supporting sentence underneath */}
           <ScrollReveal delay={0.46}>
-            <p className="mt-4 sm:mt-5 max-w-[540px] text-[15px] sm:text-[16.5px] md:text-[17.5px] leading-[1.6] text-[#F5EFEB]/85 font-normal">
+            <p className="mt-3.5 sm:mt-5 max-w-[540px] text-[14px] xs:text-[15px] sm:text-[16.5px] md:text-[17.5px] leading-[1.55] sm:leading-[1.6] text-[#F5EFEB]/85 font-normal">
               We blend technology, strategy and innovation to help educational
               institutions and organisations create lasting impact.
             </p>
@@ -279,7 +291,7 @@ function Hero() {
           <DrawingUnderline
             delay={0.62}
             duration={0.9}
-            className="mt-6 sm:mt-7 h-[1.5px] w-36 sm:w-52 md:w-64 bg-gradient-to-r from-[#DFCFB6] via-[#DFCFB6]/80 to-transparent"
+            className="mt-5 sm:mt-7 h-[1.5px] w-32 sm:w-52 md:w-64 bg-gradient-to-r from-transparent via-[#DFCFB6] to-transparent sm:from-[#DFCFB6] sm:via-[#DFCFB6]/80 sm:to-transparent"
           />
         </div>
       </div>

@@ -38,7 +38,8 @@ interface SmoothScrollProviderProps {
  * - Native touch scrolling on mobile/tablet (syncTouch: false) for zero touch latency
  * - Respects prefers-reduced-motion (disables smooth wheel interpolation)
  * - Intercepts anchor links (e.g. #services, #faqs) for smooth targeted scrolling
- * - Resets scroll immediately to top on route transitions
+ * - Dynamically auto-resizes on route changes, image loads, DOM mutations, and animation frames
+ *   so scroll boundaries and limits never get stuck or clamped prematurely.
  */
 export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
   const [lenisInstance, setLenisInstance] = useState<Lenis | null>(null);
@@ -61,7 +62,7 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
 
     const lenis = new Lenis({
       wrapper: mainEl === document.documentElement ? window : mainEl,
-      content: mainEl === document.documentElement ? document.documentElement : (mainEl.firstElementChild as HTMLElement) || mainEl,
+      content: mainEl,
       eventsTarget: window,
       lerp: prefersReducedMotion ? 1 : 0.09,
       duration: prefersReducedMotion ? 0 : 1.0,
@@ -81,13 +82,38 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
     lenisRef.current = lenis;
     setLenisInstance(lenis);
 
-    // Drive Lenis through requestAnimationFrame
+    // Dynamic dimension synchronizer in animation frame:
+    // Guarantees Lenis scrollHeight and limit always match actual DOM scrollHeight,
+    // eliminating any stuck/frozen scroll when navigating or loading images.
     let rafId: number;
     function raf(time: number) {
+      if (mainEl && (lenis as any).dimensions) {
+        const actualScrollHeight = mainEl.scrollHeight;
+        const recordedScrollHeight = (lenis as any).dimensions.scrollHeight;
+        if (Math.abs(actualScrollHeight - recordedScrollHeight) > 2) {
+          lenis.resize();
+        }
+      }
       lenis.raf(time);
       rafId = requestAnimationFrame(raf);
     }
     rafId = requestAnimationFrame(raf);
+
+    // Watch for DOM mutations (new route contents, expandable accordions, dynamic blocks)
+    const mutationObserver = new MutationObserver(() => {
+      lenis.resize();
+    });
+    mutationObserver.observe(mainEl, {
+      childList: true,
+      subtree: true,
+    });
+
+    // Listen for image loads and window resize within the main container
+    const handleResize = () => {
+      lenis.resize();
+    };
+    mainEl.addEventListener("load", handleResize, { capture: true, passive: true });
+    window.addEventListener("resize", handleResize, { passive: true });
 
     // Global anchor link smooth scroll handler
     const handleAnchorClick = (e: MouseEvent) => {
@@ -117,6 +143,9 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
 
     return () => {
       cancelAnimationFrame(rafId);
+      mutationObserver.disconnect();
+      mainEl.removeEventListener("load", handleResize, { capture: true });
+      window.removeEventListener("resize", handleResize);
       document.removeEventListener("click", handleAnchorClick, { capture: true });
       lenis.destroy();
       lenisRef.current = null;
@@ -124,10 +153,22 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
     };
   }, []);
 
-  // On route changes, immediately reset scroll position to top
+  // On route changes, immediately reset scroll position to top and trigger recalibration
   useEffect(() => {
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true });
+      lenisRef.current.resize();
+
+      // Staggered resizes to account for route transitions, image rendering and font loading
+      const timers = [50, 150, 300, 600, 1000].map((delay) =>
+        setTimeout(() => {
+          lenisRef.current?.resize();
+        }, delay)
+      );
+
+      return () => {
+        timers.forEach(clearTimeout);
+      };
     }
   }, [location.pathname]);
 
@@ -143,4 +184,3 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
     </SmoothScrollContext.Provider>
   );
 }
-
