@@ -170,6 +170,7 @@ function Hero() {
           poster="/hero-video-fallback.jpg"
           className="hero-bg-video motion-reduce:hidden absolute inset-0 h-full w-full object-cover object-center"
         >
+          <source src="/Glass_sculpture_rotating_pingpong_1080p.mp4" type="video/mp4" />
           <source src="/Glass_sculpture_rotating_in_space_e9e1fb0a_1080p.mp4" type="video/mp4" />
           <img
             src="/hero-video-fallback.jpg"
