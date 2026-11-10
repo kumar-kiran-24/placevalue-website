@@ -102,15 +102,16 @@ function OurBeginnings() {
 
           <div>
             <span className="inline-block rounded-full border border-brand-line bg-brand-sand/70 px-3.5 py-1 text-[11px] font-bold tracking-wider text-brand-muted uppercase">
-              Origin story · pending approval
+              FOUNDING CONVICTION
             </span>
             <h3 className="mt-3 text-xl sm:text-2xl font-bold tracking-tight text-foreground">
-              [Founding story to be confirmed]
+              Bridging the divide between talent and opportunity.
             </h3>
-            <WordReveal className="mt-2 text-sm sm:text-base leading-relaxed text-brand-muted" delay={0.3}>
-              [Add the founding motivation, the education challenge that prompted it
-              and the first steps taken. Include only confirmed people, places and dates.]
-            </WordReveal>
+            <p className="mt-2 text-sm sm:text-base leading-relaxed text-brand-body">
+              PlaceValue was established by Abhishek Sarangapani and Nikita Valke under the foundational conviction
+              that talent is universal, but opportunity is not. We unite technology consulting, modern digital platforms,
+              and experiential student initiatives to create lasting capability for educational institutions and learners.
+            </p>
           </div>
         </ScrollReveal>
       </div>
@@ -247,17 +248,17 @@ function Leadership() {
       </ScrollReveal>
 
       {/* Founder Message Block */}
-      <ScrollReveal direction="up" delay={0.1} className="relative z-10 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-14 items-center mb-16">
-        {/* Left: Founder Portrait Placeholder */}
+      <ScrollReveal direction="up" delay={0.1} className="relative z-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14 items-center mb-16">
+        {/* Left: Founder Portrait */}
         <div className="lg:col-span-5">
-          <div className="relative aspect-[4/5] max-w-[420px] overflow-hidden rounded-[28px] border border-brand-line bg-brand-sand shadow-sm">
+          <div className="relative aspect-square sm:aspect-[4/5] max-w-[420px] overflow-hidden rounded-[28px] border border-brand-line bg-brand-sand shadow-sm group">
             <img
-              src="/about-founder.jpg"
-              alt="PlaceValue Founder executive portrait"
-              className="h-full w-full object-cover"
+              src="/src/about/founder.jpg"
+              alt="Abhishek Sarangapani, Founder & CEO of PlaceValue"
+              className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
             />
-            <div className="absolute top-4 left-4 z-10 rounded-full bg-white/90 backdrop-blur-xs px-3.5 py-1 text-[11px] font-bold text-brand-night shadow-xs">
-              Founder & Director
+            <div className="absolute top-4 left-4 z-10 rounded-full bg-white/95 backdrop-blur-xs px-3.5 py-1 text-[11px] font-bold text-brand-night shadow-xs border border-black/5">
+              Founder & CEO
             </div>
           </div>
         </div>
@@ -265,25 +266,38 @@ function Leadership() {
         {/* Right: Founder Message Body */}
         <div className="lg:col-span-7">
           <span className="text-xs font-bold tracking-[0.2em] text-brand-muted uppercase">
-            FOUNDER&apos;S MESSAGE
+            FOUNDER&apos;S PERSPECTIVE
           </span>
           <h3 className="mt-3 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground leading-tight">
-            [A personal vision for education and possibility]
+            Building where purpose meets possibility.
           </h3>
-          <WordReveal className="mt-4 text-base sm:text-lg leading-[29px] text-brand-body" delay={0.15}>
-            [Founder&apos;s message awaiting approved copy. Share the personal
-            motivation behind PlaceValue, the change you hope to contribute to and
-            what you want institutions, students and organisations to know.]
+
+          {/* Core Guiding Quotes */}
+          <div className="my-6 border-l-2 border-brand-orange pl-5 sm:pl-6 space-y-3.5">
+            <blockquote className="font-display text-[17px] sm:text-[19px] font-medium tracking-tight text-foreground italic leading-snug">
+              &ldquo;Talent is universal. Opportunity is not.&rdquo;
+            </blockquote>
+            <blockquote className="font-display text-[17px] sm:text-[19px] font-medium tracking-tight text-foreground italic leading-snug">
+              &ldquo;Growth begins where familiarity ends.&rdquo;
+            </blockquote>
+            <blockquote className="font-display text-[17px] sm:text-[19px] font-medium tracking-tight text-foreground italic leading-snug">
+              &ldquo;The world changes because someone decides to build it.&rdquo;
+            </blockquote>
+          </div>
+
+          <WordReveal className="text-base sm:text-lg leading-[29px] text-brand-body" delay={0.15}>
+            PlaceValue was founded on a simple conviction: technology should expand human agency,
+            not replace it. We partner with educational institutions, enterprises and student communities
+            to cultivate real capability, dismantle barriers to opportunity, and build what comes next.
           </WordReveal>
 
           <div className="mt-8 border-t border-brand-line pt-6">
-            <h4 className="font-display text-xl font-bold text-foreground">
-              [Founder Name]
+            <h4 className="font-display text-xl sm:text-2xl font-bold text-foreground">
+              Abhishek Sarangapani
             </h4>
-            <p className="text-sm font-semibold text-brand-muted">Founder</p>
-            <span className="mt-2.5 inline-block rounded-full border border-brand-line bg-brand-sand/80 px-3 py-1 text-xs font-semibold text-brand-muted">
-              Awaiting approved copy
-            </span>
+            <p className="text-sm font-semibold text-brand-orange mt-0.5">
+              Founder & CEO, PlaceValue
+            </p>
           </div>
         </div>
       </ScrollReveal>
@@ -292,16 +306,16 @@ function Leadership() {
       <ScrollReveal direction="up" delay={0.2} className="relative z-10">
         <div className="rounded-[28px] border border-brand-line bg-brand-sand/50 p-6 sm:p-8 lg:p-10 shadow-xs">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-12 items-center">
-            {/* Left: Co-Founder Portrait Placeholder */}
+            {/* Left: Co-Founder Portrait */}
             <div className="md:col-span-4 lg:col-span-3">
-              <div className="relative aspect-square sm:aspect-[4/5] overflow-hidden rounded-[22px] border border-brand-line bg-brand-sand shadow-xs">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] border border-brand-line bg-brand-sand shadow-xs group">
                 <img
-                  src="/about-cofounder.jpg"
-                  alt="PlaceValue Co-Founder executive portrait"
-                  className="h-full w-full object-cover"
+                  src="/src/about/co-founder.jpeg"
+                  alt="Nikita Valke, Director and Co-founder of PlaceValue"
+                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
                 />
-                <div className="absolute top-3 left-3 z-10 rounded-full bg-white/90 backdrop-blur-xs px-3 py-0.5 text-[10px] font-bold text-brand-night shadow-xs">
-                  Co-Founder & VP
+                <div className="absolute top-3 left-3 z-10 rounded-full bg-white/95 backdrop-blur-xs px-3 py-0.5 text-[10px] font-bold text-brand-night shadow-xs border border-black/5">
+                  Director & Co-Founder
                 </div>
               </div>
             </div>
@@ -309,20 +323,33 @@ function Leadership() {
             {/* Right: Co-Founder Bio */}
             <div className="md:col-span-8 lg:col-span-9">
               <span className="text-xs font-bold tracking-[0.2em] text-brand-muted uppercase">
-                MEET OUR CO-FOUNDER
+                DIRECTOR & CO-FOUNDER
               </span>
               <h3 className="mt-2 font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-                [Co-Founder Name]
+                Nikita Valke
               </h3>
-              <p className="text-sm font-bold text-brand-orange mb-3">Co-Founder</p>
-              <p className="text-sm sm:text-base leading-relaxed text-brand-body mb-4">
-                [Professional biography awaiting approved copy. Introduce the co-founder&apos;s
-                role at PlaceValue, relevant experience and contribution to the company&apos;s
-                direction. Include only verified credentials.]
+              <p className="text-sm font-bold text-brand-blue mb-3">
+                Director & Co-founder, PlaceValue
               </p>
-              <span className="inline-block rounded-full border border-brand-line bg-brand-sand px-3 py-1 text-xs font-semibold text-brand-muted">
-                Awaiting approved copy
-              </span>
+              <p className="text-sm sm:text-base leading-relaxed text-brand-body mb-5">
+                Steering institutional delivery and educational programmes at PlaceValue, Nikita is dedicated
+                to fostering strong conceptual foundations, confidence in communication, and alignment with
+                evolving industry expectations. Her leadership ensures that every engagement bridges the gap
+                between theoretical learning and real-world execution.
+              </p>
+
+              {/* Three Core Leadership Focus Areas */}
+              <div className="flex flex-wrap gap-2.5">
+                <span className="inline-flex items-center rounded-full border border-brand-line bg-white/80 px-3.5 py-1 text-xs font-semibold text-foreground shadow-2xs">
+                  Strong Conceptual Foundations
+                </span>
+                <span className="inline-flex items-center rounded-full border border-brand-line bg-white/80 px-3.5 py-1 text-xs font-semibold text-foreground shadow-2xs">
+                  Confidence in Communication
+                </span>
+                <span className="inline-flex items-center rounded-full border border-brand-line bg-white/80 px-3.5 py-1 text-xs font-semibold text-foreground shadow-2xs">
+                  Evolving Industry Alignment
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -333,10 +360,10 @@ function Leadership() {
 
 const TIMELINE_NODES = [
   {
-    year: "[Year]",
-    tag: "The beginning",
-    title: "[Founding story to be confirmed]",
-    desc: "[Confirm the founding date, motivation and original focus.]",
+    year: "Founding",
+    tag: "The Beginning",
+    title: "Established by Abhishek Sarangapani & Nikita Valke",
+    desc: "Founded with the conviction that talent is universal but opportunity is not, uniting education and technology.",
     tone: "orange",
   },
   {
