@@ -133,12 +133,6 @@ const IMPACT_METRICS = [
   { value: "4+", label: "Years of Experience", tone: "text-foreground" },
 ];
 
-const TASKVERSE_PILLS = [
-  "Adaptive Assessments",
-  "Real-Time Analytics",
-  "Personalised Pathways",
-  "Smart Reporting",
-];
 
 const FOOTER_QUICK_LINKS = NAV_ITEMS;
 
@@ -471,68 +465,50 @@ function TaskverseSection() {
   return (
     <section
       data-node-id="3311:1505"
-      className="relative overflow-hidden bg-brand-night px-6 md:px-12 lg:px-16 xl:px-24 py-16 text-white md:py-[88px]"
+      className="relative overflow-hidden bg-background px-6 md:px-12 lg:px-16 xl:px-24 py-16 md:py-24 border-t border-brand-line/60 text-foreground"
     >
       {/* Oversized background watermark typography */}
-      <WatermarkText text="TASKVERSE" />
+      <WatermarkText text="TASKVERSE" opacity={0.035} />
 
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-24 -left-24 size-[400px] rounded-full bg-brand-blue/30 blur-[90px]"
+        className="pointer-events-none absolute -top-24 -left-24 size-[380px] rounded-full bg-brand-blue/5 blur-[90px]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-20 -bottom-24 size-[360px] rounded-full bg-brand-orange/25 blur-[90px]"
+        className="pointer-events-none absolute -right-20 -bottom-24 size-[340px] rounded-full bg-brand-orange/5 blur-[90px]"
       />
 
-      <div className="relative z-10 grid gap-12 lg:grid-cols-[520px_minmax(0,1fr)] lg:items-center">
+      <div className="relative z-10 grid gap-10 lg:grid-cols-[460px_minmax(0,1fr)] lg:items-center">
+        {/* Left Column: Refined, Minimalist Product Introduction */}
         <ScrollReveal className="flex flex-col">
-          <span className="inline-flex w-fit items-center rounded-full bg-brand-blue/15 px-4 py-2 text-[11px] font-bold tracking-[2px] text-brand-blue">
-            AI-POWERED LEARNING PLATFORM
-          </span>
-          <h2 className="mt-6 font-display text-[56px] leading-none font-extrabold tracking-[-3px] md:text-[64px]">
+          <SectionLabel>ASSESSMENT PLATFORM</SectionLabel>
+
+          <h2 className="mt-6 font-display text-[46px] sm:text-[56px] lg:text-[62px] leading-[0.94] font-extrabold tracking-[-0.035em] text-foreground">
             TASKVERSE
           </h2>
-          <p className="mt-2 font-display text-base font-medium tracking-[-0.3px] text-white/60">
-            AI-Powered Assessment and Learning Platform
-          </p>
-          <p className="mt-5 text-[15px] leading-6 text-white/75 md:text-base md:leading-[26px]">
-            TASKVERSE redefines how educators assess and how students learn.
-            Powered by AI, it delivers adaptive assessments, real-time
-            analytics, and personalised learning pathways — all in one
-            intelligent platform.
+
+          <p className="mt-4 text-[16px] sm:text-[17px] leading-[1.65] text-brand-body max-w-md">
+            Adaptive skill diagnostics and verifiable capability portfolios engineered for modern education.
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-2">
-            {TASKVERSE_PILLS.map((pill) => (
-              <span
-                key={pill}
-                className="rounded-full bg-white/10 px-3.5 py-2 text-[13px] font-medium text-white"
-              >
-                {pill}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-7 flex items-center gap-3">
             <Link
               to="/taskverse"
-              className={cn(orangePill, "h-[50px] bg-brand-blue px-6")}
+              className={cn(
+                orangePill,
+                "h-[48px] px-7 text-sm font-bold shadow-sm hover:brightness-105 transition-all"
+              )}
             >
               Explore TASKVERSE
               <IconArrowRight size={14} />
             </Link>
-            <Link
-              to="/taskverse"
-              className="inline-flex h-[50px] items-center justify-center rounded-full border border-white/20 px-6 text-sm font-medium text-white"
-            >
-              See How It Works
-            </Link>
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={0.2} yOffset={30}>
-          <TaskverseDashboardShowcase />
+        {/* Right Column: Clean Light-Themed Dashboard Preview */}
+        <ScrollReveal delay={0.15} yOffset={24}>
+          <TaskverseDashboardShowcase theme="light" />
         </ScrollReveal>
       </div>
     </section>
