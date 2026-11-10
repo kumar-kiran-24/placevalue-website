@@ -121,22 +121,18 @@ function OurBeginnings() {
 
 const CORE_VALUES = [
   {
-    icon: IconUsers,
     title: "People before platforms",
     body: "Start with the learner, educator and the real need. Let technology follow.",
   },
   {
-    icon: IconBulb,
     title: "Curiosity with intent",
     body: "Ask better questions. Explore new ideas with a clear purpose.",
   },
   {
-    icon: IconHeartHandshake,
     title: "Progress together",
     body: "Listen openly, share understanding and build through collaboration.",
   },
   {
-    icon: IconShieldCheck,
     title: "Integrity in action",
     body: "Be clear about what we know, what we promise and what still needs work.",
   },
@@ -173,9 +169,9 @@ function WhatGuidesUs() {
               <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">
                 Our mission
               </h3>
-              <div className="flex size-10 items-center justify-center rounded-full bg-brand-orange/15 text-brand-orange border border-brand-orange/30">
-                <IconTarget size={20} />
-              </div>
+              <span className="font-mono text-xs font-bold tracking-wider text-brand-orange uppercase">
+                01
+              </span>
             </div>
             <p className="my-8 text-lg sm:text-xl font-medium leading-relaxed text-white/90">
               To connect education and technology in ways that make learning more
@@ -194,9 +190,9 @@ function WhatGuidesUs() {
               <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">
                 Our vision
               </h3>
-              <div className="flex size-10 items-center justify-center rounded-full bg-brand-blue/15 text-brand-blue border border-brand-blue/30">
-                <IconArrowUpRight size={20} />
-              </div>
+              <span className="font-mono text-xs font-bold tracking-wider text-brand-blue uppercase">
+                02
+              </span>
             </div>
             <p className="my-8 text-lg sm:text-xl font-medium leading-relaxed text-white/90">
               An education ecosystem where people can learn, contribute and grow,
@@ -216,11 +212,11 @@ function WhatGuidesUs() {
         </span>
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {CORE_VALUES.map(({ icon: Icon, title, body }) => (
+          {CORE_VALUES.map(({ title, body }, idx) => (
             <div key={title} className="flex flex-col">
-              <div className="mb-4 flex size-10 items-center justify-center rounded-xl bg-white/5 border border-white/10 text-brand-orange">
-                <Icon size={20} stroke={1.75} />
-              </div>
+              <span className="font-mono text-xs font-bold text-brand-orange mb-3 tracking-widest uppercase">
+                {`0${idx + 1}`}
+              </span>
               <h4 className="font-display text-base font-bold text-white mb-2">
                 {title}
               </h4>

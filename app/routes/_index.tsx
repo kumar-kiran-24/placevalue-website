@@ -6,17 +6,10 @@ import {
   IconBrandLinkedin,
   IconBrandX,
   IconBrandYoutube,
-  IconBulb,
-  IconCode,
-  IconDeviceDesktop,
   IconMail,
   IconMapPin,
   IconMenu2,
   IconPhone,
-  IconSchool,
-  IconSettings,
-  IconShieldCheck,
-  IconUsers,
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
@@ -43,7 +36,6 @@ export function meta() {
   ];
 }
 
-type TablerIcon = typeof IconCode;
 type Tone = "orange" | "blue";
 
 const TONE_BG: Record<Tone, string> = {
@@ -61,7 +53,6 @@ const NAV_ITEMS = [
 ];
 
 const SERVICES: {
-  icon: TablerIcon;
   tone: Tone;
   title: string;
   body: string;
@@ -69,7 +60,6 @@ const SERVICES: {
   highlight: string;
 }[] = [
   {
-    icon: IconDeviceDesktop,
     tone: "orange",
     title: "Technology Consulting",
     body: "We define modern technology strategies that align people, process and systems — so institutions can move faster, scale with confidence and deliver better outcomes.",
@@ -77,7 +67,6 @@ const SERVICES: {
     highlight: "Roadmaps, architecture and implementation planning",
   },
   {
-    icon: IconCode,
     tone: "blue",
     title: "Software Development",
     body: "We build custom digital products, platforms and tools that solve real-world problems — with clarity, quality and a focus on user experience.",
@@ -85,7 +74,6 @@ const SERVICES: {
     highlight: "Products, platforms and tools built for real-world use",
   },
   {
-    icon: IconSettings,
     tone: "orange",
     title: "AI & Automation",
     body: "We apply intelligent systems to automate workflows, improve decision-making and unlock new efficiency — without losing the human insight that matters.",
@@ -93,7 +81,6 @@ const SERVICES: {
     highlight: "Automation, analytics and smarter workflows",
   },
   {
-    icon: IconSchool,
     tone: "blue",
     title: "Student Opportunities",
     body: "We connect students with real-world projects, mentorship and industry exposure — helping the next generation build practical skills and lasting confidence.",
@@ -102,19 +89,16 @@ const SERVICES: {
   },
 ];
 
-const PILLARS: { icon: TablerIcon; title: string; body: string }[] = [
+const PILLARS: { title: string; body: string }[] = [
   {
-    icon: IconShieldCheck,
     title: "Trusted by Institutions",
     body: "Partnering with leading universities and enterprises to deliver lasting value.",
   },
   {
-    icon: IconUsers,
     title: "Student-First Approach",
     body: "Empowering the next generation through mentorship, internships and live projects.",
   },
   {
-    icon: IconBulb,
     title: "Innovation-Driven",
     body: "Applying emerging technology to create smarter systems and better outcomes.",
   },
@@ -202,17 +186,17 @@ function Hero() {
           className="hero-bg-fallback hidden motion-reduce:block absolute inset-0 h-full w-full object-cover object-center"
         />
 
-        {/* Subtle, restrained cinematic vignettes */}
+        {/* Subtle, restrained cinematic vignettes: keeping the center unobstructed so the 3D rotating glass sculpture remains the primary focal point */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/65 pointer-events-none" />
-        {/* Top vignette for editorial label & nav legibility */}
-        <div className="absolute top-0 inset-x-0 w-full h-72 bg-gradient-to-b from-black/75 via-black/25 to-transparent pointer-events-none" />
-        {/* Bottom vignette for centered headline legibility */}
-        <div className="absolute bottom-0 inset-x-0 w-full h-[480px] bg-gradient-to-t from-black/85 via-black/40 to-transparent pointer-events-none" />
+        {/* Top-Right corner vignette for editorial label legibility */}
+        <div className="absolute top-0 right-0 w-full max-w-xl h-72 bg-gradient-to-bl from-black/75 via-black/25 to-transparent pointer-events-none" />
+        {/* Bottom-Left corner vignette for headline legibility */}
+        <div className="absolute bottom-0 left-0 w-full max-w-2xl h-[420px] bg-gradient-to-tr from-black/85 via-black/40 to-transparent pointer-events-none" />
       </div>
 
-      {/* 1. TOP CENTER EDITORIAL COMPOSITION */}
-      <div className="relative z-10 w-full flex justify-center px-6 sm:px-10 pt-24 sm:pt-28 md:pt-32">
-        <div className="flex flex-col items-center text-center">
+      {/* 1. TOP-RIGHT FLOATING EDITORIAL COMPOSITION */}
+      <div className="relative z-10 w-full flex justify-end px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 pt-24 sm:pt-28 md:pt-32 lg:pt-36">
+        <div className="flex flex-col items-end text-right">
           <motion.div
             initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: -14 }}
             animate={{ opacity: 1, y: 0 }}
@@ -221,34 +205,34 @@ function Hero() {
               delay: shouldReduceMotion ? 0 : 0.2,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="flex flex-col items-center"
+            className="flex flex-col items-end"
           >
             <span className="text-[11px] sm:text-[12px] md:text-[12.5px] font-semibold tracking-[0.28em] text-[#F5EFEB] uppercase font-sans">
               EDUCATION • TECHNOLOGY • INNOVATION
             </span>
           </motion.div>
-          {/* Thin muted-gold underline directly beneath top text */}
+          {/* Thin muted-gold underline directly beneath top-right text */}
           <DrawingUnderline
             delay={0.45}
             duration={0.85}
-            className="mt-2.5 sm:mt-3 h-[1.5px] w-48 sm:w-60 md:w-72 bg-gradient-to-r from-transparent via-[#DFCFB6] to-transparent mx-auto"
+            className="mt-2.5 sm:mt-3 h-[1.5px] w-48 sm:w-60 md:w-72 bg-gradient-to-r from-transparent via-[#DFCFB6] to-[#DFCFB6]"
           />
         </div>
       </div>
 
-      {/* 2. CENTER-ALIGNED HEADLINE COMPOSITION */}
-      <div className="relative z-10 w-full px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 pb-12 sm:pb-16 md:pb-20 lg:pb-24 mt-auto flex justify-center">
-        <div className="max-w-3xl lg:max-w-4xl xl:max-w-5xl flex flex-col items-center text-center mx-auto">
+      {/* 2. BOTTOM-LEFT FLOATING HEADLINE COMPOSITION */}
+      <div className="relative z-10 w-full px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 pb-12 sm:pb-16 md:pb-20 lg:pb-24 mt-auto">
+        <div className="max-w-2xl lg:max-w-3xl xl:max-w-4xl flex flex-col items-start text-left">
           {/* Main Headline with Staggered Line-by-Line Reveal out of clipping mask */}
-          <h1 className="font-display font-extrabold tracking-[-0.035em] text-white text-[38px] sm:text-[50px] md:text-[62px] lg:text-[72px] xl:text-[80px] leading-[1.02] text-center">
+          <h1 className="font-display font-extrabold tracking-[-0.035em] text-white text-[38px] sm:text-[50px] md:text-[62px] lg:text-[72px] xl:text-[80px] leading-[1.02]">
             <MaskedLine delay={0.1}>
-              <span className="block text-center text-[#F5EFEB]">Empowering</span>
+              <span className="block text-[#F5EFEB]">Empowering</span>
             </MaskedLine>
             <MaskedLine delay={0.22}>
-              <span className="block text-center text-[#F5EFEB]/95">Education for a</span>
+              <span className="block text-[#F5EFEB]/95">Education for a</span>
             </MaskedLine>
             <MaskedLine delay={0.34}>
-              <span className="block text-center text-brand-orange animate-text-shimmer">
+              <span className="block text-brand-orange animate-text-shimmer">
                 Brighter Tomorrow.
               </span>
             </MaskedLine>
@@ -256,7 +240,7 @@ function Hero() {
 
           {/* Short supporting sentence underneath */}
           <ScrollReveal delay={0.46}>
-            <p className="mt-4 sm:mt-5 max-w-[580px] text-[15px] sm:text-[16.5px] md:text-[17.5px] leading-[1.6] text-[#F5EFEB]/85 font-normal text-center mx-auto">
+            <p className="mt-4 sm:mt-5 max-w-[540px] text-[15px] sm:text-[16.5px] md:text-[17.5px] leading-[1.6] text-[#F5EFEB]/85 font-normal">
               We blend technology, strategy and innovation to help educational
               institutions and organisations create lasting impact.
             </p>
@@ -266,21 +250,19 @@ function Hero() {
           <DrawingUnderline
             delay={0.62}
             duration={0.9}
-            className="mt-6 sm:mt-7 h-[1.5px] w-48 sm:w-64 md:w-80 bg-gradient-to-r from-transparent via-[#DFCFB6] to-transparent mx-auto"
+            className="mt-6 sm:mt-7 h-[1.5px] w-36 sm:w-52 md:w-64 bg-gradient-to-r from-[#DFCFB6] via-[#DFCFB6]/80 to-transparent"
           />
         </div>
       </div>
 
       {/* Floating Scroll Indicator on the bottom right */}
-      <div className="absolute bottom-6 sm:bottom-8 right-6 sm:right-10 lg:right-16 z-20 hidden sm:flex items-center gap-2.5">
+      <div className="absolute bottom-6 sm:bottom-8 right-6 sm:right-10 lg:right-16 z-20 hidden sm:flex items-center">
         <a
           href="#services"
-          className="group inline-flex items-center gap-2 text-[10.5px] font-bold tracking-[2px] uppercase text-[#DFCFB6]/70 hover:text-white transition-colors"
+          className="group inline-flex items-center gap-2 text-[10.5px] font-bold tracking-[2.5px] uppercase text-[#DFCFB6]/70 hover:text-white transition-colors"
         >
           <span>Scroll</span>
-          <div className="flex h-5 w-3.5 items-start justify-center rounded-full border border-[#DFCFB6]/30 p-0.5 group-hover:border-white/60 transition">
-            <div className="h-1.5 w-0.5 rounded-full bg-brand-orange animate-bounce" />
-          </div>
+          <IconArrowRight size={13} className="rotate-90 text-brand-orange group-hover:translate-y-0.5 transition-transform" />
         </a>
       </div>
     </section>
@@ -288,7 +270,6 @@ function Hero() {
 }
 
 function ServiceCard({
-  icon: Icon,
   tone,
   title,
   body,
@@ -301,14 +282,21 @@ function ServiceCard({
     <ScrollReveal delay={index * 0.08} yOffset={20}>
       <article className="group flex flex-col justify-between h-full rounded-[22px] border border-brand-line/60 bg-brand-sand p-6 lg:p-7 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-black/15">
         <div>
-          <span
-            className={cn(
-              "flex size-12 items-center justify-center rounded-[14px] text-white shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6",
-              isOrange ? "bg-brand-orange" : "bg-brand-blue",
-            )}
-          >
-            <Icon size={22} stroke={2} />
-          </span>
+          <div className="flex items-center justify-between">
+            <span className="font-mono text-xs font-bold tracking-widest text-brand-orange uppercase">
+              {`0${index + 1}`}
+            </span>
+            <span
+              className={cn(
+                "rounded-full px-3 py-0.5 text-[10px] font-bold tracking-wider uppercase border",
+                isOrange
+                  ? "bg-brand-orange/10 text-brand-orange border-brand-orange/20"
+                  : "bg-brand-blue/10 text-brand-blue border-brand-blue/20",
+              )}
+            >
+              {tag}
+            </span>
+          </div>
           <h3 className="mt-4 font-display text-[20px] lg:text-[22px] font-extrabold tracking-[-0.02em] text-foreground transition-colors group-hover:text-brand-night">
             {title}
           </h3>
@@ -316,15 +304,7 @@ function ServiceCard({
             {body}
           </p>
         </div>
-        <div className="mt-6 flex flex-wrap items-center gap-2.5 pt-2">
-          <span
-            className={cn(
-              "rounded-full px-3 py-1 text-[11px] font-bold text-white tracking-wide uppercase shadow-sm",
-              isOrange ? "bg-brand-orange" : "bg-brand-blue",
-            )}
-          >
-            {tag}
-          </span>
+        <div className="mt-6 border-t border-brand-line/60 pt-3">
           <span className="text-xs leading-tight text-brand-muted font-medium">
             {highlight}
           </span>
@@ -401,17 +381,17 @@ function About() {
           </WordReveal>
 
           <ul className="mt-8 flex flex-col max-w-[860px]">
-            {PILLARS.map(({ icon: Icon, title, body }, idx) => (
+            {PILLARS.map(({ title, body }, idx) => (
               <ScrollReveal key={title} delay={idx * 0.08} yOffset={16}>
-                <li className="flex items-start gap-3 border-t border-brand-line py-4">
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-[10px] bg-brand-sand">
-                    <Icon size={16} stroke={1.75} />
+                <li className="flex items-start gap-4 border-t border-brand-line py-4">
+                  <span className="font-mono text-xs font-bold text-brand-orange pt-0.5">
+                    {`0${idx + 1}`}
                   </span>
                   <div className="flex flex-col gap-1">
-                    <h3 className="font-display text-[13px] leading-4 font-bold text-foreground">
+                    <h3 className="font-display text-[14px] leading-5 font-bold text-foreground">
                       {title}
                     </h3>
-                    <p className="text-xs leading-[15px] text-brand-muted">{body}</p>
+                    <p className="text-xs leading-[16px] text-brand-muted">{body}</p>
                   </div>
                 </li>
               </ScrollReveal>

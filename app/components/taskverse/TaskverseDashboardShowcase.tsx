@@ -1,12 +1,5 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import {
-  IconCertificate,
-  IconCheck,
-  IconCpu,
-  IconShieldCheck,
-  IconTrendingUp,
-} from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 
 interface CompetencyDomain {
@@ -76,27 +69,15 @@ export function TaskverseDashboardShowcase({
           isLight ? "border-brand-line/60" : "border-white/10"
         )}
       >
-        <div className="flex items-center gap-2.5">
-          <div
+        <div className="flex items-center gap-2">
+          <span
             className={cn(
-              "flex size-8 items-center justify-center rounded-lg border",
-              isLight
-                ? "bg-brand-sand/40 border-brand-line text-brand-blue"
-                : "bg-white/10 border-white/15 text-brand-blue"
+              "font-display text-sm font-bold tracking-tight block",
+              isLight ? "text-foreground" : "text-white"
             )}
           >
-            <IconCpu size={17} />
-          </div>
-          <div>
-            <span
-              className={cn(
-                "font-display text-sm font-bold tracking-tight block",
-                isLight ? "text-foreground" : "text-white"
-              )}
-            >
-              TASKVERSE Analytics
-            </span>
-          </div>
+            TASKVERSE Analytics
+          </span>
         </div>
 
         <div className="flex items-center gap-2">
@@ -346,14 +327,8 @@ export function TaskverseDashboardShowcase({
           isLight ? "border-brand-line/60 text-brand-muted" : "border-white/10 text-white/50"
         )}
       >
-        <span className="inline-flex items-center gap-1.5 font-medium">
-          <IconShieldCheck size={14} className="text-brand-blue" />
-          <span>LTI 1.3 Certified</span>
-        </span>
-        <span className="inline-flex items-center gap-1.5 font-medium">
-          <IconCertificate size={14} className="text-brand-orange" />
-          <span>Tamper-Evident Credentials</span>
-        </span>
+        <span className="font-medium tracking-wide uppercase text-[10px]">LTI 1.3 Certified</span>
+        <span className="font-medium tracking-wide uppercase text-[10px]">Tamper-Evident Transcripts</span>
       </div>
     </div>
   );

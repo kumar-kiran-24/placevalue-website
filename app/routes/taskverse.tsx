@@ -132,8 +132,8 @@ function TaskversePlatformOverview() {
                 <div className="group flex flex-col justify-between h-full rounded-[24px] border border-brand-line/70 bg-brand-sand p-7 sm:p-8 lg:p-9 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-black/15">
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="flex size-12 items-center justify-center rounded-[14px] bg-brand-night text-white shadow-sm transition-transform group-hover:scale-110">
-                        <Icon size={22} stroke={2} />
+                      <span className="font-mono text-xs font-bold tracking-widest text-brand-orange uppercase">
+                        {`0${idx + 1}`}
                       </span>
                       <span className="rounded-full bg-brand-sand/80 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-orange border border-brand-orange/20">
                         {pillar.tag}
@@ -152,7 +152,7 @@ function TaskversePlatformOverview() {
                     <ul className="flex flex-col gap-2">
                       {pillar.benefits.map((b) => (
                         <li key={b} className="flex items-center gap-2 text-xs font-semibold text-foreground">
-                          <IconCheck size={14} className="text-brand-orange shrink-0" />
+                          <span className="size-1 rounded-full bg-brand-orange shrink-0" />
                           <span>{b}</span>
                         </li>
                       ))}
@@ -203,14 +203,14 @@ function TaskverseEnterpriseStandards() {
 
           <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="flex items-start gap-3 rounded-2xl bg-white p-5 border border-brand-line shadow-sm">
-              <IconShieldCheck size={22} className="text-brand-blue shrink-0 mt-0.5" />
+              <span className="size-2 rounded-full bg-brand-blue shrink-0 mt-1.5" />
               <div>
                 <p className="text-sm font-bold text-foreground">LTI 1.3 Certified</p>
                 <p className="mt-1 text-xs text-brand-muted">Drop-in compatibility with Canvas, Blackboard and Moodle.</p>
               </div>
             </div>
             <div className="flex items-start gap-3 rounded-2xl bg-white p-5 border border-brand-line shadow-sm">
-              <IconLock size={22} className="text-brand-orange shrink-0 mt-0.5" />
+              <span className="size-2 rounded-full bg-brand-orange shrink-0 mt-1.5" />
               <div>
                 <p className="text-sm font-bold text-foreground">GDPR & SOC2 Ready</p>
                 <p className="mt-1 text-xs text-brand-muted">Zero-knowledge credential hashing and strict student data privacy.</p>

@@ -555,9 +555,8 @@ function WhatCanWeHelpWith({
       <div className="relative z-10 space-y-6">
         {/* Top 3 Cards */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {SERVICE_ENQUIRY_CARDS.slice(0, 3).map((card) => {
+          {SERVICE_ENQUIRY_CARDS.slice(0, 3).map((card, idx) => {
             const isOrange = card.tone === "orange";
-            const Icon = card.icon;
 
             return (
               <div
@@ -566,14 +565,19 @@ function WhatCanWeHelpWith({
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div
+                    <span className="font-mono text-xs font-bold tracking-widest text-brand-orange uppercase">
+                      {`0${idx + 1}`}
+                    </span>
+                    <span
                       className={cn(
-                        "flex size-10 items-center justify-center rounded-xl text-white shadow-xs",
-                        isOrange ? "bg-brand-orange" : "bg-brand-blue",
+                        "rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider border",
+                        isOrange
+                          ? "bg-brand-orange/10 text-brand-orange border-brand-orange/20"
+                          : "bg-brand-blue/10 text-brand-blue border-brand-blue/20",
                       )}
                     >
-                      <Icon size={20} />
-                    </div>
+                      {card.badge}
+                    </span>
                   </div>
                   <h3 className="font-display text-xl font-bold tracking-tight text-foreground">
                     {card.type}
@@ -584,19 +588,9 @@ function WhatCanWeHelpWith({
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-brand-line/60 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span
-                      className={cn(
-                        "rounded-full px-2.5 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider",
-                        isOrange ? "bg-brand-orange" : "bg-brand-blue",
-                      )}
-                    >
-                      {card.badge}
-                    </span>
-                    <span className="text-[11px] font-medium text-brand-muted truncate">
-                      {card.highlight}
-                    </span>
-                  </div>
+                  <span className="text-[11px] font-medium text-brand-muted truncate">
+                    {card.highlight}
+                  </span>
                   <button
                     type="button"
                     onClick={() => {
@@ -605,9 +599,10 @@ function WhatCanWeHelpWith({
                         .getElementById("conversation-form")
                         ?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="text-xs font-bold text-foreground hover:text-brand-orange transition shrink-0 ml-2 cursor-pointer"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-foreground hover:text-brand-orange transition shrink-0 ml-2 cursor-pointer"
                   >
-                    Select ↗
+                    <span>Select</span>
+                    <IconArrowUpRight size={12} />
                   </button>
                 </div>
               </div>
@@ -617,9 +612,8 @@ function WhatCanWeHelpWith({
 
         {/* Bottom 2 Cards */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {SERVICE_ENQUIRY_CARDS.slice(3, 5).map((card) => {
+          {SERVICE_ENQUIRY_CARDS.slice(3, 5).map((card, idx) => {
             const isOrange = card.tone === "orange";
-            const Icon = card.icon;
 
             return (
               <div
@@ -628,14 +622,19 @@ function WhatCanWeHelpWith({
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div
+                    <span className="font-mono text-xs font-bold tracking-widest text-brand-blue uppercase">
+                      {`0${idx + 4}`}
+                    </span>
+                    <span
                       className={cn(
-                        "flex size-10 items-center justify-center rounded-xl text-white shadow-xs",
-                        isOrange ? "bg-brand-orange" : "bg-brand-blue",
+                        "rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider border",
+                        isOrange
+                          ? "bg-brand-orange/10 text-brand-orange border-brand-orange/20"
+                          : "bg-brand-blue/10 text-brand-blue border-brand-blue/20",
                       )}
                     >
-                      <Icon size={20} />
-                    </div>
+                      {card.badge}
+                    </span>
                   </div>
                   <h3 className="font-display text-xl font-bold tracking-tight text-foreground">
                     {card.type}

@@ -197,7 +197,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function ServiceCard({
-  icon: Icon,
   tone,
   title,
   body,
@@ -210,14 +209,21 @@ function ServiceCard({
     <ScrollReveal delay={index * 0.08} yOffset={20}>
       <article className="flex flex-col justify-between h-full rounded-[22px] border border-brand-line/60 bg-brand-sand p-6 lg:p-7 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-black/15">
         <div>
-          <span
-            className={cn(
-              "flex size-12 items-center justify-center rounded-[14px] text-white shadow-sm transition-transform duration-300 group-hover:scale-110",
-              isOrange ? "bg-brand-orange" : "bg-brand-blue",
-            )}
-          >
-            <Icon size={22} stroke={2} />
-          </span>
+          <div className="flex items-center justify-between">
+            <span className="font-mono text-xs font-bold tracking-widest text-brand-orange uppercase">
+              {`0${index + 1}`}
+            </span>
+            <span
+              className={cn(
+                "rounded-full px-3 py-0.5 text-[10px] font-bold tracking-wider uppercase border",
+                isOrange
+                  ? "bg-brand-orange/10 text-brand-orange border-brand-orange/20"
+                  : "bg-brand-blue/10 text-brand-blue border-brand-blue/20",
+              )}
+            >
+              {tag}
+            </span>
+          </div>
           <h3 className="mt-4 font-display text-[20px] lg:text-[22px] font-extrabold tracking-[-0.02em] text-[#141416]">
             {title}
           </h3>
@@ -225,15 +231,7 @@ function ServiceCard({
             {body}
           </p>
         </div>
-        <div className="mt-6 flex flex-wrap items-center gap-2.5 pt-2">
-          <span
-            className={cn(
-              "rounded-full px-3 py-1 text-[11px] font-bold text-white tracking-wide uppercase shadow-sm",
-              isOrange ? "bg-brand-orange" : "bg-brand-blue",
-            )}
-          >
-            {tag}
-          </span>
+        <div className="mt-6 border-t border-brand-line/60 pt-3">
           <span className="text-xs leading-tight text-brand-muted font-medium">
             {highlight}
           </span>
@@ -412,25 +410,22 @@ function WhoWeWorkWithSection() {
         </p>
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {WHO_WE_WORK_WITH.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.title}
-                className="flex flex-col rounded-[22px] border border-brand-line/60 bg-brand-sand/50 p-6 lg:p-7 transition-shadow hover:shadow-md"
-              >
-                <span className="flex size-11 items-center justify-center rounded-xl bg-brand-sand text-foreground">
-                  <Icon size={20} stroke={1.75} />
-                </span>
-                <h3 className="mt-5 font-display text-[18px] lg:text-[19px] font-bold text-[#141416]">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-[13px] leading-[1.6] text-brand-body">
-                  {item.body}
-                </p>
-              </div>
-            );
-          })}
+          {WHO_WE_WORK_WITH.map((item, idx) => (
+            <div
+              key={item.title}
+              className="flex flex-col rounded-[22px] border border-brand-line/60 bg-brand-sand/50 p-6 lg:p-7 transition-shadow hover:shadow-md"
+            >
+              <span className="font-mono text-xs font-bold text-brand-orange uppercase">
+                {`0${idx + 1}`}
+              </span>
+              <h3 className="mt-4 font-display text-[18px] lg:text-[19px] font-bold text-[#141416]">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-[13px] leading-[1.6] text-brand-body">
+                {item.body}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -459,22 +454,19 @@ function WhyChooseSection() {
 
         {/* Right side: 2x2 grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-          {WHY_CHOOSE_ITEMS.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div key={item.title} className="flex flex-col gap-2.5">
-                <span className="flex size-9 items-center justify-center text-foreground">
-                  <Icon size={22} stroke={1.75} />
-                </span>
-                <h3 className="font-display text-[18px] font-bold text-[#141416]">
-                  {item.title}
-                </h3>
-                <p className="text-[13px] leading-[1.6] text-brand-body">
-                  {item.body}
-                </p>
-              </div>
-            );
-          })}
+          {WHY_CHOOSE_ITEMS.map((item, idx) => (
+            <div key={item.title} className="flex flex-col gap-2.5">
+              <span className="font-mono text-xs font-bold text-brand-orange tracking-widest uppercase">
+                {`0${idx + 1}`}
+              </span>
+              <h3 className="font-display text-[18px] font-bold text-[#141416]">
+                {item.title}
+              </h3>
+              <p className="text-[13px] leading-[1.6] text-brand-body">
+                {item.body}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
