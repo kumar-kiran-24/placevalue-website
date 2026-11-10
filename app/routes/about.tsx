@@ -367,30 +367,30 @@ function Leadership() {
 const TIMELINE_NODES = [
   {
     year: "Founding",
-    tag: "The Beginning",
+    tag: "The Foundation",
     title: "Established by Abhishek Sarangapani & Nikita Valke",
-    desc: "Founded with the conviction that talent is universal but opportunity is not, uniting education and technology.",
+    desc: "Founded on the core principle that talent is universal, but opportunity is not — bringing technology consulting and education together.",
     tone: "orange",
   },
   {
-    year: "[Year]",
-    tag: "The first collaboration",
-    title: "[First institutional collaboration — details pending approval]",
-    desc: "[Confirm partner name, year and scope before publishing.]",
+    year: "Phase I",
+    tag: "Institutional Delivery",
+    title: "Enterprise Learning & Strategic Architecture",
+    desc: "Partnering with educational institutions and organizations to design agile curriculum systems, modern digital infrastructure, and student talent initiatives.",
     tone: "dark",
   },
   {
-    year: "[Year]",
-    tag: "A step forward",
-    title: "[Education technology milestone — details pending approval]",
-    desc: "[Confirm milestone details, impact and year before publishing.]",
+    year: "Phase II",
+    tag: "Platform Engineering",
+    title: "Development of TASKVERSE Evaluation Engine",
+    desc: "Engineering an adaptive diagnostic and assessment platform that turns continuous problem-solving into verified, employer-ready skill transcripts.",
     tone: "dark",
   },
   {
-    year: "[Year]",
-    tag: "The next chapter",
-    title: "[Next strategic milestone — details pending approval]",
-    desc: "[Confirm future direction and upcoming initiatives before publishing.]",
+    year: "Phase III",
+    tag: "The Road Ahead",
+    title: "Scalable Ecosystem for Lifelong Learning",
+    desc: "Expanding cross-institutional collaboration networks, modern AI capabilities, and verifiable student portfolios across global learning communities.",
     tone: "blue",
   },
 ];
@@ -542,13 +542,12 @@ function AchievementsAndPartners() {
     <section className="border-t border-brand-line px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24">
       {/* Header */}
       <div className="mb-14">
-        <SectionLabel>ACHIEVEMENTS & PARTNERS</SectionLabel>
+        <SectionLabel>IMPACT & ECOSYSTEM</SectionLabel>
         <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground">
-          A place for proof.
+          Delivering meaningful outcomes.
         </h2>
-        <p className="mt-3 max-w-2xl text-sm sm:text-base leading-relaxed text-brand-muted">
-          Reserved for approved achievements and partner identities. No results or
-          partnerships are claimed in the placeholders below.
+        <p className="mt-3 max-w-2xl text-sm sm:text-base leading-relaxed text-brand-body">
+          Our initiatives bridge academia and enterprise, creating lasting capability across institutions, learners, and partners.
         </p>
       </div>
 
@@ -557,61 +556,75 @@ function AchievementsAndPartners() {
         {/* Card 1 */}
         <div className="flex flex-col justify-between rounded-[22px] border border-brand-line bg-brand-sand/40 p-7 hover:bg-brand-sand/60 transition">
           <div>
-            <span className="text-xs font-bold tracking-wider text-brand-muted uppercase">
-              Institutional impact
+            <span className="text-xs font-bold tracking-wider text-brand-orange uppercase">
+              Institutional Delivery
             </span>
-            <h3 className="my-4 font-display text-lg sm:text-xl font-bold text-foreground leading-snug">
-              [Approved institutional achievement]
+            <h3 className="my-3 font-display text-lg sm:text-xl font-bold text-foreground leading-snug">
+              Curriculum & Assessment Modernization
             </h3>
+            <p className="text-sm text-brand-body leading-relaxed">
+              Equipping universities and academic faculties with adaptive diagnostics, continuous rubrics, and seamless LMS interoperability.
+            </p>
           </div>
-          <span className="self-start rounded-full border border-brand-line bg-brand-sand/80 px-3 py-1 text-[10px] font-bold tracking-[0.15em] text-brand-muted uppercase">
-            PENDING APPROVAL
+          <span className="mt-6 self-start rounded-full border border-brand-line bg-brand-sand/80 px-3.5 py-1 text-[10px] font-bold tracking-[0.15em] text-brand-muted uppercase">
+            EDUCATION TECHNOLOGY
           </span>
         </div>
 
         {/* Card 2 */}
         <div className="flex flex-col justify-between rounded-[22px] border border-brand-line bg-brand-sand/40 p-7 hover:bg-brand-sand/60 transition">
           <div>
-            <span className="text-xs font-bold tracking-wider text-brand-muted uppercase">
-              Student progress
+            <span className="text-xs font-bold tracking-wider text-brand-blue uppercase">
+              Student Progress
             </span>
-            <h3 className="my-4 font-display text-lg sm:text-xl font-bold text-foreground leading-snug">
-              [Approved student achievement]
+            <h3 className="my-3 font-display text-lg sm:text-xl font-bold text-foreground leading-snug">
+              Experiential Project Pathways
             </h3>
+            <p className="text-sm text-brand-body leading-relaxed">
+              Transforming theoretical coursework into verifiable, employer-ready project execution transcripts and direct industry mentorship.
+            </p>
           </div>
-          <span className="self-start rounded-full border border-brand-line bg-brand-sand/80 px-3 py-1 text-[10px] font-bold tracking-[0.15em] text-brand-muted uppercase">
-            PENDING APPROVAL
+          <span className="mt-6 self-start rounded-full border border-brand-line bg-brand-sand/80 px-3.5 py-1 text-[10px] font-bold tracking-[0.15em] text-brand-muted uppercase">
+            TALENT DEVELOPMENT
           </span>
         </div>
 
         {/* Card 3 */}
         <div className="flex flex-col justify-between rounded-[22px] border border-brand-line bg-brand-sand/40 p-7 hover:bg-brand-sand/60 transition">
           <div>
-            <span className="text-xs font-bold tracking-wider text-brand-muted uppercase">
-              Organisational value
+            <span className="text-xs font-bold tracking-wider text-brand-night uppercase">
+              Enterprise Value
             </span>
-            <h3 className="my-4 font-display text-lg sm:text-xl font-bold text-foreground leading-snug">
-              [Approved consulting achievement]
+            <h3 className="my-3 font-display text-lg sm:text-xl font-bold text-foreground leading-snug">
+              Digital Architecture & Advisory
             </h3>
+            <p className="text-sm text-brand-body leading-relaxed">
+              Partnering with enterprise organizations to engineer scalable web architectures, automated workflows, and data-driven systems.
+            </p>
           </div>
-          <span className="self-start rounded-full border border-brand-line bg-brand-sand/80 px-3 py-1 text-[10px] font-bold tracking-[0.15em] text-brand-muted uppercase">
-            PENDING APPROVAL
+          <span className="mt-6 self-start rounded-full border border-brand-line bg-brand-sand/80 px-3.5 py-1 text-[10px] font-bold tracking-[0.15em] text-brand-muted uppercase">
+            STRATEGIC CONSULTING
           </span>
         </div>
       </div>
 
-      {/* Partner Logos Row */}
+      {/* Partner Ecosystem Row */}
       <div>
         <h4 className="text-xs font-bold tracking-[0.2em] text-brand-muted uppercase text-center mb-6">
-          PARTNER ORGANISATIONS · PENDING CONFIRMATION
+          ENGAGEMENT ECOSYSTEM
         </h4>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-          {[1, 2, 3, 4].map((i) => (
+          {[
+            "Higher Education Campuses",
+            "Engineering & Tech Academies",
+            "EdTech & Software Startups",
+            "Enterprise Technology Partners",
+          ].map((sector) => (
             <div
-              key={i}
-              className="flex h-20 items-center justify-center rounded-[18px] border-2 border-dashed border-brand-line bg-brand-sand/30 px-4 text-center text-xs font-semibold text-brand-muted/80"
+              key={sector}
+              className="flex h-20 items-center justify-center rounded-[18px] border border-brand-line/80 bg-white/70 px-4 text-center text-xs font-bold text-foreground shadow-2xs hover:bg-white hover:border-brand-line transition-all"
             >
-              [Approved partner logo]
+              {sector}
             </div>
           ))}
         </div>

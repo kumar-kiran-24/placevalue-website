@@ -7,13 +7,8 @@ import {
   IconBrandX,
   IconBrandYoutube,
   IconBulb,
-  IconChartBar,
-  IconCheck,
   IconCode,
-  IconCpu,
   IconDeviceDesktop,
-  IconFileCertificate,
-  IconLock,
   IconMail,
   IconMapPin,
   IconMenu2,
@@ -21,7 +16,6 @@ import {
   IconSchool,
   IconSettings,
   IconShieldCheck,
-  IconSparkles,
   IconUsers,
 } from "@tabler/icons-react";
 
@@ -29,6 +23,7 @@ import { cn } from "@/lib/utils";
 import { motion, useReducedMotion } from "framer-motion";
 import { MotionNav } from "@/components/motion/MotionNav";
 import { FaqSection } from "@/components/ui/FaqSection";
+import { TaskverseDashboardShowcase } from "@/components/taskverse/TaskverseDashboardShowcase";
 import {
   DrawingUnderline,
   MaskedLine,
@@ -136,6 +131,13 @@ const IMPACT_METRICS = [
   { value: "20+", label: "Happy Clients", tone: "text-brand-blue" },
   { value: "100+", label: "Students Empowered", tone: "text-brand-orange" },
   { value: "4+", label: "Years of Experience", tone: "text-foreground" },
+];
+
+const TASKVERSE_PILLS = [
+  "Adaptive Assessments",
+  "Real-Time Analytics",
+  "Personalised Pathways",
+  "Smart Reporting",
 ];
 
 const FOOTER_QUICK_LINKS = NAV_ITEMS;
@@ -469,177 +471,68 @@ function TaskverseSection() {
   return (
     <section
       data-node-id="3311:1505"
-      className="relative overflow-hidden bg-brand-night px-6 md:px-12 lg:px-16 xl:px-24 py-20 text-white md:py-28 border-t border-white/10"
+      className="relative overflow-hidden bg-brand-night px-6 md:px-12 lg:px-16 xl:px-24 py-16 text-white md:py-[88px]"
     >
-      {/* Architectural background watermark typography */}
-      <WatermarkText text="TASKVERSE" opacity={0.035} />
+      {/* Oversized background watermark typography */}
+      <WatermarkText text="TASKVERSE" />
 
-      {/* Ambient background glows */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-24 -left-24 size-[420px] rounded-full bg-brand-blue/20 blur-[100px]"
+        className="pointer-events-none absolute -top-24 -left-24 size-[400px] rounded-full bg-brand-blue/30 blur-[90px]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-20 -bottom-24 size-[380px] rounded-full bg-brand-orange/15 blur-[100px]"
+        className="pointer-events-none absolute -right-20 -bottom-24 size-[360px] rounded-full bg-brand-orange/25 blur-[90px]"
       />
 
-      <div className="relative z-10 grid gap-14 lg:grid-cols-12 lg:gap-16 items-center">
-        {/* Left Column: Editorial Capability Narrative */}
-        <ScrollReveal className="flex flex-col lg:col-span-6">
-          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-blue/30 bg-brand-blue/10 px-4 py-1.5 text-[11px] font-bold tracking-[2px] text-brand-blue uppercase">
-            <span className="size-1.5 rounded-full bg-brand-blue animate-pulse" />
-            PROPRIETARY TECHNOLOGY ARCHITECTURE
+      <div className="relative z-10 grid gap-12 lg:grid-cols-[520px_minmax(0,1fr)] lg:items-center">
+        <ScrollReveal className="flex flex-col">
+          <span className="inline-flex w-fit items-center rounded-full bg-brand-blue/15 px-4 py-2 text-[11px] font-bold tracking-[2px] text-brand-blue">
+            AI-POWERED LEARNING PLATFORM
           </span>
-
-          <h2 className="mt-6 font-display font-black text-[38px] sm:text-[46px] md:text-[52px] leading-[1.04] tracking-[-0.035em] text-white">
-            <span>Reimagining Capability</span>
-            <br />
-            <span className="text-outline text-white/90">Beyond Standardized Testing.</span>
+          <h2 className="mt-6 font-display text-[56px] leading-none font-extrabold tracking-[-3px] md:text-[64px]">
+            TASKVERSE
           </h2>
-
-          <p className="mt-5 text-[15.5px] sm:text-[16.5px] leading-[1.68] text-white/75 font-normal">
-            TASKVERSE is PlaceValue&apos;s proprietary assessment architecture. Engineered for universities,
-            enterprises, and skill academies, it replaces static multiple-choice examinations with adaptive,
-            real-time diagnostic pathways and verifiable execution portfolios.
+          <p className="mt-2 font-display text-base font-medium tracking-[-0.3px] text-white/60">
+            AI-Powered Assessment and Learning Platform
+          </p>
+          <p className="mt-5 text-[15px] leading-6 text-white/75 md:text-base md:leading-[26px]">
+            TASKVERSE redefines how educators assess and how students learn.
+            Powered by AI, it delivers adaptive assessments, real-time
+            analytics, and personalised learning pathways — all in one
+            intelligent platform.
           </p>
 
-          {/* Three Core Architectural Capabilities */}
-          <div className="mt-8 space-y-4 border-t border-white/10 pt-6">
-            <div className="flex items-start gap-3.5">
-              <div className="mt-1 flex size-5 items-center justify-center rounded-full bg-brand-blue/20 text-brand-blue shrink-0">
-                <IconCheck size={12} stroke={3} />
-              </div>
-              <div>
-                <h4 className="text-sm font-bold text-white tracking-tight">Adaptive Diagnostic Engine</h4>
-                <p className="mt-0.5 text-xs sm:text-[13px] leading-relaxed text-white/60">
-                  Calibrates evaluation difficulty dynamically in response to deep problem-solving capability.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3.5">
-              <div className="mt-1 flex size-5 items-center justify-center rounded-full bg-brand-orange/20 text-brand-orange shrink-0">
-                <IconCheck size={12} stroke={3} />
-              </div>
-              <div>
-                <h4 className="text-sm font-bold text-white tracking-tight">Cryptographic Evidence Transcripts</h4>
-                <p className="mt-0.5 text-xs sm:text-[13px] leading-relaxed text-white/60">
-                  Translates student code commits, architectural designs, and project work into tamper-evident credentials.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3.5">
-              <div className="mt-1 flex size-5 items-center justify-center rounded-full bg-brand-blue/20 text-brand-blue shrink-0">
-                <IconCheck size={12} stroke={3} />
-              </div>
-              <div>
-                <h4 className="text-sm font-bold text-white tracking-tight">Institutional Telemetry & Standards</h4>
-                <p className="mt-0.5 text-xs sm:text-[13px] leading-relaxed text-white/60">
-                  Provides leadership with real-time cohort mastery metrics, risk indicators, and curriculum alignment.
-                </p>
-              </div>
-            </div>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {TASKVERSE_PILLS.map((pill) => (
+              <span
+                key={pill}
+                className="rounded-full bg-white/10 px-3.5 py-2 text-[13px] font-medium text-white"
+              >
+                {pill}
+              </span>
+            ))}
           </div>
 
-          <div className="mt-9 flex flex-wrap items-center gap-4">
+          <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/taskverse"
-              className="inline-flex h-[48px] items-center justify-center gap-2 rounded-full bg-white px-7 text-sm font-bold text-brand-night transition-all hover:bg-[#F5EFEB] hover:scale-[1.02] shadow-md"
+              className={cn(orangePill, "h-[50px] bg-brand-blue px-6")}
             >
-              <span>Explore Platform Architecture</span>
-              <IconArrowUpRight size={15} />
+              Explore TASKVERSE
+              <IconArrowRight size={14} />
             </Link>
             <Link
-              to="/contact"
-              className="inline-flex h-[48px] items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 text-sm font-semibold text-white/90 transition hover:bg-white/10"
+              to="/taskverse"
+              className="inline-flex h-[50px] items-center justify-center rounded-full border border-white/20 px-6 text-sm font-medium text-white"
             >
-              Request Institutional Brief
+              See How It Works
             </Link>
           </div>
         </ScrollReveal>
 
-        {/* Right Column: Architectural Telemetry Blueprint Canvas */}
-        <ScrollReveal delay={0.15} yOffset={25} className="lg:col-span-6">
-          <div className="relative rounded-[26px] border border-white/12 bg-white/[0.03] backdrop-blur-xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
-            {/* Top Bar of Blueprint */}
-            <div className="flex items-center justify-between border-b border-white/10 pb-4 text-xs">
-              <div className="flex items-center gap-2.5">
-                <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="font-mono text-[11px] font-semibold text-white tracking-wider uppercase">
-                  TASKVERSE · EVALUATION ENGINE
-                </span>
-              </div>
-              <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 font-mono text-[10px] text-white/60">
-                LTI 1.3 · SECURE RUNTIME
-              </span>
-            </div>
-
-            {/* Live Module 1: Diagnostic Capability Stream */}
-            <div className="mt-6 rounded-2xl border border-white/10 bg-black/25 p-4 sm:p-5">
-              <div className="flex items-center justify-between text-xs text-white/60 font-medium">
-                <span className="flex items-center gap-2 text-white">
-                  <IconCpu size={15} className="text-brand-blue" />
-                  <span>Adaptive Evaluation Stream</span>
-                </span>
-                <span className="font-mono text-emerald-400 text-[11px]">Calibrating in Real-Time</span>
-              </div>
-
-              <div className="mt-3.5 flex items-center justify-between text-sm">
-                <span className="font-bold text-white tracking-tight">Systems Engineering & Algorithmic Design</span>
-                <span className="font-mono text-xs font-semibold text-brand-orange">Level 8.9 / 10</span>
-              </div>
-
-              {/* Progress Calibration Bar */}
-              <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-white/10">
-                <div className="h-full rounded-full bg-gradient-to-r from-brand-blue via-brand-blue to-brand-orange w-[88%]" />
-              </div>
-              <div className="mt-2 flex justify-between text-[10px] font-mono text-white/40">
-                <span>Core Competency: Validated</span>
-                <span>Response Depth: High Velocity</span>
-              </div>
-            </div>
-
-            {/* Live Module 2: Cryptographic Credential Record */}
-            <div className="mt-4 rounded-2xl border border-white/10 bg-black/25 p-4 sm:p-5">
-              <div className="flex items-center justify-between text-xs text-white/60 font-medium">
-                <span className="flex items-center gap-2 text-white">
-                  <IconFileCertificate size={15} className="text-brand-orange" />
-                  <span>Verifiable Execution Artifact</span>
-                </span>
-                <span className="inline-flex items-center gap-1 font-mono text-brand-blue text-[11px]">
-                  <IconShieldCheck size={13} /> Immutable SHA-256
-                </span>
-              </div>
-
-              <div className="mt-3 flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-bold text-white">Production Microservice Architecture</p>
-                  <p className="mt-0.5 text-xs text-white/60 font-mono">42 Verified Commits · Peer Reviewed</p>
-                </div>
-                <span className="rounded-full bg-emerald-500/15 border border-emerald-500/30 px-3 py-1 text-[11px] font-bold text-emerald-400">
-                  Verified
-                </span>
-              </div>
-            </div>
-
-            {/* Three Minimal Institutional Metrics */}
-            <div className="mt-4 grid grid-cols-3 gap-3 border-t border-white/10 pt-4 text-center">
-              <div className="rounded-xl bg-white/[0.02] border border-white/5 py-3 px-2">
-                <p className="font-display text-xl sm:text-2xl font-extrabold text-white">95.4%</p>
-                <p className="mt-0.5 text-[10.5px] uppercase tracking-wider text-white/50 font-semibold">Mastery Rate</p>
-              </div>
-              <div className="rounded-xl bg-white/[0.02] border border-white/5 py-3 px-2">
-                <p className="font-display text-xl sm:text-2xl font-extrabold text-brand-blue">3.2×</p>
-                <p className="mt-0.5 text-[10.5px] uppercase tracking-wider text-white/50 font-semibold">Verification</p>
-              </div>
-              <div className="rounded-xl bg-white/[0.02] border border-white/5 py-3 px-2">
-                <p className="font-display text-xl sm:text-2xl font-extrabold text-brand-orange">100%</p>
-                <p className="mt-0.5 text-[10.5px] uppercase tracking-wider text-white/50 font-semibold">Audit Trail</p>
-              </div>
-            </div>
-          </div>
+        <ScrollReveal delay={0.2} yOffset={30}>
+          <TaskverseDashboardShowcase />
         </ScrollReveal>
       </div>
     </section>

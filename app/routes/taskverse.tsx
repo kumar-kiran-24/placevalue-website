@@ -8,6 +8,7 @@ import {
   IconBrandYoutube,
   IconChartBar,
   IconCheck,
+  IconChevronDown,
   IconCpu,
   IconDeviceDesktop,
   IconFileCertificate,
@@ -22,9 +23,9 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
-import { PlainHero } from "@/components/layout/PlainHero";
+import { MotionNav, NAV_ITEMS } from "@/components/motion/MotionNav";
 import { FaqSection, TASKVERSE_FAQS } from "@/components/ui/FaqSection";
-import { NAV_ITEMS } from "@/components/motion/MotionNav";
+import { TaskverseDashboardShowcase } from "@/components/taskverse/TaskverseDashboardShowcase";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
@@ -342,21 +343,140 @@ function SiteFooter() {
   );
 }
 
+function TaskverseHero() {
+  const scrollToOverview = () => {
+    const el = document.getElementById("platform-overview");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <section className="relative min-h-[92vh] lg:min-h-screen bg-brand-night text-white overflow-hidden flex flex-col justify-between">
+      {/* Motion Nav */}
+      <MotionNav activeNav="TASKVERSE" theme="dark" />
+
+      {/* Decorative Oversized Watermark */}
+      <WatermarkText text="TASKVERSE" opacity={0.035} />
+
+      {/* Ambient background glows */}
+      <div
+        className="pointer-events-none absolute -top-40 -left-32 size-[520px] rounded-full bg-brand-blue/15 blur-[120px]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute top-1/3 -right-32 size-[480px] rounded-full bg-brand-orange/12 blur-[120px]"
+        aria-hidden="true"
+      />
+
+      {/* Hero Content Container */}
+      <div className="relative z-10 flex-1 flex items-center px-6 pt-32 pb-16 md:px-12 md:pt-40 md:pb-20 lg:px-16 xl:px-24">
+        <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          {/* Left Column: Product Positioning & Narrative */}
+          <div className="lg:col-span-6 flex flex-col">
+            {/* Small uppercase badge */}
+            <ScrollReveal direction="up" delay={0.05}>
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-blue/30 bg-brand-blue/10 px-4 py-1.5 text-[11px] font-bold tracking-[2px] text-brand-blue uppercase">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
+                </span>
+                AI-POWERED EVALUATION ARCHITECTURE
+              </div>
+            </ScrollReveal>
+
+            {/* Main Headline */}
+            <ScrollReveal direction="up" delay={0.1}>
+              <h1 className="mt-6 font-display font-black text-[54px] sm:text-[68px] md:text-[76px] lg:text-[84px] leading-[0.92] tracking-[-0.04em] text-white uppercase">
+                TASKVERSE
+              </h1>
+              <p className="mt-3 font-display text-lg sm:text-xl lg:text-2xl font-bold tracking-tight text-white/90">
+                Adaptive Assessment & Capability Intelligence.
+              </p>
+            </ScrollReveal>
+
+            {/* Concise Product Description */}
+            <ScrollReveal direction="up" delay={0.15}>
+              <p className="mt-5 text-[15px] sm:text-[16px] md:text-[17px] leading-[1.68] text-white/75 max-w-xl">
+                TASKVERSE redefines how institutions assess and how learners grow. Replacing rigid exams with continuous, multi-dimensional problem solving, real-time cohort analytics, and cryptographically verified project portfolios.
+              </p>
+            </ScrollReveal>
+
+            {/* Feature Badges */}
+            <ScrollReveal direction="up" delay={0.2}>
+              <div className="mt-6 flex flex-wrap gap-2 sm:gap-2.5">
+                {[
+                  "Dynamic Rubrics",
+                  "Real-Time Cohort Telemetry",
+                  "LTI 1.3 Certified",
+                  "Tamper-Evident Transcripts",
+                ].map((badge) => (
+                  <span
+                    key={badge}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-white/90 backdrop-blur-xs"
+                  >
+                    <span className="size-1.5 rounded-full bg-brand-orange" />
+                    {badge}
+                  </span>
+                ))}
+              </div>
+            </ScrollReveal>
+
+            {/* Action Buttons */}
+            <ScrollReveal direction="up" delay={0.25}>
+              <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4">
+                <Link
+                  to="/contact"
+                  className={cn(
+                    orangePill,
+                    "h-[52px] px-8 text-sm font-bold shadow-lg shadow-brand-orange/20 hover:brightness-110 transition-all"
+                  )}
+                >
+                  Request Institutional Demo
+                  <IconArrowRight size={16} />
+                </Link>
+                <button
+                  type="button"
+                  onClick={scrollToOverview}
+                  className="inline-flex h-[52px] items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 text-sm font-medium text-white hover:bg-white/10 hover:border-white/30 transition-all cursor-pointer backdrop-blur-xs"
+                >
+                  <span>Explore Architecture</span>
+                  <IconChevronDown size={16} className="text-white/70" />
+                </button>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Right Column: Interactive Enterprise Learning Analytics Dashboard Showcase */}
+          <div className="lg:col-span-6">
+            <ScrollReveal direction="up" delay={0.2} yOffset={30}>
+              <TaskverseDashboardShowcase />
+            </ScrollReveal>
+          </div>
+        </div>
+      </div>
+
+      {/* Subtle bottom scroll prompt */}
+      <div className="relative z-10 hidden sm:flex items-center justify-between px-6 pb-6 md:px-12 lg:px-16 xl:px-24 border-t border-white/5 text-[11px] text-white/40">
+        <span>PlaceValue Technologies · Proprietary Assessment Engine</span>
+        <button
+          type="button"
+          onClick={scrollToOverview}
+          className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer"
+        >
+          <span>Scroll to explore platform architecture</span>
+          <IconChevronDown size={14} />
+        </button>
+        <span>LTI 1.3 · GDPR · SOC2 Compliant</span>
+      </div>
+    </section>
+  );
+}
+
 export default function TaskverseRoute() {
   return (
     <div className="min-h-full bg-background text-foreground">
-      <PlainHero
-        activeNav="TASKVERSE"
-        badge="AI-POWERED PLATFORM"
-        badgeRight="INTELLIGENT ASSESSMENT"
-        watermarkText="TASKVERSE"
-        line1="Engineering Better"
-        line2Outline="Outcomes Through"
-        line3Highlight="Intelligence."
-        highlightTone="blue"
-        supportingText="TASKVERSE redefines how institutions assess, adapt and accelerate talent with adaptive pathways and cryptographically verified portfolios."
-        scrollTargetId="platform-overview"
-      />
+      <TaskverseHero />
       <TaskversePlatformOverview />
       <TaskverseStatsBand />
       <TaskverseEnterpriseStandards />
