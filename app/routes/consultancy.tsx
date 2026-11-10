@@ -677,6 +677,10 @@ function ConsultancyHero() {
           className="hero-bg-video motion-reduce:hidden absolute inset-0 h-full w-full object-cover object-center"
         >
           <source
+            src="/Glass_structures_connecting_pingpong_1080p.mp4"
+            type="video/mp4"
+          />
+          <source
             src="/Glass_structures_connecting_and_…_3efebb03_1080p.mp4"
             type="video/mp4"
           />
