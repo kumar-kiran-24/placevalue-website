@@ -25,7 +25,7 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
-import { CinematicHero } from "@/components/layout/CinematicHero";
+import { PlainHero } from "@/components/layout/PlainHero";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
@@ -882,13 +882,16 @@ export default function ContactRoute() {
 
   return (
     <div className="min-h-full bg-background text-foreground">
-      <CinematicHero
+      <PlainHero
         activeNav="Contact"
-        label="Connect With PlaceValue"
-        headlineLine1="Let's Build Something"
-        headlineLine2="Meaningful"
-        headlineHighlight="Together."
-        supportingSentence="Whether you are modernising legacy systems, developing a custom platform or seeking strategic guidance, our team is ready."
+        badge="LET'S BUILD TOGETHER"
+        badgeRight="START A CONVERSATION"
+        watermarkText="CONNECT"
+        line1="Good things start"
+        line2Outline="with a"
+        line3Highlight="conversation."
+        supportingText="You don't need a finished brief. Share a question, an early idea or an ambition — and let's find a thoughtful way forward together."
+        highlightTone="orange"
         scrollTargetId="conversation-form"
       />
       <ContactFormSection

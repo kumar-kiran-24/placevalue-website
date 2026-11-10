@@ -22,7 +22,7 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
-import { CinematicHero } from "@/components/layout/CinematicHero";
+import { PlainHero } from "@/components/layout/PlainHero";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
@@ -799,13 +799,16 @@ function SiteFooter() {
 export default function AboutRoute() {
   return (
     <div className="min-h-full bg-background text-foreground">
-      <CinematicHero
+      <PlainHero
         activeNav="About"
-        label="About PlaceValue"
-        headlineLine1="Built on Innovation."
-        headlineLine2="Driven by"
-        headlineHighlight="Purpose."
-        supportingSentence="We connect education, technology and strategy to help institutions, students and communities build what comes next."
+        badge="ABOUT PLACEVALUE"
+        badgeRight="PEOPLE · PURPOSE · POSSIBILITY"
+        watermarkText="ABOUT"
+        line1="Built on Innovation."
+        line2Outline="Driven by"
+        line3Highlight="Purpose."
+        supportingText="PlaceValue works at the intersection of education technology and consulting, connecting the needs of institutions, students and organisations. This is a space for our journey, the people behind it and the purpose that guides what comes next."
+        highlightTone="orange"
         scrollTargetId="beginnings"
       />
       <OurBeginnings />

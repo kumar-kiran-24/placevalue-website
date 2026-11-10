@@ -17,7 +17,8 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
-import { CinematicHero, NAV_ITEMS } from "@/components/layout/CinematicHero";
+import { PlainHero } from "@/components/layout/PlainHero";
+import { NAV_ITEMS } from "@/components/motion/MotionNav";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
@@ -315,13 +316,16 @@ function SiteFooter() {
 export default function InsightsRoute() {
   return (
     <div className="min-h-full bg-background text-foreground">
-      <CinematicHero
+      <PlainHero
         activeNav="Insights"
-        label="THOUGHT LEADERSHIP & RESEARCH"
-        headlineLine1="Perspectives on the"
-        headlineLine2="Future of"
-        headlineHighlight="Learning."
-        supportingSentence="Research, editorial viewpoints and practical frameworks on educational technology, artificial intelligence and modern institutional transformation."
+        badge="THOUGHT LEADERSHIP"
+        badgeRight="PERSPECTIVES & ESSAYS"
+        watermarkText="INSIGHTS"
+        line1="Perspectives on the"
+        line2Outline="Future of"
+        line3Highlight="Learning."
+        supportingText="Research, editorial viewpoints and practical frameworks on educational technology, artificial intelligence and modern institutional transformation."
+        highlightTone="orange"
         scrollTargetId="featured-insights"
       />
       <FeaturedInsight />

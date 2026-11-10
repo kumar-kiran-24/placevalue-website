@@ -26,7 +26,7 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
-import { CinematicHero } from "@/components/layout/CinematicHero";
+import { PlainHero } from "@/components/layout/PlainHero";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
@@ -659,13 +659,16 @@ function SiteFooter() {
 export default function ConsultancyRoute() {
   return (
     <div className="min-h-full bg-background text-foreground">
-      <CinematicHero
+      <PlainHero
         activeNav="Consultancy"
-        label="Strategic Consultancy"
-        headlineLine1="Turning Complexity"
-        headlineLine2="into"
-        headlineHighlight="Opportunities."
-        supportingSentence="Strategic advisory, custom digital engineering and intelligent systems designed for long-term institutional transformation."
+        badge="STRATEGIC CONSULTANCY"
+        badgeRight="ADVISORY · ENGINEERING · ADOPTION"
+        watermarkText="SOLUTIONS"
+        line1="Turning Complexity"
+        line2Outline="into Real"
+        line3Highlight="Opportunities."
+        supportingText="We bring technology, strategy and innovation together to help educational institutions and modern enterprises build what comes next."
+        highlightTone="orange"
         scrollTargetId="services"
       />
       <ServicesSection />

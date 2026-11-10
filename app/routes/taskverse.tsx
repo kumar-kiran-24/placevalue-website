@@ -22,7 +22,8 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
-import { CinematicHero, NAV_ITEMS } from "@/components/layout/CinematicHero";
+import { PlainHero } from "@/components/layout/PlainHero";
+import { NAV_ITEMS } from "@/components/motion/MotionNav";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
@@ -343,13 +344,16 @@ function SiteFooter() {
 export default function TaskverseRoute() {
   return (
     <div className="min-h-full bg-background text-foreground">
-      <CinematicHero
+      <PlainHero
         activeNav="TASKVERSE"
-        label="TASKVERSE PLATFORM"
-        headlineLine1="Intelligent Assessment."
-        headlineLine2="Accelerated"
-        headlineHighlight="Growth."
-        supportingSentence="Our proprietary educational platform bringing real-time analytics, adaptive skill pathways and verifiable project experience together in one place."
+        badge="AI-POWERED PLATFORM"
+        badgeRight="INTELLIGENT ASSESSMENT"
+        watermarkText="TASKVERSE"
+        line1="Engineering Better"
+        line2Outline="Outcomes Through"
+        line3Highlight="Intelligence."
+        highlightTone="blue"
+        supportingText="TASKVERSE redefines how institutions assess, adapt and accelerate talent with adaptive pathways and cryptographically verified portfolios."
         scrollTargetId="platform-overview"
       />
       <TaskversePlatformOverview />
