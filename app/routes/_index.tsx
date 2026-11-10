@@ -202,17 +202,17 @@ function Hero() {
           className="hero-bg-fallback hidden motion-reduce:block absolute inset-0 h-full w-full object-cover object-center"
         />
 
-        {/* Subtle, restrained cinematic vignettes: keeping the center unobstructed so the 3D rotating glass sculpture remains the primary focal point */}
+        {/* Subtle, restrained cinematic vignettes */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/65 pointer-events-none" />
-        {/* Top-Right corner vignette for editorial label legibility */}
-        <div className="absolute top-0 right-0 w-full max-w-xl h-72 bg-gradient-to-bl from-black/75 via-black/25 to-transparent pointer-events-none" />
-        {/* Bottom-Left corner vignette for headline legibility */}
-        <div className="absolute bottom-0 left-0 w-full max-w-2xl h-[420px] bg-gradient-to-tr from-black/85 via-black/40 to-transparent pointer-events-none" />
+        {/* Top vignette for editorial label & nav legibility */}
+        <div className="absolute top-0 inset-x-0 w-full h-72 bg-gradient-to-b from-black/75 via-black/25 to-transparent pointer-events-none" />
+        {/* Bottom vignette for centered headline legibility */}
+        <div className="absolute bottom-0 inset-x-0 w-full h-[480px] bg-gradient-to-t from-black/85 via-black/40 to-transparent pointer-events-none" />
       </div>
 
-      {/* 1. TOP-RIGHT FLOATING EDITORIAL COMPOSITION */}
-      <div className="relative z-10 w-full flex justify-end px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 pt-24 sm:pt-28 md:pt-32 lg:pt-36">
-        <div className="flex flex-col items-end text-right">
+      {/* 1. TOP CENTER EDITORIAL COMPOSITION */}
+      <div className="relative z-10 w-full flex justify-center px-6 sm:px-10 pt-24 sm:pt-28 md:pt-32">
+        <div className="flex flex-col items-center text-center">
           <motion.div
             initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: -14 }}
             animate={{ opacity: 1, y: 0 }}
@@ -221,34 +221,34 @@ function Hero() {
               delay: shouldReduceMotion ? 0 : 0.2,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="flex flex-col items-end"
+            className="flex flex-col items-center"
           >
             <span className="text-[11px] sm:text-[12px] md:text-[12.5px] font-semibold tracking-[0.28em] text-[#F5EFEB] uppercase font-sans">
               EDUCATION • TECHNOLOGY • INNOVATION
             </span>
           </motion.div>
-          {/* Thin muted-gold underline directly beneath top-right text */}
+          {/* Thin muted-gold underline directly beneath top text */}
           <DrawingUnderline
             delay={0.45}
             duration={0.85}
-            className="mt-2.5 sm:mt-3 h-[1.5px] w-48 sm:w-60 md:w-72 bg-gradient-to-r from-transparent via-[#DFCFB6] to-[#DFCFB6]"
+            className="mt-2.5 sm:mt-3 h-[1.5px] w-48 sm:w-60 md:w-72 bg-gradient-to-r from-transparent via-[#DFCFB6] to-transparent mx-auto"
           />
         </div>
       </div>
 
-      {/* 2. BOTTOM-LEFT FLOATING HEADLINE COMPOSITION */}
-      <div className="relative z-10 w-full px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 pb-12 sm:pb-16 md:pb-20 lg:pb-24 mt-auto">
-        <div className="max-w-2xl lg:max-w-3xl xl:max-w-4xl flex flex-col items-start text-left">
+      {/* 2. CENTER-ALIGNED HEADLINE COMPOSITION */}
+      <div className="relative z-10 w-full px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 pb-12 sm:pb-16 md:pb-20 lg:pb-24 mt-auto flex justify-center">
+        <div className="max-w-3xl lg:max-w-4xl xl:max-w-5xl flex flex-col items-center text-center mx-auto">
           {/* Main Headline with Staggered Line-by-Line Reveal out of clipping mask */}
-          <h1 className="font-display font-extrabold tracking-[-0.035em] text-white text-[38px] sm:text-[50px] md:text-[62px] lg:text-[72px] xl:text-[80px] leading-[1.02]">
+          <h1 className="font-display font-extrabold tracking-[-0.035em] text-white text-[38px] sm:text-[50px] md:text-[62px] lg:text-[72px] xl:text-[80px] leading-[1.02] text-center">
             <MaskedLine delay={0.1}>
-              <span className="block text-[#F5EFEB]">Empowering</span>
+              <span className="block text-center text-[#F5EFEB]">Empowering</span>
             </MaskedLine>
             <MaskedLine delay={0.22}>
-              <span className="block text-[#F5EFEB]/95">Education for a</span>
+              <span className="block text-center text-[#F5EFEB]/95">Education for a</span>
             </MaskedLine>
             <MaskedLine delay={0.34}>
-              <span className="block text-brand-orange animate-text-shimmer">
+              <span className="block text-center text-brand-orange animate-text-shimmer">
                 Brighter Tomorrow.
               </span>
             </MaskedLine>
@@ -256,7 +256,7 @@ function Hero() {
 
           {/* Short supporting sentence underneath */}
           <ScrollReveal delay={0.46}>
-            <p className="mt-4 sm:mt-5 max-w-[540px] text-[15px] sm:text-[16.5px] md:text-[17.5px] leading-[1.6] text-[#F5EFEB]/85 font-normal">
+            <p className="mt-4 sm:mt-5 max-w-[580px] text-[15px] sm:text-[16.5px] md:text-[17.5px] leading-[1.6] text-[#F5EFEB]/85 font-normal text-center mx-auto">
               We blend technology, strategy and innovation to help educational
               institutions and organisations create lasting impact.
             </p>
@@ -266,7 +266,7 @@ function Hero() {
           <DrawingUnderline
             delay={0.62}
             duration={0.9}
-            className="mt-6 sm:mt-7 h-[1.5px] w-36 sm:w-52 md:w-64 bg-gradient-to-r from-[#DFCFB6] via-[#DFCFB6]/80 to-transparent"
+            className="mt-6 sm:mt-7 h-[1.5px] w-48 sm:w-64 md:w-80 bg-gradient-to-r from-transparent via-[#DFCFB6] to-transparent mx-auto"
           />
         </div>
       </div>
