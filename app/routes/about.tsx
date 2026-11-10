@@ -302,55 +302,61 @@ function Leadership() {
         </div>
       </ScrollReveal>
 
-      {/* Co-Founder Card */}
-      <ScrollReveal direction="up" delay={0.2} className="relative z-10">
-        <div className="rounded-[28px] border border-brand-line bg-brand-sand/50 p-6 sm:p-8 lg:p-10 shadow-xs">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-12 items-center">
-            {/* Left: Co-Founder Portrait */}
-            <div className="md:col-span-4 lg:col-span-3">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] border border-brand-line bg-brand-sand shadow-xs group">
-                <img
-                  src="/src/about/co-founder.jpeg"
-                  alt="Nikita Valke, Director and Co-founder of PlaceValue"
-                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-                <div className="absolute top-3 left-3 z-10 rounded-full bg-white/95 backdrop-blur-xs px-3 py-0.5 text-[10px] font-bold text-brand-night shadow-xs border border-black/5">
-                  Director & Co-Founder
-                </div>
-              </div>
-            </div>
+      {/* Divider between leadership profiles */}
+      <div className="relative z-10 my-16 sm:my-20 border-t border-brand-line/60" />
 
-            {/* Right: Co-Founder Bio */}
-            <div className="md:col-span-8 lg:col-span-9">
-              <span className="text-xs font-bold tracking-[0.2em] text-brand-muted uppercase">
-                DIRECTOR & CO-FOUNDER
-              </span>
-              <h3 className="mt-2 font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-                Nikita Valke
-              </h3>
-              <p className="text-sm font-bold text-brand-blue mb-3">
-                Director & Co-founder, PlaceValue
-              </p>
-              <p className="text-sm sm:text-base leading-relaxed text-brand-body mb-5">
-                Steering institutional delivery and educational programmes at PlaceValue, Nikita is dedicated
-                to fostering strong conceptual foundations, confidence in communication, and alignment with
-                evolving industry expectations. Her leadership ensures that every engagement bridges the gap
-                between theoretical learning and real-world execution.
-              </p>
-
-              {/* Three Core Leadership Focus Areas */}
-              <div className="flex flex-wrap gap-2.5">
-                <span className="inline-flex items-center rounded-full border border-brand-line bg-white/80 px-3.5 py-1 text-xs font-semibold text-foreground shadow-2xs">
-                  Strong Conceptual Foundations
-                </span>
-                <span className="inline-flex items-center rounded-full border border-brand-line bg-white/80 px-3.5 py-1 text-xs font-semibold text-foreground shadow-2xs">
-                  Confidence in Communication
-                </span>
-                <span className="inline-flex items-center rounded-full border border-brand-line bg-white/80 px-3.5 py-1 text-xs font-semibold text-foreground shadow-2xs">
-                  Evolving Industry Alignment
-                </span>
-              </div>
+      {/* Co-Founder Profile (Matching Founder UI Layout) */}
+      <ScrollReveal direction="up" delay={0.15} className="relative z-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14 items-center">
+        {/* Left: Co-Founder Portrait */}
+        <div className="lg:col-span-5">
+          <div className="relative aspect-square sm:aspect-[4/5] max-w-[420px] overflow-hidden rounded-[28px] border border-brand-line bg-brand-sand shadow-sm group">
+            <img
+              src="/src/about/co-founder.jpeg"
+              alt="Nikita Valke, Director and Co-founder of PlaceValue"
+              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+            <div className="absolute top-4 left-4 z-10 rounded-full bg-white/95 backdrop-blur-xs px-3.5 py-1 text-[11px] font-bold text-brand-night shadow-xs border border-black/5">
+              Director & Co-Founder
             </div>
+          </div>
+        </div>
+
+        {/* Right: Co-Founder Bio Body */}
+        <div className="lg:col-span-7">
+          <span className="text-xs font-bold tracking-[0.2em] text-brand-muted uppercase">
+            DIRECTOR & CO-FOUNDER
+          </span>
+          <h3 className="mt-3 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground leading-tight">
+            Empowering potential through strong foundations.
+          </h3>
+
+          {/* Three Core Guiding Principles (matching Founder's quote styling with blue accent) */}
+          <div className="my-6 border-l-2 border-brand-blue pl-5 sm:pl-6 space-y-3.5">
+            <blockquote className="font-display text-[17px] sm:text-[19px] font-medium tracking-tight text-foreground italic leading-snug">
+              &ldquo;Strong conceptual foundations.&rdquo;
+            </blockquote>
+            <blockquote className="font-display text-[17px] sm:text-[19px] font-medium tracking-tight text-foreground italic leading-snug">
+              &ldquo;Confidence in communication.&rdquo;
+            </blockquote>
+            <blockquote className="font-display text-[17px] sm:text-[19px] font-medium tracking-tight text-foreground italic leading-snug">
+              &ldquo;Alignment with evolving industry expectations.&rdquo;
+            </blockquote>
+          </div>
+
+          <WordReveal className="text-base sm:text-lg leading-[29px] text-brand-body" delay={0.15}>
+            Steering institutional delivery and educational programmes at PlaceValue, Nikita is dedicated
+            to fostering strong conceptual foundations, confidence in communication, and alignment with
+            evolving industry expectations. Her leadership ensures that every engagement bridges the gap
+            between theoretical learning and real-world execution.
+          </WordReveal>
+
+          <div className="mt-8 border-t border-brand-line pt-6">
+            <h4 className="font-display text-xl sm:text-2xl font-bold text-foreground">
+              Nikita Valke
+            </h4>
+            <p className="text-sm font-semibold text-brand-blue mt-0.5">
+              Director & Co-founder, PlaceValue
+            </p>
           </div>
         </div>
       </ScrollReveal>
