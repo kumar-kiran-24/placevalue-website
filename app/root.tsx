@@ -1,10 +1,7 @@
 import { configureTracking } from "@agent-native/core/client/analytics";
 import { appPath } from "@agent-native/core/client/api-path";
-import { useDbSync } from "@agent-native/core/client/hooks";
 import { createAgentNativeQueryClient } from "@agent-native/core/client/hooks";
-import { getThemeInitScript } from "@agent-native/core/client/ui";
 import { AppProviders } from "@agent-native/toolkit/app/providers";
-import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import type { LinksFunction } from "react-router";
@@ -12,9 +9,7 @@ import type { LinksFunction } from "react-router";
 import { Layout as AppLayout } from "@/components/layout/Layout";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { AppToolkitProvider } from "@/components/ui/toolkit-provider";
-import { useNavigationState } from "@/hooks/use-navigation-state";
 import { APP_NAME, APP_TITLE } from "@/lib/app-config";
-import { TAB_ID } from "@/lib/tab-id";
 
 import stylesheet from "./global.css?url";
 
@@ -76,22 +71,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-function DbSyncSetup() {
-  const qc = useQueryClient();
-  useNavigationState();
-  useDbSync({
-    queryClient: qc,
-    ignoreSource: TAB_ID,
-  });
-  return null;
-}
-
 export default function Root() {
   const [queryClient] = useState(() => createAgentNativeQueryClient());
   return (
     <AppToolkitProvider>
-      <AppProviders queryClient={queryClient}>
-        <DbSyncSetup />
+      <AppProviders isPublicPath={true} queryClient={queryClient}>
         <SmoothScrollProvider>
           <AppLayout>
             <Outlet />

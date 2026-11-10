@@ -1,25 +1,23 @@
-import { agentNative } from "@agent-native/core/vite";
+import tailwindcss from "@tailwindcss/vite";
 import { reactRouter } from "@react-router/dev/vite";
 import { defineConfig } from "vite";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const reactRouterPlugins = reactRouter as unknown as () => any[];
-const agentNativePlugins = agentNative as unknown as (
-  options?: Parameters<typeof agentNative>[0],
-) => any[];
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 export default defineConfig({
-  optimizeDeps: {
-    entries: [
-      "app/entry.client.tsx",
-      "app/root.tsx",
-      "app/components/layout/{Layout,Sidebar}.tsx",
-      "app/components/chat/ChatRouteContent.tsx",
-      "app/routes/{home,chat.$threadId}.tsx",
-    ],
+  preview: {
+    host: "localhost",
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./app"),
+      "@shared": path.resolve(__dirname, "./shared"),
+    },
   },
   plugins: [
-    ...reactRouterPlugins(),
-    ...agentNativePlugins({
-      ssrStubs: ["shiki"],
-    }),
+    tailwindcss(),
+    reactRouter(),
   ],
 });
