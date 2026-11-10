@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import {
   IconArrowRight,
@@ -13,10 +14,9 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { MotionNav } from "@/components/motion/MotionNav";
 import { FaqSection } from "@/components/ui/FaqSection";
-import { TaskverseDashboardShowcase } from "@/components/taskverse/TaskverseDashboardShowcase";
 import {
   DrawingUnderline,
   MaskedLine,
@@ -442,6 +442,177 @@ function Impact() {
   );
 }
 
+const TASKVERSE_KINETIC_MESSAGES = [
+  {
+    step: "01",
+    tag: "DIAGNOSTICS",
+    leadWord: "Assess",
+    accentWord: "Skills.",
+    accentColor: "text-[#1596D2]", // PlaceValue Blue
+    accentBg: "bg-[#1596D2]",
+    description: "Adaptive evaluations calibrated to deep conceptual problem-solving.",
+  },
+  {
+    step: "02",
+    tag: "INTELLIGENCE",
+    leadWord: "Understand",
+    accentWord: "Performance.",
+    accentColor: "text-[#F47735]", // Muted Orange
+    accentBg: "bg-[#F47735]",
+    description: "Immediate visibility into cohort mastery trends and curriculum gaps.",
+  },
+  {
+    step: "03",
+    tag: "PROGRESSION",
+    leadWord: "Personalise",
+    accentWord: "Learning.",
+    accentColor: "text-[#1596D2]", // PlaceValue Blue
+    accentBg: "bg-[#1596D2]",
+    description: "Individualized learning sequences that evolve with student mastery.",
+  },
+  {
+    step: "04",
+    tag: "PORTFOLIOS",
+    leadWord: "Track",
+    accentWord: "Progress.",
+    accentColor: "text-[#F47735]", // Muted Orange
+    accentBg: "bg-[#F47735]",
+    description: "Verifiable skill portfolios backed by live execution evidence.",
+  },
+];
+
+function TaskverseKineticTypography() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % TASKVERSE_KINETIC_MESSAGES.length);
+    }, 3600);
+    return () => clearInterval(timer);
+  }, [shouldReduceMotion]);
+
+  const current = (TASKVERSE_KINETIC_MESSAGES[activeIndex] ?? TASKVERSE_KINETIC_MESSAGES[0])!;
+
+  return (
+    <div className="relative w-full flex flex-col justify-between py-2 sm:py-4">
+      {/* Editorial top metadata */}
+      <div className="flex items-center justify-between pb-5 sm:pb-6 border-b border-brand-line/60">
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-xs sm:text-[13px] font-bold text-brand-orange tracking-widest">
+            {current.step}
+          </span>
+          <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-brand-muted">
+            / 04
+          </span>
+          <span className="h-3 w-[1px] bg-brand-line mx-1" />
+          <span className="text-[11px] sm:text-[12px] font-bold tracking-[0.2em] uppercase text-foreground">
+            {current.tag}
+          </span>
+        </div>
+
+        {/* Live subtle indicator */}
+        <div className="flex items-center gap-2">
+          <span className="relative flex size-2">
+            <span
+              className={cn(
+                "animate-ping absolute inline-flex h-full w-full rounded-full opacity-75",
+                current.accentBg
+              )}
+            />
+            <span
+              className={cn(
+                "relative inline-flex rounded-full size-2",
+                current.accentBg
+              )}
+            />
+          </span>
+          <span className="text-[10px] font-bold tracking-wider text-brand-muted uppercase">
+            Platform Focus
+          </span>
+        </div>
+      </div>
+
+      {/* Main Kinetic Typography Phrase: Large, bold, upward slide out of clipping mask */}
+      <div className="relative my-7 sm:my-10 min-h-[140px] sm:min-h-[170px] md:min-h-[200px] flex flex-col justify-center overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeIndex}
+            initial={
+              shouldReduceMotion
+                ? { opacity: 0 }
+                : { y: "115%", opacity: 0 }
+            }
+            animate={
+              shouldReduceMotion
+                ? { opacity: 1 }
+                : { y: "0%", opacity: 1 }
+            }
+            exit={
+              shouldReduceMotion
+                ? { opacity: 0 }
+                : { y: "-115%", opacity: 0 }
+            }
+            transition={{
+              duration: shouldReduceMotion ? 0.2 : 0.65,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="flex flex-col"
+          >
+            <span className="font-display font-black text-[40px] sm:text-[54px] md:text-[64px] lg:text-[68px] xl:text-[76px] leading-[1.02] tracking-[-0.035em] text-foreground">
+              <span className="block">{current.leadWord}</span>
+              <span className={cn("block", current.accentColor)}>
+                {current.accentWord}
+              </span>
+            </span>
+
+            <p className="mt-4 sm:mt-5 text-[15px] sm:text-[16.5px] leading-[1.6] text-brand-body max-w-lg font-normal">
+              {current.description}
+            </p>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Subtle Progress Indicator using thin animated lines */}
+      <div className="pt-6 sm:pt-7 border-t border-brand-line/60">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          {TASKVERSE_KINETIC_MESSAGES.map((item, idx) => {
+            const isActive = idx === activeIndex;
+            const isCompleted = idx < activeIndex;
+            return (
+              <button
+                key={item.step}
+                type="button"
+                onClick={() => setActiveIndex(idx)}
+                aria-label={`Jump to phrase ${item.step}: ${item.leadWord} ${item.accentWord}`}
+                className="group relative h-1 sm:h-1.5 flex-1 rounded-full bg-brand-line/70 overflow-hidden cursor-pointer transition-all hover:h-2"
+              >
+                {isCompleted && (
+                  <div className="h-full w-full bg-foreground/60 rounded-full" />
+                )}
+                {isActive && (
+                  <motion.div
+                    key={`bar-${idx}`}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{
+                      duration: shouldReduceMotion ? 0 : 3.6,
+                      ease: "linear",
+                    }}
+                    style={{ originX: 0 }}
+                    className={cn("h-full w-full rounded-full", item.accentBg)}
+                  />
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TaskverseSection() {
   return (
     <section
@@ -460,20 +631,20 @@ function TaskverseSection() {
         className="pointer-events-none absolute -right-20 -bottom-24 size-[340px] rounded-full bg-brand-orange/5 blur-[90px]"
       />
 
-      <div className="relative z-10 grid gap-10 lg:grid-cols-[460px_minmax(0,1fr)] lg:items-center">
+      <div className="relative z-10 grid gap-12 lg:grid-cols-[440px_minmax(0,1fr)] xl:grid-cols-[480px_minmax(0,1fr)] lg:items-center">
         {/* Left Column: Refined, Minimalist Product Introduction */}
         <ScrollReveal className="flex flex-col">
-          <SectionLabel>ASSESSMENT PLATFORM</SectionLabel>
+          <SectionLabel>AI-POWERED ASSESSMENT & LEARNING PLATFORM</SectionLabel>
 
           <h2 className="mt-6 font-display text-[46px] sm:text-[56px] lg:text-[62px] leading-[0.94] font-extrabold tracking-[-0.035em] text-foreground">
             TASKVERSE
           </h2>
 
-          <p className="mt-4 text-[16px] sm:text-[17px] leading-[1.65] text-brand-body max-w-md">
+          <p className="mt-5 text-[16px] sm:text-[17px] leading-[1.65] text-brand-body max-w-md">
             Adaptive skill diagnostics and verifiable capability portfolios engineered for modern education.
           </p>
 
-          <div className="mt-7 flex items-center gap-3">
+          <div className="mt-8 flex items-center gap-3">
             <Link
               to="/taskverse"
               className={cn(
@@ -487,10 +658,10 @@ function TaskverseSection() {
           </div>
         </ScrollReveal>
 
-        {/* Right Column: Clean Light-Themed Dashboard Preview */}
-        <ScrollReveal delay={0.15} yOffset={24}>
-          <TaskverseDashboardShowcase theme="light" />
-        </ScrollReveal>
+        {/* Right Column: Large-scale animated kinetic typography replacing dashboard UI */}
+        <div className="w-full flex flex-col justify-center min-h-[300px] sm:min-h-[340px] lg:min-h-[380px] lg:pl-6 xl:pl-10">
+          <TaskverseKineticTypography />
+        </div>
       </div>
     </section>
   );
