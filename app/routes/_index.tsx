@@ -20,6 +20,15 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
+import { motion, useReducedMotion } from "framer-motion";
+import { MotionNav } from "@/components/motion/MotionNav";
+import {
+  DrawingUnderline,
+  MaskedLine,
+  ScrollReveal,
+  WatermarkText,
+  WordReveal,
+} from "@/components/motion/MotionText";
 
 export function meta() {
   return [
@@ -178,186 +187,121 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function SiteHeader() {
-  return (
-    <header
-      data-node-id="3311:1357"
-      className="relative z-20 bg-background"
-    >
-      <div className="flex h-[88px] items-center justify-between px-6 md:px-12 lg:px-16 xl:px-24">
-        <Link to="/" aria-label="PlaceValue home" className="flex items-center">
-          <Logo />
-        </Link>
-
-        {/* Center Nav Pill */}
-        <nav
-          aria-label="Primary"
-          className="hidden md:flex items-center rounded-full bg-brand-night p-1.5 shadow-sm"
-        >
-          {NAV_ITEMS.map((item, index) => (
-            <Link
-              key={item.label}
-              to={item.to}
-              className={cn(
-                "rounded-full px-5 py-2 text-[13px] font-medium transition-colors whitespace-nowrap",
-                index === 0
-                  ? "bg-white font-semibold text-brand-night shadow-sm"
-                  : "text-white/80 hover:text-white",
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Right CTA */}
-        <div className="hidden md:flex items-center">
-          <Link
-            to="/contact"
-            className={cn(
-              orangePill,
-              "h-[44px] px-6 text-[13.5px] font-bold shadow-sm hover:brightness-105 transition",
-            )}
-          >
-            Start a Project
-            <IconArrowRight size={15} />
-          </Link>
-        </div>
-
-        {/* Mobile controls */}
-        <div className="flex items-center gap-2 md:hidden">
-          <Link
-            to="/contact"
-            className={cn(orangePill, "h-[38px] px-4 text-xs")}
-          >
-            Start a Project
-            <IconArrowRight size={12} />
-          </Link>
-          <button
-            type="button"
-            aria-label="Open menu"
-            className="flex size-10 items-center justify-center rounded-full bg-brand-sand/60 text-foreground"
-          >
-            <IconMenu2 size={18} />
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile nav row */}
-      <div className="px-6 pb-3 md:hidden">
-        <nav
-          aria-label="Primary Mobile"
-          className="flex w-full items-center justify-between overflow-x-auto rounded-full bg-brand-night p-1"
-        >
-          {NAV_ITEMS.map((item, index) => (
-            <Link
-              key={item.label}
-              to={item.to}
-              className={cn(
-                "rounded-full px-3 py-1.5 text-xs font-medium whitespace-nowrap",
-                index === 0
-                  ? "bg-white font-semibold text-brand-night"
-                  : "text-white/80",
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
-    </header>
-  );
-}
-
 function Hero() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
+      id="hero"
       data-node-id="3311:1376"
-      className="bg-background pt-3 pb-12 md:pt-4 md:pb-16"
+      className="relative w-full h-[100svh] min-h-[100svh] flex flex-col justify-between overflow-hidden bg-[#0A0D11] text-white"
     >
-      <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.2fr)] xl:grid-cols-[minmax(0,1fr)_minmax(0,1.18fr)]">
-        {/* Left Column: follows left content alignment */}
-        <div className="flex flex-col pl-6 md:pl-12 lg:pl-16 xl:pl-24 pr-6 lg:pr-8 pt-2 md:pt-4">
-          <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase">
-            EDUCATION · TECHNOLOGY · CONSULTING
-          </span>
+      {/* Animated MP4 Video Background spanning 100% full screen */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/hero-video-fallback.jpg"
+          className="hero-bg-video motion-reduce:hidden absolute inset-0 h-full w-full object-cover object-center"
+        >
+          <source src="/Glass_sculpture_rotating_in_space_e9e1fb0a_1080p.mp4" type="video/mp4" />
+          <img
+            src="/hero-video-fallback.jpg"
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        </video>
 
-          <h1 className="mt-4 sm:mt-5 font-display font-extrabold tracking-[-0.035em] text-[#141416] text-[38px] sm:text-[48px] md:text-[54px] lg:text-[58px] xl:text-[70px] 2xl:text-[80px] leading-[0.94]">
-            <span className="block text-[#141416]">Empowering</span>
-            <span className="block text-outline whitespace-nowrap">Education for a</span>
-            <span className="block text-brand-orange whitespace-nowrap">Brighter</span>
-            <span className="block text-brand-orange whitespace-nowrap">Tomorrow.</span>
+        {/* Static fallback image when reduced motion is preferred */}
+        <img
+          src="/hero-video-fallback.jpg"
+          alt=""
+          aria-hidden="true"
+          className="hero-bg-fallback hidden motion-reduce:block absolute inset-0 h-full w-full object-cover object-center"
+        />
+
+        {/* Subtle, restrained cinematic vignettes: keeping the center unobstructed so the 3D rotating glass sculpture remains the primary focal point */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/65 pointer-events-none" />
+        {/* Top-Right corner vignette for editorial label legibility */}
+        <div className="absolute top-0 right-0 w-full max-w-xl h-72 bg-gradient-to-bl from-black/75 via-black/25 to-transparent pointer-events-none" />
+        {/* Bottom-Left corner vignette for headline legibility */}
+        <div className="absolute bottom-0 left-0 w-full max-w-2xl h-[420px] bg-gradient-to-tr from-black/85 via-black/40 to-transparent pointer-events-none" />
+      </div>
+
+      {/* 1. TOP-RIGHT FLOATING EDITORIAL COMPOSITION */}
+      <div className="relative z-10 w-full flex justify-end px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 pt-24 sm:pt-28 md:pt-32 lg:pt-36">
+        <div className="flex flex-col items-end text-right">
+          <motion.div
+            initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: -14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: shouldReduceMotion ? 0 : 0.75,
+              delay: shouldReduceMotion ? 0 : 0.2,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="flex flex-col items-end"
+          >
+            <span className="text-[11px] sm:text-[12px] md:text-[12.5px] font-semibold tracking-[0.28em] text-[#F5EFEB] uppercase font-sans">
+              EDUCATION • TECHNOLOGY • INNOVATION
+            </span>
+          </motion.div>
+          {/* Thin muted-gold underline directly beneath top-right text */}
+          <DrawingUnderline
+            delay={0.45}
+            duration={0.85}
+            className="mt-2.5 sm:mt-3 h-[1.5px] w-48 sm:w-60 md:w-72 bg-gradient-to-r from-transparent via-[#DFCFB6] to-[#DFCFB6]"
+          />
+        </div>
+      </div>
+
+      {/* 2. BOTTOM-LEFT FLOATING HEADLINE COMPOSITION */}
+      <div className="relative z-10 w-full px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 pb-12 sm:pb-16 md:pb-20 lg:pb-24 mt-auto">
+        <div className="max-w-2xl lg:max-w-3xl xl:max-w-4xl flex flex-col items-start text-left">
+          {/* Main Headline with Staggered Line-by-Line Reveal out of clipping mask */}
+          <h1 className="font-display font-extrabold tracking-[-0.035em] text-white text-[38px] sm:text-[50px] md:text-[62px] lg:text-[72px] xl:text-[80px] leading-[1.02]">
+            <MaskedLine delay={0.1}>
+              <span className="block text-[#F5EFEB]">Empowering</span>
+            </MaskedLine>
+            <MaskedLine delay={0.22}>
+              <span className="block text-[#F5EFEB]/95">Education for a</span>
+            </MaskedLine>
+            <MaskedLine delay={0.34}>
+              <span className="block text-brand-orange animate-text-shimmer">
+                Brighter Tomorrow.
+              </span>
+            </MaskedLine>
           </h1>
 
-          <p className="mt-6 max-w-[500px] text-[15px] sm:text-[17px] leading-[1.55] text-brand-body">
-            We blend technology, strategy and innovation to help educational
-            institutions and organisations create lasting impact.
-          </p>
+          {/* Short supporting sentence underneath */}
+          <ScrollReveal delay={0.46}>
+            <p className="mt-4 sm:mt-5 max-w-[540px] text-[15px] sm:text-[16.5px] md:text-[17.5px] leading-[1.6] text-[#F5EFEB]/85 font-normal">
+              We blend technology, strategy and innovation to help educational
+              institutions and organisations create lasting impact.
+            </p>
+          </ScrollReveal>
 
-          <div className="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
-            <Link
-              to="/services"
-              className={cn(
-                primaryPill,
-                "h-[52px] w-full sm:w-auto px-7 text-sm font-bold shadow-sm hover:bg-black transition-colors justify-between sm:justify-center gap-3",
-              )}
-            >
-              Explore Our Services
-              <IconArrowRight size={15} />
-            </Link>
-            <Link
-              to="/taskverse"
-              className="inline-flex h-[52px] w-full sm:w-auto items-center justify-between sm:justify-center gap-2.5 rounded-full border border-brand-line bg-brand-sand px-7 text-sm font-bold text-foreground hover:bg-brand-sand/80 transition-colors shadow-sm"
-            >
-              Discover TASKVERSE
-              <IconArrowUpRight size={15} />
-            </Link>
-          </div>
-
-          <div className="mt-10 flex items-center gap-6 sm:gap-8 pt-2">
-            {HERO_STATS.map((stat, index) => (
-              <div key={stat.label} className="flex items-center gap-6 sm:gap-8">
-                {index > 0 && (
-                  <span className="h-8 w-px bg-brand-line" />
-                )}
-                <div className="flex flex-col">
-                  <span className="font-display text-[26px] sm:text-[30px] font-extrabold leading-none tracking-tight text-foreground">
-                    {stat.value}
-                  </span>
-                  <span className="mt-1.5 text-xs text-brand-muted font-medium">
-                    {stat.label}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Right Column: Hero Photo flush to the right edge with custom curve */}
-        <div className="relative w-full h-[380px] sm:h-[480px] md:h-[540px] lg:h-[580px] xl:h-[620px] overflow-hidden rounded-t-[28px] sm:rounded-tl-[36px] lg:rounded-tl-[40px] rounded-b-none lg:rounded-bl-[88px] lg:rounded-r-none shadow-sm">
-          <img
-            src="/hero-campus-clean.jpg"
-            alt="Students inside modern campus building"
-            className="w-full h-full object-cover"
+          {/* Thin elegant golden underline directly beneath supporting sentence */}
+          <DrawingUnderline
+            delay={0.62}
+            duration={0.9}
+            className="mt-6 sm:mt-7 h-[1.5px] w-36 sm:w-52 md:w-64 bg-gradient-to-r from-[#DFCFB6] via-[#DFCFB6]/80 to-transparent"
           />
-
-          {/* Overlaid Promise Card */}
-          <div className="absolute top-5 left-5 sm:top-8 sm:left-8 w-[200px] sm:w-[225px] rounded-2xl bg-white p-5 sm:p-6 shadow-xl shadow-black/10 border border-black/5">
-            <p className="text-[10px] font-bold tracking-[1.5px] text-brand-orange uppercase">
-              OUR PROMISE
-            </p>
-            <p className="mt-2 font-display text-[15px] sm:text-[17px] leading-[1.2] font-extrabold text-[#141416]">
-              From Ideas
-              <br />
-              to Real Impact
-            </p>
-            <p className="mt-2.5 text-[11px] sm:text-xs leading-[1.45] text-[#6b645b] font-medium">
-              Technology. People.
-              <br />
-              Opportunities. Growth.
-            </p>
-          </div>
         </div>
+      </div>
+
+      {/* Floating Scroll Indicator on the bottom right */}
+      <div className="absolute bottom-6 sm:bottom-8 right-6 sm:right-10 lg:right-16 z-20 hidden sm:flex items-center gap-2.5">
+        <a
+          href="#services"
+          className="group inline-flex items-center gap-2 text-[10.5px] font-bold tracking-[2px] uppercase text-[#DFCFB6]/70 hover:text-white transition-colors"
+        >
+          <span>Scroll</span>
+          <div className="flex h-5 w-3.5 items-start justify-center rounded-full border border-[#DFCFB6]/30 p-0.5 group-hover:border-white/60 transition">
+            <div className="h-1.5 w-0.5 rounded-full bg-brand-orange animate-bounce" />
+          </div>
+        </a>
       </div>
     </section>
   );
@@ -370,71 +314,80 @@ function ServiceCard({
   body,
   tag,
   highlight,
-}: (typeof SERVICES)[number]) {
+  index = 0,
+}: (typeof SERVICES)[number] & { index?: number }) {
   const isOrange = tone === "orange";
   return (
-    <article className="flex flex-col justify-between rounded-[22px] border border-brand-line/60 bg-brand-sand p-6 lg:p-7 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-shadow hover:shadow-md">
-      <div>
-        <span
-          className={cn(
-            "flex size-12 items-center justify-center rounded-[14px] text-white shadow-sm",
-            isOrange ? "bg-brand-orange" : "bg-brand-blue",
-          )}
-        >
-          <Icon size={22} stroke={2} />
-        </span>
-        <h3 className="mt-4 font-display text-[20px] lg:text-[22px] font-extrabold tracking-[-0.02em] text-foreground">
-          {title}
-        </h3>
-        <p className="mt-2 text-[13px] sm:text-[14px] leading-[1.55] text-brand-body">
-          {body}
-        </p>
-      </div>
-      <div className="mt-6 flex flex-wrap items-center gap-2.5 pt-2">
-        <span
-          className={cn(
-            "rounded-full px-3 py-1 text-[11px] font-bold text-white tracking-wide uppercase",
-            isOrange ? "bg-brand-orange" : "bg-brand-blue",
-          )}
-        >
-          {tag}
-        </span>
-        <span className="text-xs leading-tight text-brand-muted font-medium">
-          {highlight}
-        </span>
-      </div>
-    </article>
+    <ScrollReveal delay={index * 0.08} yOffset={20}>
+      <article className="group flex flex-col justify-between h-full rounded-[22px] border border-brand-line/60 bg-brand-sand p-6 lg:p-7 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-black/15">
+        <div>
+          <span
+            className={cn(
+              "flex size-12 items-center justify-center rounded-[14px] text-white shadow-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6",
+              isOrange ? "bg-brand-orange" : "bg-brand-blue",
+            )}
+          >
+            <Icon size={22} stroke={2} />
+          </span>
+          <h3 className="mt-4 font-display text-[20px] lg:text-[22px] font-extrabold tracking-[-0.02em] text-foreground transition-colors group-hover:text-brand-night">
+            {title}
+          </h3>
+          <p className="mt-2 text-[13px] sm:text-[14px] leading-[1.55] text-brand-body">
+            {body}
+          </p>
+        </div>
+        <div className="mt-6 flex flex-wrap items-center gap-2.5 pt-2">
+          <span
+            className={cn(
+              "rounded-full px-3 py-1 text-[11px] font-bold text-white tracking-wide uppercase shadow-sm",
+              isOrange ? "bg-brand-orange" : "bg-brand-blue",
+            )}
+          >
+            {tag}
+          </span>
+          <span className="text-xs leading-tight text-brand-muted font-medium">
+            {highlight}
+          </span>
+        </div>
+      </article>
+    </ScrollReveal>
   );
 }
 
 function Services() {
   return (
     <section
+      id="services"
       data-node-id="3311:1416"
-      className="bg-background pt-10 pb-16 md:pt-16 md:pb-24 px-6 md:px-12 lg:px-16 xl:px-24"
+      className="relative overflow-hidden bg-background pt-12 pb-16 md:pt-20 md:pb-24 px-6 md:px-12 lg:px-16 xl:px-24"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-[380px_minmax(0,1fr)] xl:grid-cols-[400px_minmax(0,1fr)] items-start gap-10 lg:gap-14">
-        {/* Left info column */}
-        <div className="flex flex-col gap-4 max-w-md">
-          <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase">
-            OUR SERVICES
-          </span>
-          <h2 className="font-display text-[38px] sm:text-[46px] lg:text-[50px] leading-[1.0] font-extrabold tracking-[-0.03em] text-foreground">
-            <span>Expertise that</span>
-            <br />
-            <span className="text-outline">drives impact.</span>
-          </h2>
-          <p className="mt-2 text-[15px] sm:text-[16px] leading-[1.6] text-brand-body">
-            From strategy to delivery, we help institutions and organisations
-            build modern technology foundations, smarter systems and
-            meaningful opportunities for students.
-          </p>
-        </div>
+      {/* Oversized background watermark typography */}
+      <WatermarkText text="SERVICES" />
+
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[380px_minmax(0,1fr)] xl:grid-cols-[400px_minmax(0,1fr)] items-start gap-10 lg:gap-14">
+        {/* Left info column with ScrollReveal */}
+        <ScrollReveal>
+          <div className="flex flex-col gap-4 max-w-md">
+            <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase">
+              OUR SERVICES
+            </span>
+            <h2 className="font-display text-[38px] sm:text-[46px] lg:text-[50px] leading-[1.0] font-extrabold tracking-[-0.03em] text-foreground">
+              <span>Expertise that</span>
+              <br />
+              <span className="text-outline">drives impact.</span>
+            </h2>
+            <WordReveal className="mt-2 text-[15px] sm:text-[16px] leading-[1.6] text-brand-body">
+              From strategy to delivery, we help institutions and organisations
+              build modern technology foundations, smarter systems and
+              meaningful opportunities for students.
+            </WordReveal>
+          </div>
+        </ScrollReveal>
 
         {/* 2x2 cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
-          {SERVICES.map((service) => (
-            <ServiceCard key={service.title} {...service} />
+          {SERVICES.map((service, idx) => (
+            <ServiceCard key={service.title} index={idx} {...service} />
           ))}
         </div>
       </div>
@@ -446,53 +399,57 @@ function About() {
   return (
     <section
       data-node-id="3311:1470"
-      className="bg-background px-6 md:px-12 lg:px-16 xl:px-24 py-16 md:py-[88px]"
+      className="relative overflow-hidden bg-background px-6 md:px-12 lg:px-16 xl:px-24 py-16 md:py-[88px]"
     >
-      <div>
-        <SectionLabel>ABOUT PLACEVALUE</SectionLabel>
-        <h2 className="mt-6 font-display text-[40px] sm:text-[50px] lg:text-[56px] leading-[1.02] font-extrabold tracking-[-0.03em] text-foreground">
-          <span>A Consultancy With</span>
-          <br />
-          <span>a </span>
-          <span className="text-outline">Bigger Purpose.</span>
-        </h2>
-        <p className="mt-5 max-w-[860px] text-base leading-[27px] text-brand-body">
-          We partner with organisations and educational institutions to solve
-          complex challenges through technology — while creating meaningful
-          opportunities for students to learn, build and grow in real
-          environments.
-        </p>
+      {/* Oversized background watermark typography */}
+      <WatermarkText text="PURPOSE" />
 
-        <ul className="mt-8 flex flex-col max-w-[860px]">
-          {PILLARS.map(({ icon: Icon, title, body }) => (
-            <li
-              key={title}
-              className="flex items-start gap-3 border-t border-brand-line py-4"
-            >
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-[10px] bg-brand-sand">
-                <Icon size={16} stroke={1.75} />
-              </span>
-              <div className="flex flex-col gap-1">
-                <h3 className="font-display text-[13px] leading-4 font-bold text-foreground">
-                  {title}
-                </h3>
-                <p className="text-xs leading-[15px] text-brand-muted">{body}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+      <ScrollReveal className="relative z-10">
+        <div>
+          <SectionLabel>ABOUT PLACEVALUE</SectionLabel>
+          <h2 className="mt-6 font-display text-[40px] sm:text-[50px] lg:text-[56px] leading-[1.02] font-extrabold tracking-[-0.03em] text-foreground">
+            <span>A Consultancy With</span>
+            <br />
+            <span>a </span>
+            <span className="text-outline">Bigger Purpose.</span>
+          </h2>
+          <WordReveal className="mt-5 max-w-[860px] text-base leading-[27px] text-brand-body">
+            We partner with organisations and educational institutions to solve
+            complex challenges through technology — while creating meaningful
+            opportunities for students to learn, build and grow in real
+            environments.
+          </WordReveal>
 
-        <Link
-          to="/about"
-          className={cn(
-            primaryPill,
-            "mt-7 h-[50px] w-full max-w-[860px] justify-center text-sm font-bold shadow-sm hover:bg-black transition-colors",
-          )}
-        >
-          Know More About Us
-          <IconArrowRight size={14} />
-        </Link>
-      </div>
+          <ul className="mt-8 flex flex-col max-w-[860px]">
+            {PILLARS.map(({ icon: Icon, title, body }, idx) => (
+              <ScrollReveal key={title} delay={idx * 0.08} yOffset={16}>
+                <li className="flex items-start gap-3 border-t border-brand-line py-4">
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-[10px] bg-brand-sand">
+                    <Icon size={16} stroke={1.75} />
+                  </span>
+                  <div className="flex flex-col gap-1">
+                    <h3 className="font-display text-[13px] leading-4 font-bold text-foreground">
+                      {title}
+                    </h3>
+                    <p className="text-xs leading-[15px] text-brand-muted">{body}</p>
+                  </div>
+                </li>
+              </ScrollReveal>
+            ))}
+          </ul>
+
+          <Link
+            to="/about"
+            className={cn(
+              primaryPill,
+              "mt-7 h-[50px] w-full max-w-[860px] justify-center text-sm font-bold shadow-sm hover:bg-black transition-colors",
+            )}
+          >
+            Know More About Us
+            <IconArrowRight size={14} />
+          </Link>
+        </div>
+      </ScrollReveal>
     </section>
   );
 }
@@ -503,21 +460,23 @@ function Impact() {
       data-node-id="3311:1274"
       className="px-6 pb-16 md:hidden"
     >
-      <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[20px] border border-brand-line bg-brand-line">
-        {IMPACT_METRICS.map((metric) => (
-          <div key={metric.label} className="flex flex-col gap-1 bg-background p-4">
-            <span
-              className={cn(
-                "font-display text-[40px] leading-none font-extrabold tracking-[-1.5px]",
-                metric.tone,
-              )}
-            >
-              {metric.value}
-            </span>
-            <span className="text-xs text-brand-body">{metric.label}</span>
-          </div>
-        ))}
-      </div>
+      <ScrollReveal>
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[20px] border border-brand-line bg-brand-line">
+          {IMPACT_METRICS.map((metric) => (
+            <div key={metric.label} className="flex flex-col gap-1 bg-background p-4">
+              <span
+                className={cn(
+                  "font-display text-[40px] leading-none font-extrabold tracking-[-1.5px]",
+                  metric.tone,
+                )}
+              >
+                {metric.value}
+              </span>
+              <span className="text-xs text-brand-body">{metric.label}</span>
+            </div>
+          ))}
+        </div>
+      </ScrollReveal>
     </section>
   );
 }
@@ -528,6 +487,9 @@ function TaskverseSection() {
       data-node-id="3311:1505"
       className="relative overflow-hidden bg-brand-night px-6 md:px-12 lg:px-16 xl:px-24 py-16 text-white md:py-[88px]"
     >
+      {/* Oversized background watermark typography */}
+      <WatermarkText text="TASKVERSE" />
+
       <div
         aria-hidden
         className="pointer-events-none absolute -top-24 -left-24 size-[400px] rounded-full bg-brand-blue/30 blur-[90px]"
@@ -537,8 +499,8 @@ function TaskverseSection() {
         className="pointer-events-none absolute -right-20 -bottom-24 size-[360px] rounded-full bg-brand-orange/25 blur-[90px]"
       />
 
-      <div className="relative grid gap-12 lg:grid-cols-[520px_minmax(0,1fr)] lg:items-center">
-        <div className="flex flex-col">
+      <div className="relative z-10 grid gap-12 lg:grid-cols-[520px_minmax(0,1fr)] lg:items-center">
+        <ScrollReveal className="flex flex-col">
           <span className="inline-flex w-fit items-center rounded-full bg-brand-blue/15 px-4 py-2 text-[11px] font-bold tracking-[2px] text-brand-blue">
             AI-POWERED LEARNING PLATFORM
           </span>
@@ -581,51 +543,57 @@ function TaskverseSection() {
               See How It Works
             </Link>
           </div>
-        </div>
+        </ScrollReveal>
 
-        <div className="rounded-[20px] border border-white/10 bg-brand-panel p-6">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-bold text-white">
-              TASKVERSE Dashboard
-            </span>
-            <span className="rounded-full bg-brand-blue/15 px-3 py-1 text-[11px] font-semibold text-brand-blue">
-              Live
-            </span>
-          </div>
+        <ScrollReveal delay={0.2} yOffset={30}>
+          <div className="rounded-[20px] border border-white/10 bg-brand-panel p-6 shadow-2xl transition-all duration-300 hover:shadow-brand-blue/10">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-bold text-white">
+                TASKVERSE Dashboard
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-blue/20 px-3 py-1 text-[11px] font-semibold text-brand-blue shadow-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
+                </span>
+                Live
+              </span>
+            </div>
 
-          <div className="mt-4 grid grid-cols-3 gap-3">
-            {DASHBOARD_STATS.map((stat) => (
-              <div key={stat.label} className="rounded-xl bg-brand-surface p-4">
-                <p
-                  className={cn(
-                    "font-display text-2xl leading-8 font-extrabold",
-                    stat.tone,
-                  )}
-                >
-                  {stat.value}
-                </p>
-                <p className="mt-1 text-[11px] leading-[13px] text-brand-muted">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-3 rounded-xl bg-brand-surface p-5">
-            <p className="text-xs font-semibold text-white/60">
-              Performance Trends
-            </p>
-            <div className="mt-4 flex h-20 items-end gap-2">
-              {DASHBOARD_BARS.map((bar, index) => (
-                <span
-                  key={index}
-                  className={cn("flex-1 rounded-t", bar.tone)}
-                  style={{ height: `${bar.height}%` }}
-                />
+            <div className="mt-4 grid grid-cols-3 gap-3">
+              {DASHBOARD_STATS.map((stat) => (
+                <div key={stat.label} className="rounded-xl bg-brand-surface p-4 transition-all duration-200 hover:scale-[1.03] hover:bg-brand-surface/80">
+                  <p
+                    className={cn(
+                      "font-display text-2xl leading-8 font-extrabold",
+                      stat.tone,
+                    )}
+                  >
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 text-[11px] leading-[13px] text-brand-muted">
+                    {stat.label}
+                  </p>
+                </div>
               ))}
             </div>
+
+            <div className="mt-3 rounded-xl bg-brand-surface p-5">
+              <p className="text-xs font-semibold text-white/60">
+                Performance Trends
+              </p>
+              <div className="mt-4 flex h-20 items-end gap-2">
+                {DASHBOARD_BARS.map((bar, index) => (
+                  <span
+                    key={index}
+                    className={cn("flex-1 rounded-t transition-all duration-300 hover:brightness-125 hover:scale-y-105 origin-bottom", bar.tone)}
+                    style={{ height: `${bar.height}%` }}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -637,6 +605,9 @@ function ProjectCta() {
       data-node-id="3311:1556"
       className="relative overflow-hidden border-t border-white/10 bg-brand-night px-6 md:px-12 lg:px-16 xl:px-24 py-20 text-center text-white md:py-[88px]"
     >
+      {/* Oversized background watermark typography */}
+      <WatermarkText text="COLLABORATE" />
+
       <div
         aria-hidden
         className="pointer-events-none absolute -top-16 -left-16 size-[320px] rounded-full bg-brand-blue/20 blur-[90px]"
@@ -646,7 +617,7 @@ function ProjectCta() {
         className="pointer-events-none absolute -right-10 bottom-0 size-[280px] rounded-full bg-brand-orange/20 blur-[90px]"
       />
 
-      <div className="relative mx-auto flex max-w-[860px] flex-col items-center">
+      <ScrollReveal className="relative z-10 mx-auto flex max-w-[860px] flex-col items-center">
         <span className="inline-flex items-center rounded-full bg-white/10 px-5 py-2 text-[11px] font-bold tracking-[2px] text-white/60">
           LET&apos;S BUILD TOGETHER
         </span>
@@ -674,7 +645,7 @@ function ProjectCta() {
             Get In Touch
           </Link>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }
@@ -814,8 +785,9 @@ function SiteFooter() {
 
 export default function HomeRoute() {
   return (
-    <div className="min-h-full bg-background text-foreground">
-      <SiteHeader />
+    <div className="min-h-full bg-background text-foreground relative">
+      {/* Dynamic Sticky Morphing Navigation: transforms from expanded to compact floating pill on scroll */}
+      <MotionNav activeNav="Home" theme="dark" />
       <Hero />
       <Services />
       <About />

@@ -26,6 +26,8 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
+import { CinematicHero } from "@/components/layout/CinematicHero";
+import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
   return [
@@ -193,173 +195,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function SiteHeader() {
-  return (
-    <header className="relative z-20 bg-background">
-      <div className="flex h-[88px] items-center justify-between px-6 md:px-12 lg:px-16 xl:px-24">
-        <Link to="/" aria-label="PlaceValue home" className="flex items-center">
-          <Logo />
-        </Link>
-
-        {/* Center Nav Pill */}
-        <nav
-          aria-label="Primary"
-          className="hidden md:flex items-center rounded-full bg-brand-night p-1.5 shadow-sm"
-        >
-          {NAV_ITEMS.map((item) => {
-            const isActive = item.label === "Consultancy";
-            return (
-              <Link
-                key={item.label}
-                to={item.to}
-                className={cn(
-                  "rounded-full px-5 py-2 text-[13px] font-medium transition-colors whitespace-nowrap",
-                  isActive
-                    ? "bg-white font-semibold text-brand-night shadow-sm"
-                    : "text-white/80 hover:text-white",
-                )}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* Right CTA */}
-        <div className="hidden md:flex items-center">
-          <Link
-            to="/contact"
-            className={cn(
-              orangePill,
-              "h-[44px] px-6 text-[13.5px] font-bold shadow-sm hover:brightness-105 transition",
-            )}
-          >
-            Start a Project
-            <IconArrowRight size={15} />
-          </Link>
-        </div>
-
-        {/* Mobile controls */}
-        <div className="flex items-center gap-2 md:hidden">
-          <Link
-            to="/contact"
-            className={cn(orangePill, "h-[38px] px-4 text-xs")}
-          >
-            Start a Project
-            <IconArrowRight size={12} />
-          </Link>
-          <button
-            type="button"
-            aria-label="Open menu"
-            className="flex size-10 items-center justify-center rounded-full bg-brand-sand/60 text-foreground"
-          >
-            <IconMenu2 size={18} />
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile nav row */}
-      <div className="px-6 pb-3 md:hidden">
-        <nav
-          aria-label="Primary Mobile"
-          className="flex w-full items-center justify-between overflow-x-auto rounded-full bg-brand-night p-1"
-        >
-          {NAV_ITEMS.map((item) => {
-            const isActive = item.label === "Consultancy";
-            return (
-              <Link
-                key={item.label}
-                to={item.to}
-                className={cn(
-                  "rounded-full px-3 py-1.5 text-xs font-medium whitespace-nowrap",
-                  isActive
-                    ? "bg-white font-semibold text-brand-night"
-                    : "text-white/80",
-                )}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
-      </div>
-    </header>
-  );
-}
-
-function Hero() {
-  return (
-    <section className="bg-background pt-3 pb-12 md:pt-4 md:pb-16">
-      <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1.2fr)] xl:grid-cols-[minmax(0,1fr)_minmax(0,1.18fr)]">
-        {/* Left Column */}
-        <div className="flex flex-col pl-6 md:pl-12 lg:pl-16 xl:pl-24 pr-6 lg:pr-8 pt-2 md:pt-4">
-          <SectionLabel>CONSULTANCY</SectionLabel>
-
-          <h1 className="mt-4 sm:mt-5 font-display font-extrabold tracking-[-0.035em] text-[#141416] text-[38px] sm:text-[48px] md:text-[54px] lg:text-[58px] xl:text-[70px] 2xl:text-[78px] leading-[0.95]">
-            <span className="block text-[#141416]">Consultancy That</span>
-            <span className="block text-[#141416] whitespace-nowrap">Turns Challenges</span>
-            <span className="block text-[#141416]">into</span>
-            <span className="block text-brand-orange whitespace-nowrap">Opportunities.</span>
-          </h1>
-
-          <p className="mt-6 max-w-[500px] text-[15px] sm:text-[17px] leading-[1.55] text-brand-body">
-            We bring technology, strategy and innovation together to help
-            institutions and organisations solve complex challenges — and build
-            what comes next.
-          </p>
-
-          <div className="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
-            <Link
-              to="/contact"
-              className={cn(
-                primaryPill,
-                "h-[52px] w-full sm:w-auto px-7 text-sm font-bold shadow-sm hover:bg-black transition-colors justify-between sm:justify-center gap-3",
-              )}
-            >
-              Start a Conversation
-              <IconArrowRight size={15} />
-            </Link>
-            <a
-              href="#services"
-              className="inline-flex h-[52px] w-full sm:w-auto items-center justify-between sm:justify-center gap-2.5 rounded-full border border-brand-line bg-brand-sand px-7 text-sm font-bold text-foreground hover:bg-brand-sand/80 transition-colors shadow-sm"
-            >
-              Explore Our Services
-              <IconArrowRight size={15} />
-            </a>
-          </div>
-
-          <div className="mt-7 flex items-center gap-2 text-xs text-brand-muted font-medium">
-            <span className="h-0.5 w-6 bg-brand-blue" />
-            <span>People-first. Technology-led. Purpose-driven.</span>
-          </div>
-        </div>
-
-        {/* Right Column: Hero Photo flush to the right edge with custom curve */}
-        <div className="relative w-full h-[380px] sm:h-[480px] md:h-[540px] lg:h-[580px] xl:h-[620px] overflow-hidden rounded-t-[28px] sm:rounded-tl-[36px] lg:rounded-tl-[40px] rounded-b-none lg:rounded-bl-[88px] lg:rounded-r-none shadow-sm">
-          <img
-            src="/hero-campus-clean.jpg"
-            alt="Consultancy and education campus"
-            className="w-full h-full object-cover"
-          />
-
-          {/* Overlaid Promise Card */}
-          <div className="absolute top-5 left-5 sm:top-8 sm:left-8 w-[205px] sm:w-[230px] rounded-2xl bg-white p-5 sm:p-6 shadow-xl shadow-black/10 border border-black/5">
-            <p className="text-[10px] font-bold tracking-[1.5px] text-brand-orange uppercase">
-              FROM INSIGHT TO IMPACT
-            </p>
-            <p className="mt-2 font-display text-[15px] sm:text-[17px] leading-[1.25] font-extrabold text-[#141416]">
-              A clearer path to what&apos;s possible.
-            </p>
-            <p className="mt-2.5 text-[11px] sm:text-xs leading-[1.45] text-[#6b645b] font-medium">
-              Strategy. Systems. Lasting change.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function ServiceCard({
   icon: Icon,
   tone,
@@ -367,69 +202,76 @@ function ServiceCard({
   body,
   tag,
   highlight,
-}: (typeof CONSULTANCY_SERVICES)[number]) {
+  index = 0,
+}: (typeof CONSULTANCY_SERVICES)[number] & { index?: number }) {
   const isOrange = tone === "orange";
   return (
-    <article className="flex flex-col justify-between rounded-[22px] border border-brand-line/60 bg-brand-sand p-6 lg:p-7 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-shadow hover:shadow-md">
-      <div>
-        <span
-          className={cn(
-            "flex size-12 items-center justify-center rounded-[14px] text-white shadow-sm",
-            isOrange ? "bg-brand-orange" : "bg-brand-blue",
-          )}
-        >
-          <Icon size={22} stroke={2} />
-        </span>
-        <h3 className="mt-4 font-display text-[20px] lg:text-[22px] font-extrabold tracking-[-0.02em] text-[#141416]">
-          {title}
-        </h3>
-        <p className="mt-2 text-[13px] sm:text-[14px] leading-[1.55] text-brand-body">
-          {body}
-        </p>
-      </div>
-      <div className="mt-6 flex flex-wrap items-center gap-2.5 pt-2">
-        <span
-          className={cn(
-            "rounded-full px-3 py-1 text-[11px] font-bold text-white tracking-wide uppercase",
-            isOrange ? "bg-brand-orange" : "bg-brand-blue",
-          )}
-        >
-          {tag}
-        </span>
-        <span className="text-xs leading-tight text-brand-muted font-medium">
-          {highlight}
-        </span>
-      </div>
-    </article>
+    <ScrollReveal delay={index * 0.08} yOffset={20}>
+      <article className="flex flex-col justify-between h-full rounded-[22px] border border-brand-line/60 bg-brand-sand p-6 lg:p-7 shadow-[0_2px_8px_rgba(0,0,0,0.02)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-black/15">
+        <div>
+          <span
+            className={cn(
+              "flex size-12 items-center justify-center rounded-[14px] text-white shadow-sm transition-transform duration-300 group-hover:scale-110",
+              isOrange ? "bg-brand-orange" : "bg-brand-blue",
+            )}
+          >
+            <Icon size={22} stroke={2} />
+          </span>
+          <h3 className="mt-4 font-display text-[20px] lg:text-[22px] font-extrabold tracking-[-0.02em] text-[#141416]">
+            {title}
+          </h3>
+          <p className="mt-2 text-[13px] sm:text-[14px] leading-[1.55] text-brand-body">
+            {body}
+          </p>
+        </div>
+        <div className="mt-6 flex flex-wrap items-center gap-2.5 pt-2">
+          <span
+            className={cn(
+              "rounded-full px-3 py-1 text-[11px] font-bold text-white tracking-wide uppercase shadow-sm",
+              isOrange ? "bg-brand-orange" : "bg-brand-blue",
+            )}
+          >
+            {tag}
+          </span>
+          <span className="text-xs leading-tight text-brand-muted font-medium">
+            {highlight}
+          </span>
+        </div>
+      </article>
+    </ScrollReveal>
   );
 }
 
 function ServicesSection() {
   return (
-    <section id="services" className="bg-background pt-10 pb-16 md:pt-16 md:pb-24 px-6 md:px-12 lg:px-16 xl:px-24">
-      <div className="grid grid-cols-1 lg:grid-cols-[380px_minmax(0,1fr)] xl:grid-cols-[400px_minmax(0,1fr)] items-start gap-10 lg:gap-14">
+    <section id="services" className="relative overflow-hidden bg-background pt-12 pb-16 md:pt-20 md:pb-24 px-6 md:px-12 lg:px-16 xl:px-24">
+      <WatermarkText text="SOLUTIONS" />
+
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[380px_minmax(0,1fr)] xl:grid-cols-[400px_minmax(0,1fr)] items-start gap-10 lg:gap-14">
         {/* Left info column */}
-        <div className="flex flex-col gap-4 max-w-md">
-          <SectionLabel>OUR SERVICES</SectionLabel>
-          <h2 className="font-display text-[38px] sm:text-[46px] lg:text-[50px] leading-[1.0] font-extrabold tracking-[-0.03em] text-foreground">
-            <span className="block text-[#141416]">Expertise that</span>
-            <span className="block text-brand-orange">moves you</span>
-            <span className="block text-brand-orange">forward.</span>
-          </h2>
-          <p className="mt-2 text-[15px] sm:text-[16px] leading-[1.6] text-brand-body">
-            From your first question to your next big milestone, we bring clarity
-            to complexity and build technology that serves a purpose.
-          </p>
-          <p className="text-xs text-brand-muted font-medium leading-[1.5]">
-            Focused advice or an end-to-end partnership — shaped around what you
-            need.
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="flex flex-col gap-4 max-w-md">
+            <SectionLabel>OUR SERVICES</SectionLabel>
+            <h2 className="font-display text-[38px] sm:text-[46px] lg:text-[50px] leading-[1.0] font-extrabold tracking-[-0.03em] text-foreground">
+              <span className="block text-[#141416]">Expertise that</span>
+              <span className="block text-brand-orange">moves you</span>
+              <span className="block text-brand-orange">forward.</span>
+            </h2>
+            <p className="mt-2 text-[15px] sm:text-[16px] leading-[1.6] text-brand-body">
+              From your first question to your next big milestone, we bring clarity
+              to complexity and build technology that serves a purpose.
+            </p>
+            <p className="text-xs text-brand-muted font-medium leading-[1.5]">
+              Focused advice or an end-to-end partnership — shaped around what you
+              need.
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* 2x2 cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
-          {CONSULTANCY_SERVICES.map((service) => (
-            <ServiceCard key={service.title} {...service} />
+          {CONSULTANCY_SERVICES.map((service, idx) => (
+            <ServiceCard key={service.title} index={idx} {...service} />
           ))}
         </div>
       </div>
@@ -439,34 +281,37 @@ function ServicesSection() {
 
 function ApproachSection() {
   return (
-    <section className="bg-background px-6 md:px-12 lg:px-16 xl:px-24 py-16 md:py-24">
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-10 lg:gap-16 items-center">
+    <section className="relative overflow-hidden bg-background px-6 md:px-12 lg:px-16 xl:px-24 py-16 md:py-24">
+      <WatermarkText text="METHOD" />
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-10 lg:gap-16 items-center">
         {/* Left: Meeting Image */}
-        <div className="overflow-hidden rounded-[28px] shadow-sm">
-          <img
-            src="/consultancy-meeting.jpg"
-            alt="Consultancy team meeting with client"
-            className="w-full h-full object-cover max-h-[440px]"
-          />
-        </div>
+        <ScrollReveal direction="up" delay={0.1}>
+          <div className="overflow-hidden rounded-[28px] shadow-sm">
+            <img
+              src="/consultancy-meeting.jpg"
+              alt="Consultancy team meeting with client"
+              className="w-full h-full object-cover max-h-[440px]"
+            />
+          </div>
+        </ScrollReveal>
 
         {/* Right: Approach Copy */}
-        <div className="flex flex-col">
+        <ScrollReveal direction="up" delay={0.2} className="flex flex-col">
           <SectionLabel>ABOUT OUR APPROACH</SectionLabel>
           <h2 className="mt-5 font-display text-[36px] sm:text-[44px] lg:text-[48px] leading-[1.05] font-extrabold tracking-[-0.03em] text-[#141416]">
             <span>Better technology starts with </span>
             <span className="text-brand-blue">understanding people.</span>
           </h2>
-          <p className="mt-5 text-[15px] sm:text-[16px] leading-[1.6] text-brand-body">
+          <WordReveal className="mt-5 text-[15px] sm:text-[16px] leading-[1.6] text-brand-body" delay={0.1}>
             Every institution and organisation has its own ambitions, constraints
             and ways of working. We take the time to understand yours before
             recommending a solution.
-          </p>
-          <p className="mt-3 text-[15px] sm:text-[16px] leading-[1.6] text-brand-body">
+          </WordReveal>
+          <WordReveal className="mt-3 text-[15px] sm:text-[16px] leading-[1.6] text-brand-body" delay={0.2}>
             By combining strategic thinking with hands-on delivery, we connect the
             right technology to the right challenge — building useful systems and
             the confidence to use them.
-          </p>
+          </WordReveal>
 
           <div className="mt-8 flex flex-col gap-4">
             <div className="flex items-start gap-3.5">
@@ -498,7 +343,7 @@ function ApproachSection() {
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -506,23 +351,26 @@ function ApproachSection() {
 
 function ProcessSection() {
   return (
-    <section className="bg-brand-night text-white px-6 md:px-12 lg:px-16 xl:px-24 py-20 md:py-24">
-      <div>
-        <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-[11px] font-bold tracking-[2px] text-white/70 uppercase">
-          OUR PROCESS
-        </span>
-        <h2 className="mt-6 font-display text-[40px] sm:text-[50px] lg:text-[58px] leading-[1.0] font-extrabold tracking-[-0.03em]">
-          <span>From a better question to </span>
-          <span className="text-brand-orange">a better solution.</span>
-        </h2>
-        <p className="mt-4 max-w-2xl text-[15px] sm:text-[16px] leading-[1.6] text-white/70">
-          A clear, collaborative journey. No unnecessary complexity — just
-          considered steps that turn ambition into action.
-        </p>
+    <section className="relative overflow-hidden bg-brand-night text-white px-6 md:px-12 lg:px-16 xl:px-24 py-20 md:py-24">
+      <WatermarkText text="PROCESS" />
+      <div className="relative z-10">
+        <ScrollReveal direction="up">
+          <span className="inline-flex items-center rounded-full bg-white/10 px-4 py-1.5 text-[11px] font-bold tracking-[2px] text-white/70 uppercase">
+            OUR PROCESS
+          </span>
+          <h2 className="mt-6 font-display text-[40px] sm:text-[50px] lg:text-[58px] leading-[1.0] font-extrabold tracking-[-0.03em]">
+            <span>From a better question to </span>
+            <span className="text-brand-orange">a better solution.</span>
+          </h2>
+          <p className="mt-4 max-w-2xl text-[15px] sm:text-[16px] leading-[1.6] text-white/70">
+            A clear, collaborative journey. No unnecessary complexity — just
+            considered steps that turn ambition into action.
+          </p>
+        </ScrollReveal>
 
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           {PROCESS_STEPS.map((step, idx) => (
-            <div key={step.step} className="flex flex-col relative">
+            <ScrollReveal key={step.step} direction="up" delay={idx * 0.1} className="flex flex-col relative">
               <div className="flex items-center gap-4 mb-6">
                 <span className="flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-2.5 py-1 text-xs font-bold text-brand-orange">
                   {step.step}
@@ -541,7 +389,7 @@ function ProcessSection() {
               <p className="mt-6 text-[11.5px] font-semibold text-white/50 tracking-wider">
                 {step.highlight}
               </p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
@@ -811,8 +659,15 @@ function SiteFooter() {
 export default function ConsultancyRoute() {
   return (
     <div className="min-h-full bg-background text-foreground">
-      <SiteHeader />
-      <Hero />
+      <CinematicHero
+        activeNav="Consultancy"
+        label="Strategic Consultancy"
+        headlineLine1="Turning Complexity"
+        headlineLine2="into"
+        headlineHighlight="Opportunities."
+        supportingSentence="Strategic advisory, custom digital engineering and intelligent systems designed for long-term institutional transformation."
+        scrollTargetId="services"
+      />
       <ServicesSection />
       <ApproachSection />
       <ProcessSection />

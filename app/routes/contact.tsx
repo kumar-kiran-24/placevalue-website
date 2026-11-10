@@ -25,6 +25,8 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
+import { CinematicHero } from "@/components/layout/CinematicHero";
+import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
   return [
@@ -69,151 +71,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function SiteHeader() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  return (
-    <header className="relative z-20 bg-background">
-      <div className="flex h-[88px] items-center justify-between px-6 md:px-12 lg:px-16 xl:px-24">
-        <Link to="/" aria-label="PlaceValue home" className="flex items-center">
-          <Logo />
-        </Link>
-
-        {/* Center Nav Pill */}
-        <nav
-          aria-label="Primary"
-          className="hidden md:flex items-center rounded-full bg-brand-night p-1.5 shadow-sm"
-        >
-          {NAV_ITEMS.map((item) => {
-            const isActive = item.label === "Contact";
-            return (
-              <Link
-                key={item.label}
-                to={item.to}
-                className={cn(
-                  "rounded-full px-5 py-2 text-[13px] font-medium transition-colors whitespace-nowrap",
-                  isActive
-                    ? "bg-white font-semibold text-brand-night shadow-sm"
-                    : "text-white/80 hover:text-white",
-                )}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* Right CTA */}
-        <div className="hidden md:flex items-center">
-          <Link
-            to="/contact"
-            className={cn(
-              orangePill,
-              "h-[44px] px-6 text-[13.5px] font-bold shadow-sm hover:brightness-105 transition",
-            )}
-          >
-            Start a Project
-            <IconArrowRight size={15} />
-          </Link>
-        </div>
-
-        {/* Mobile controls */}
-        <div className="flex items-center gap-2 md:hidden">
-          <Link
-            to="/contact"
-            className={cn(orangePill, "h-[38px] px-4 text-xs")}
-          >
-            Start a Project
-            <IconArrowRight size={12} />
-          </Link>
-          <button
-            type="button"
-            aria-label="Toggle navigation menu"
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((v) => !v)}
-            className="flex size-10 items-center justify-center rounded-full border border-brand-line bg-brand-sand text-foreground"
-          >
-            {mobileOpen ? <IconX size={18} /> : <IconMenu2 size={18} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Drawer */}
-      {mobileOpen && (
-        <div className="border-b border-brand-line bg-background px-6 pt-2 pb-6 md:hidden">
-          <nav className="flex flex-col gap-2">
-            {NAV_ITEMS.map((item) => {
-              const isActive = item.label === "Contact";
-              return (
-                <Link
-                  key={item.label}
-                  to={item.to}
-                  onClick={() => setMobileOpen(false)}
-                  className={cn(
-                    "flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition",
-                    isActive
-                      ? "bg-brand-night text-white"
-                      : "text-foreground hover:bg-brand-sand/60",
-                  )}
-                >
-                  {item.label}
-                  {isActive && <span className="text-xs text-brand-orange">●</span>}
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
-      )}
-    </header>
-  );
-}
-
-function ContactHero() {
-  return (
-    <section className="relative px-6 pt-4 pb-12 md:px-12 md:pb-16 lg:px-16 xl:px-24">
-      {/* Top badges bar */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <SectionLabel>CONTACT PLACEVALUE</SectionLabel>
-        <span className="text-[11px] font-bold tracking-[0.25em] text-brand-muted uppercase">
-          PEOPLE. PURPOSE. POSSIBILITY.
-        </span>
-      </div>
-
-      {/* Headline & Arrow */}
-      <div className="mt-8 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-        <div className="max-w-4xl">
-          <h1 className="font-display text-[44px] leading-[1.02] font-extrabold tracking-[-0.035em] text-foreground sm:text-[64px] md:text-[76px] lg:text-[88px]">
-            <span className="text-foreground">Let&apos;s Build </span>
-            <span className="text-foreground text-outline font-extrabold">Something</span>
-            <br />
-            <span className="text-brand-orange">Meaningful.</span>
-          </h1>
-
-          <p className="mt-6 max-w-[720px] text-base leading-[28px] text-brand-body sm:text-lg">
-            Educational institutions, businesses, startups and individuals — bring
-            your ideas, challenges and ambitions to PlaceValue. Let&apos;s explore
-            what we can build together.
-          </p>
-        </div>
-
-        {/* Right side circle arrow & anchor */}
-        <div className="flex flex-col items-start md:items-end gap-3 shrink-0 self-start md:mt-4">
-          <div className="flex size-14 items-center justify-center rounded-full bg-brand-sand border border-brand-line text-foreground">
-            <IconArrowDown size={22} className="-rotate-45" />
-          </div>
-          <a
-            href="#conversation-form"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-foreground hover:text-brand-orange transition"
-          >
-            Start a conversation
-            <IconArrowDown size={14} />
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function ContactFormSection({
   selectedType,
   onTypeChange,
@@ -255,11 +112,13 @@ function ContactFormSection({
   return (
     <section
       id="conversation-form"
-      className="px-6 py-10 md:px-12 md:py-16 lg:px-16 xl:px-24"
+      className="relative overflow-hidden px-6 py-10 md:px-12 md:py-16 lg:px-16 xl:px-24"
     >
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14 items-start">
+      <WatermarkText text="CONNECT" />
+      <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14 items-start">
         {/* Left: Contact Form Card */}
-        <div className="lg:col-span-7 rounded-[28px] border border-brand-line bg-[#ebe2d8] p-6 sm:p-10 shadow-xs">
+        <ScrollReveal direction="up" delay={0.1} className="lg:col-span-7">
+          <div className="rounded-[28px] border border-brand-line bg-[#ebe2d8] p-6 sm:p-10 shadow-xs">
           <h2 className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
             Tell us what&apos;s on your mind.
           </h2>
@@ -504,16 +363,18 @@ function ContactFormSection({
             </form>
           )}
         </div>
+        </ScrollReveal>
 
         {/* Right: "A conversation starts here." direct contact info */}
-        <div className="lg:col-span-5 flex flex-col">
+        <ScrollReveal direction="up" delay={0.2} className="lg:col-span-5">
+          <div className="flex flex-col">
           <h2 className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
             A conversation starts here.
           </h2>
-          <p className="mt-2 text-sm sm:text-base leading-relaxed text-brand-body mb-6">
+          <WordReveal className="mt-2 text-sm sm:text-base leading-relaxed text-brand-body mb-6" delay={0.15}>
             Prefer to connect directly? Our official contact channels will be
             shared here once confirmed.
-          </p>
+          </WordReveal>
 
           {/* Verification notice box */}
           <div className="mb-6 flex items-start gap-3 rounded-2xl border border-brand-line bg-brand-sand/60 p-4 text-xs text-brand-muted leading-relaxed">
@@ -614,6 +475,7 @@ function ContactFormSection({
             </p>
           </div>
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -670,9 +532,10 @@ function WhatCanWeHelpWith({
   onSelectType: (type: string) => void;
 }) {
   return (
-    <section className="border-t border-brand-line px-6 py-20 md:px-12 md:py-24 lg:px-16 xl:px-24">
+    <section className="relative overflow-hidden border-t border-brand-line px-6 py-20 md:px-12 md:py-24 lg:px-16 xl:px-24">
+      <WatermarkText text="SERVICES" />
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+      <ScrollReveal direction="up" className="relative z-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
         <div>
           <SectionLabel>WHAT CAN WE HELP WITH?</SectionLabel>
           <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground">
@@ -685,10 +548,10 @@ function WhatCanWeHelpWith({
           Choose the closest match in the enquiry form. Not sure where to start?
           General Enquiries is a good place.
         </p>
-      </div>
+      </ScrollReveal>
 
       {/* Grid: 3 cards on top, 2 cards on bottom */}
-      <div className="space-y-6">
+      <div className="relative z-10 space-y-6">
         {/* Top 3 Cards */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {SERVICE_ENQUIRY_CARDS.slice(0, 3).map((card) => {
@@ -808,9 +671,10 @@ function WhatCanWeHelpWith({
 function PreFooterConversation() {
   return (
     <section className="relative overflow-hidden border-t border-white/10 bg-brand-night px-6 py-20 text-white md:px-12 md:py-28 lg:px-16 xl:px-24">
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14 items-center max-w-7xl mx-auto">
+      <WatermarkText text="PARTNER" />
+      <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14 items-center max-w-7xl mx-auto">
         {/* Left: Meeting Scene Photo */}
-        <div className="lg:col-span-5">
+        <ScrollReveal direction="up" delay={0.1} className="lg:col-span-5">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[24px] border border-white/15 bg-white/5 shadow-md">
             <img
               src="/consultancy-meeting.jpg"
@@ -821,10 +685,10 @@ function PreFooterConversation() {
           <p className="mt-3 text-xs italic text-white/50">
             Illustrative collaboration scene — not a PlaceValue team photograph.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Right: CTA Copy */}
-        <div className="lg:col-span-7 flex flex-col justify-center">
+        <ScrollReveal direction="up" delay={0.2} className="lg:col-span-7 flex flex-col justify-center">
           <span className="inline-flex w-fit items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-white/80 uppercase">
             LET&apos;S BUILD TOGETHER
           </span>
@@ -850,7 +714,7 @@ function PreFooterConversation() {
               <IconArrowRight size={15} />
             </a>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -1018,8 +882,15 @@ export default function ContactRoute() {
 
   return (
     <div className="min-h-full bg-background text-foreground">
-      <SiteHeader />
-      <ContactHero />
+      <CinematicHero
+        activeNav="Contact"
+        label="Connect With PlaceValue"
+        headlineLine1="Let's Build Something"
+        headlineLine2="Meaningful"
+        headlineHighlight="Together."
+        supportingSentence="Whether you are modernising legacy systems, developing a custom platform or seeking strategic guidance, our team is ready."
+        scrollTargetId="conversation-form"
+      />
       <ContactFormSection
         selectedType={selectedEnquiry}
         onTypeChange={setSelectedEnquiry}

@@ -22,6 +22,8 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
+import { CinematicHero } from "@/components/layout/CinematicHero";
+import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
   return [
@@ -66,194 +68,34 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function SiteHeader() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  return (
-    <header className="relative z-20 bg-background">
-      <div className="flex h-[88px] items-center justify-between px-6 md:px-12 lg:px-16 xl:px-24">
-        <Link to="/" aria-label="PlaceValue home" className="flex items-center">
-          <Logo />
-        </Link>
-
-        {/* Center Nav Pill */}
-        <nav
-          aria-label="Primary"
-          className="hidden md:flex items-center rounded-full bg-brand-night p-1.5 shadow-sm"
-        >
-          {NAV_ITEMS.map((item) => {
-            const isActive = item.label === "About";
-            return (
-              <Link
-                key={item.label}
-                to={item.to}
-                className={cn(
-                  "rounded-full px-5 py-2 text-[13px] font-medium transition-colors whitespace-nowrap",
-                  isActive
-                    ? "bg-white font-semibold text-brand-night shadow-sm"
-                    : "text-white/80 hover:text-white",
-                )}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
-
-        {/* Right CTA */}
-        <div className="hidden md:flex items-center">
-          <Link
-            to="/contact"
-            className={cn(
-              orangePill,
-              "h-[44px] px-6 text-[13.5px] font-bold shadow-sm hover:brightness-105 transition",
-            )}
-          >
-            Start a Project
-            <IconArrowRight size={15} />
-          </Link>
-        </div>
-
-        {/* Mobile controls */}
-        <div className="flex items-center gap-2 md:hidden">
-          <Link
-            to="/contact"
-            className={cn(orangePill, "h-[38px] px-4 text-xs")}
-          >
-            Start a Project
-            <IconArrowRight size={12} />
-          </Link>
-          <button
-            type="button"
-            aria-label="Toggle navigation menu"
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((v) => !v)}
-            className="flex size-10 items-center justify-center rounded-full border border-brand-line bg-brand-sand text-foreground"
-          >
-            {mobileOpen ? <IconX size={18} /> : <IconMenu2 size={18} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Drawer */}
-      {mobileOpen && (
-        <div className="border-b border-brand-line bg-background px-6 pt-2 pb-6 md:hidden">
-          <nav className="flex flex-col gap-2">
-            {NAV_ITEMS.map((item) => {
-              const isActive = item.label === "About";
-              return (
-                <Link
-                  key={item.label}
-                  to={item.to}
-                  onClick={() => setMobileOpen(false)}
-                  className={cn(
-                    "flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition",
-                    isActive
-                      ? "bg-brand-night text-white"
-                      : "text-foreground hover:bg-brand-sand/60",
-                  )}
-                >
-                  {item.label}
-                  {isActive && <span className="text-xs text-brand-orange">●</span>}
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
-      )}
-    </header>
-  );
-}
-
-function Hero() {
-  return (
-    <section className="relative px-6 pt-4 pb-16 md:px-12 md:pb-24 lg:px-16 xl:px-24">
-      {/* Top badges bar */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <SectionLabel>ABOUT PLACEVALUE</SectionLabel>
-        <span className="text-[11px] font-bold tracking-[0.25em] text-brand-muted uppercase">
-          PEOPLE. PURPOSE. POSSIBILITY.
-        </span>
-      </div>
-
-      {/* Headline */}
-      <div className="mt-8 max-w-5xl">
-        <h1 className="font-display text-[44px] leading-[1.02] font-extrabold tracking-[-0.035em] text-foreground sm:text-[64px] md:text-[76px] lg:text-[88px]">
-          <span className="block text-foreground">Built on Innovation.</span>
-          <span className="block mt-1 sm:mt-2">
-            <span className="text-brand-orange text-outline font-extrabold">Driven by</span>{" "}
-            <span className="text-foreground text-outline font-extrabold">Purpose.</span>
-          </span>
-        </h1>
-
-        <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <p className="max-w-[720px] text-base leading-[28px] text-brand-body sm:text-lg">
-            PlaceValue works at the intersection of education technology and
-            consulting, connecting the needs of institutions, students and
-            organisations. This is a space for our journey, the people behind it
-            and the purpose that guides what comes next.
-          </p>
-
-          <a
-            href="#beginnings"
-            className="inline-flex items-center gap-2 text-sm font-bold text-foreground transition-colors hover:text-brand-orange shrink-0 self-start md:self-auto"
-          >
-            Get to know PlaceValue
-            <IconArrowDown size={15} />
-          </a>
-        </div>
-      </div>
-
-      {/* Large Centered Atrium Photo */}
-      <div className="mt-12 md:mt-16">
-        <div className="relative aspect-[16/9] w-full max-h-[580px] overflow-hidden rounded-[26px] sm:rounded-[34px] border border-brand-line bg-brand-sand shadow-sm">
-          <img
-            src="/hero-campus.jpg"
-            alt="Students gathering in modern educational campus atrium"
-            className="h-full w-full object-cover"
-          />
-
-          {/* Floating badge inside photo */}
-          <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-10 flex items-center gap-2.5 rounded-full bg-white/95 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-bold text-brand-night shadow-lg">
-            <span className="size-2.5 rounded-full bg-brand-blue" />
-            <span>Education is our context. People are our focus.</span>
-          </div>
-        </div>
-
-        <p className="mt-3 text-xs italic text-brand-muted">
-          Illustrative education imagery — not a PlaceValue team or partner photograph.
-        </p>
-      </div>
-    </section>
-  );
-}
-
 function OurBeginnings() {
   return (
     <section
       id="beginnings"
-      className="border-t border-brand-line px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24"
+      className="relative overflow-hidden border-t border-brand-line px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24"
     >
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-start">
+      <WatermarkText text="JOURNEY" />
+
+      <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-start">
         {/* Left Column */}
-        <div className="lg:col-span-5">
+        <ScrollReveal className="lg:col-span-5">
           <SectionLabel>OUR BEGINNINGS</SectionLabel>
           <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground">
             Every journey starts with a question.
           </h2>
-          <p className="mt-5 text-lg sm:text-xl font-medium leading-snug text-brand-body">
+          <WordReveal className="mt-5 text-lg sm:text-xl font-medium leading-snug text-brand-body" delay={0.15}>
             What could education make possible when technology serves people?
-          </p>
-        </div>
+          </WordReveal>
+        </ScrollReveal>
 
         {/* Right Column */}
-        <div className="lg:col-span-7 flex flex-col justify-center">
-          <p className="text-base sm:text-lg leading-[30px] text-brand-body">
+        <ScrollReveal delay={0.15} className="lg:col-span-7 flex flex-col justify-center">
+          <WordReveal className="text-base sm:text-lg leading-[30px] text-brand-body" delay={0.2}>
             Education and technology meet in everyday decisions: how people learn,
             how institutions adapt and how organisations move ideas forward.
             PlaceValue brings an education technology and consulting perspective to
             that shared space.
-          </p>
+          </WordReveal>
 
           <div className="my-8 border-t border-brand-line" />
 
@@ -264,12 +106,12 @@ function OurBeginnings() {
             <h3 className="mt-3 text-xl sm:text-2xl font-bold tracking-tight text-foreground">
               [Founding story to be confirmed]
             </h3>
-            <p className="mt-2 text-sm sm:text-base leading-relaxed text-brand-muted">
+            <WordReveal className="mt-2 text-sm sm:text-base leading-relaxed text-brand-muted" delay={0.3}>
               [Add the founding motivation, the education challenge that prompted it
               and the first steps taken. Include only confirmed people, places and dates.]
-            </p>
+            </WordReveal>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -302,10 +144,11 @@ function WhatGuidesUs() {
   return (
     <section
       id="guides"
-      className="border-y border-white/10 bg-brand-night text-white px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24"
+      className="relative overflow-hidden border-y border-white/10 bg-brand-night text-white px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24"
     >
+      <WatermarkText text="VALUES" />
       {/* Header row */}
-      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <ScrollReveal direction="up" className="relative z-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
           <span className="inline-flex w-fit items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-white/80 uppercase">
             WHAT GUIDES US
@@ -317,47 +160,51 @@ function WhatGuidesUs() {
         <p className="text-xs text-white/50 md:text-right shrink-0">
           Mission, vision & core values · Draft positioning statements for approval.
         </p>
-      </div>
+      </ScrollReveal>
 
       {/* 2 Mission & Vision Cards */}
-      <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="relative z-10 mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* Mission Card */}
-        <div className="flex flex-col justify-between rounded-[24px] border border-white/12 bg-[#183344] p-8 sm:p-10 transition hover:border-white/25">
-          <div className="flex items-center justify-between">
-            <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">
-              Our mission
-            </h3>
-            <div className="flex size-10 items-center justify-center rounded-full bg-brand-orange/15 text-brand-orange border border-brand-orange/30">
-              <IconTarget size={20} />
+        <ScrollReveal direction="up" delay={0.1}>
+          <div className="flex h-full flex-col justify-between rounded-[24px] border border-white/12 bg-[#183344] p-8 sm:p-10 transition hover:border-white/25">
+            <div className="flex items-center justify-between">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">
+                Our mission
+              </h3>
+              <div className="flex size-10 items-center justify-center rounded-full bg-brand-orange/15 text-brand-orange border border-brand-orange/30">
+                <IconTarget size={20} />
+              </div>
             </div>
+            <p className="my-8 text-lg sm:text-xl font-medium leading-relaxed text-white/90">
+              To connect education and technology in ways that make learning more
+              meaningful and change more practical.
+            </p>
+            <span className="self-start rounded-full border border-brand-orange/30 bg-brand-orange/15 px-3.5 py-1 text-[11px] font-bold tracking-[0.15em] text-brand-orange uppercase">
+              WHY WE DO IT
+            </span>
           </div>
-          <p className="my-8 text-lg sm:text-xl font-medium leading-relaxed text-white/90">
-            To connect education and technology in ways that make learning more
-            meaningful and change more practical.
-          </p>
-          <span className="self-start rounded-full border border-brand-orange/30 bg-brand-orange/15 px-3.5 py-1 text-[11px] font-bold tracking-[0.15em] text-brand-orange uppercase">
-            WHY WE DO IT
-          </span>
-        </div>
+        </ScrollReveal>
 
         {/* Vision Card */}
-        <div className="flex flex-col justify-between rounded-[24px] border border-white/12 bg-[#183344] p-8 sm:p-10 transition hover:border-white/25">
-          <div className="flex items-center justify-between">
-            <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">
-              Our vision
-            </h3>
-            <div className="flex size-10 items-center justify-center rounded-full bg-brand-blue/15 text-brand-blue border border-brand-blue/30">
-              <IconArrowUpRight size={20} />
+        <ScrollReveal direction="up" delay={0.2}>
+          <div className="flex h-full flex-col justify-between rounded-[24px] border border-white/12 bg-[#183344] p-8 sm:p-10 transition hover:border-white/25">
+            <div className="flex items-center justify-between">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">
+                Our vision
+              </h3>
+              <div className="flex size-10 items-center justify-center rounded-full bg-brand-blue/15 text-brand-blue border border-brand-blue/30">
+                <IconArrowUpRight size={20} />
+              </div>
             </div>
+            <p className="my-8 text-lg sm:text-xl font-medium leading-relaxed text-white/90">
+              An education ecosystem where people can learn, contribute and grow,
+              supported by thoughtful technology.
+            </p>
+            <span className="self-start rounded-full border border-brand-blue/30 bg-brand-blue/15 px-3.5 py-1 text-[11px] font-bold tracking-[0.15em] text-brand-blue uppercase">
+              WHAT WE LOOK TOWARDS
+            </span>
           </div>
-          <p className="my-8 text-lg sm:text-xl font-medium leading-relaxed text-white/90">
-            An education ecosystem where people can learn, contribute and grow,
-            supported by thoughtful technology.
-          </p>
-          <span className="self-start rounded-full border border-brand-blue/30 bg-brand-blue/15 px-3.5 py-1 text-[11px] font-bold tracking-[0.15em] text-brand-blue uppercase">
-            WHAT WE LOOK TOWARDS
-          </span>
-        </div>
+        </ScrollReveal>
       </div>
 
       {/* Core Values */}
@@ -388,17 +235,18 @@ function WhatGuidesUs() {
 
 function Leadership() {
   return (
-    <section className="px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24">
+    <section className="relative overflow-hidden px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24">
+      <WatermarkText text="LEADERS" />
       {/* Header */}
-      <div className="mb-14 sm:mb-16">
+      <ScrollReveal direction="up" className="relative z-10 mb-14 sm:mb-16">
         <SectionLabel>THE PEOPLE BEHIND THE PURPOSE</SectionLabel>
         <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground">
           Leadership with a personal perspective.
         </h2>
-      </div>
+      </ScrollReveal>
 
       {/* Founder Message Block */}
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-14 items-center mb-16">
+      <ScrollReveal direction="up" delay={0.1} className="relative z-10 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-14 items-center mb-16">
         {/* Left: Founder Portrait Placeholder */}
         <div className="lg:col-span-5">
           <div className="relative aspect-[4/5] max-w-[420px] overflow-hidden rounded-[28px] border border-brand-line bg-brand-sand shadow-sm">
@@ -421,11 +269,11 @@ function Leadership() {
           <h3 className="mt-3 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground leading-tight">
             [A personal vision for education and possibility]
           </h3>
-          <p className="mt-4 text-base sm:text-lg leading-[29px] text-brand-body">
+          <WordReveal className="mt-4 text-base sm:text-lg leading-[29px] text-brand-body" delay={0.15}>
             [Founder&apos;s message awaiting approved copy. Share the personal
             motivation behind PlaceValue, the change you hope to contribute to and
             what you want institutions, students and organisations to know.]
-          </p>
+          </WordReveal>
 
           <div className="mt-8 border-t border-brand-line pt-6">
             <h4 className="font-display text-xl font-bold text-foreground">
@@ -437,45 +285,47 @@ function Leadership() {
             </span>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
 
       {/* Co-Founder Card */}
-      <div className="rounded-[28px] border border-brand-line bg-brand-sand/50 p-6 sm:p-8 lg:p-10 shadow-xs">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-12 items-center">
-          {/* Left: Co-Founder Portrait Placeholder */}
-          <div className="md:col-span-4 lg:col-span-3">
-            <div className="relative aspect-square sm:aspect-[4/5] overflow-hidden rounded-[22px] border border-brand-line bg-brand-sand shadow-xs">
-              <img
-                src="/about-cofounder.jpg"
-                alt="PlaceValue Co-Founder executive portrait"
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute top-3 left-3 z-10 rounded-full bg-white/90 backdrop-blur-xs px-3 py-0.5 text-[10px] font-bold text-brand-night shadow-xs">
-                Co-Founder & VP
+      <ScrollReveal direction="up" delay={0.2} className="relative z-10">
+        <div className="rounded-[28px] border border-brand-line bg-brand-sand/50 p-6 sm:p-8 lg:p-10 shadow-xs">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-12 items-center">
+            {/* Left: Co-Founder Portrait Placeholder */}
+            <div className="md:col-span-4 lg:col-span-3">
+              <div className="relative aspect-square sm:aspect-[4/5] overflow-hidden rounded-[22px] border border-brand-line bg-brand-sand shadow-xs">
+                <img
+                  src="/about-cofounder.jpg"
+                  alt="PlaceValue Co-Founder executive portrait"
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute top-3 left-3 z-10 rounded-full bg-white/90 backdrop-blur-xs px-3 py-0.5 text-[10px] font-bold text-brand-night shadow-xs">
+                  Co-Founder & VP
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Right: Co-Founder Bio */}
-          <div className="md:col-span-8 lg:col-span-9">
-            <span className="text-xs font-bold tracking-[0.2em] text-brand-muted uppercase">
-              MEET OUR CO-FOUNDER
-            </span>
-            <h3 className="mt-2 font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
-              [Co-Founder Name]
-            </h3>
-            <p className="text-sm font-bold text-brand-orange mb-3">Co-Founder</p>
-            <p className="text-sm sm:text-base leading-relaxed text-brand-body mb-4">
-              [Professional biography awaiting approved copy. Introduce the co-founder&apos;s
-              role at PlaceValue, relevant experience and contribution to the company&apos;s
-              direction. Include only verified credentials.]
-            </p>
-            <span className="inline-block rounded-full border border-brand-line bg-brand-sand px-3 py-1 text-xs font-semibold text-brand-muted">
-              Awaiting approved copy
-            </span>
+            {/* Right: Co-Founder Bio */}
+            <div className="md:col-span-8 lg:col-span-9">
+              <span className="text-xs font-bold tracking-[0.2em] text-brand-muted uppercase">
+                MEET OUR CO-FOUNDER
+              </span>
+              <h3 className="mt-2 font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
+                [Co-Founder Name]
+              </h3>
+              <p className="text-sm font-bold text-brand-orange mb-3">Co-Founder</p>
+              <p className="text-sm sm:text-base leading-relaxed text-brand-body mb-4">
+                [Professional biography awaiting approved copy. Introduce the co-founder&apos;s
+                role at PlaceValue, relevant experience and contribution to the company&apos;s
+                direction. Include only verified credentials.]
+              </p>
+              <span className="inline-block rounded-full border border-brand-line bg-brand-sand px-3 py-1 text-xs font-semibold text-brand-muted">
+                Awaiting approved copy
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }
@@ -513,28 +363,29 @@ const TIMELINE_NODES = [
 
 function OurJourney() {
   return (
-    <section className="border-y border-[#d3c0a5] bg-[#dfcfb6] px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24">
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-start">
+    <section className="relative overflow-hidden border-y border-[#d3c0a5] bg-[#dfcfb6] px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24">
+      <WatermarkText text="MILESTONES" />
+      <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-start">
         {/* Left Column */}
-        <div className="lg:col-span-5">
+        <ScrollReveal direction="up" className="lg:col-span-5">
           <span className="inline-flex w-fit items-center rounded-full border border-[#c4ae91] bg-[#d3c0a5] px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-[#4d3f30] uppercase">
             OUR JOURNEY
           </span>
           <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground">
             The moments that shape us.
           </h2>
-          <p className="mt-4 text-base sm:text-lg leading-relaxed text-[#524434]">
+          <WordReveal className="mt-4 text-base sm:text-lg leading-relaxed text-[#524434]" delay={0.2}>
             A chronological space for the decisions, collaborations and milestones
             behind PlaceValue.
-          </p>
+          </WordReveal>
           <p className="mt-6 text-xs italic leading-relaxed text-[#756451]">
             Timeline content slots - dates and details awaiting approval. Arrange by
             confirmed date before publication.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Right Column: Timeline */}
-        <div className="lg:col-span-7">
+        <ScrollReveal direction="up" delay={0.15} className="lg:col-span-7">
           <div className="relative border-l-2 border-[#bfa98a] ml-3 sm:ml-4 pl-6 sm:pl-8 space-y-10">
             {TIMELINE_NODES.map((node) => {
               const bulletColor =
@@ -581,7 +432,7 @@ function OurJourney() {
               );
             })}
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -948,8 +799,15 @@ function SiteFooter() {
 export default function AboutRoute() {
   return (
     <div className="min-h-full bg-background text-foreground">
-      <SiteHeader />
-      <Hero />
+      <CinematicHero
+        activeNav="About"
+        label="About PlaceValue"
+        headlineLine1="Built on Innovation."
+        headlineLine2="Driven by"
+        headlineHighlight="Purpose."
+        supportingSentence="We connect education, technology and strategy to help institutions, students and communities build what comes next."
+        scrollTargetId="beginnings"
+      />
       <OurBeginnings />
       <WhatGuidesUs />
       <Leadership />
