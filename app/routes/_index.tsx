@@ -5,6 +5,7 @@ import {
   IconArrowUpRight,
   IconBrandInstagram,
   IconBrandLinkedin,
+  IconBrandThreads,
   IconBrandX,
   IconBrandYoutube,
   IconMail,
@@ -684,7 +685,7 @@ function TaskverseSection() {
             Adaptive skill diagnostics and verifiable capability portfolios engineered for modern education.
           </p>
 
-          <div className="mt-8 flex items-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-3.5">
             <Link
               to="/taskverse"
               className={cn(
@@ -695,6 +696,15 @@ function TaskverseSection() {
               Explore TASKVERSE
               <IconArrowRight size={14} />
             </Link>
+            <a
+              href="https://taskverse.placevalue.in/login"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-[48px] items-center gap-2 rounded-full border border-brand-line bg-brand-sand/60 px-6 text-sm font-semibold text-foreground hover:bg-brand-sand/90 hover:border-brand-orange/40 hover:text-brand-orange transition-all"
+            >
+              <span>Login to TASKVERSE</span>
+              <IconArrowUpRight size={14} />
+            </a>
           </div>
         </ScrollReveal>
 
@@ -740,14 +750,14 @@ function ProjectCta() {
         </p>
         <div className="mt-10 flex w-full flex-col sm:flex-row items-center justify-center gap-3.5">
           <Link
-            to="/contact"
+            to="/contact#conversation-form"
             className={cn(orangePill, "h-[50px] w-full sm:w-[220px] justify-center text-sm font-bold shadow-lg shadow-brand-orange/20")}
           >
             Start a Project
             <IconArrowRight size={15} />
           </Link>
           <Link
-            to="/contact"
+            to="/contact#conversation-form"
             className="inline-flex h-[50px] w-full sm:w-[220px] items-center justify-center rounded-full border border-white/20 bg-white/5 px-8 text-sm font-bold text-white hover:bg-white/10 transition"
           >
             Get In Touch
@@ -783,7 +793,24 @@ function SiteFooter() {
     >
       <div className="flex flex-col gap-10 md:flex-row md:justify-between">
         <div className="flex max-w-[300px] flex-col gap-5">
-          <Logo />
+          <Link
+            to="/"
+            onClick={() => {
+              if (typeof window !== "undefined" && window.location.pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            aria-label="PlaceValue Home"
+            className="inline-flex items-center transition-transform hover:scale-[1.03] w-fit"
+          >
+            <div className="flex items-center rounded-full bg-white px-3.5 py-1.5 shadow-sm">
+              <img
+                src="/placevalue-logo.png"
+                alt="PlaceValue"
+                className="h-7 sm:h-8 w-auto"
+              />
+            </div>
+          </Link>
           <div className="text-[13px] leading-[21px] text-brand-muted">
             <p>Technology · Consulting · Innovation</p>
             <p className="mt-3">
@@ -793,19 +820,20 @@ function SiteFooter() {
           </div>
           <div className="flex gap-2">
             {[
-              { icon: IconBrandLinkedin, label: "LinkedIn" },
-              { icon: IconBrandX, label: "X" },
-              { icon: IconBrandYoutube, label: "YouTube" },
-              { icon: IconBrandInstagram, label: "Instagram" },
-            ].map(({ icon: Icon, label }) => (
-              <button
+              { icon: IconBrandLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/placevalue-in" },
+              { icon: IconBrandThreads, label: "Threads", href: "https://www.threads.net/@placevalue.in" },
+              { icon: IconBrandInstagram, label: "Instagram", href: "https://www.instagram.com/placevalue.in/" },
+            ].map(({ icon: Icon, label, href }) => (
+              <a
                 key={label}
-                type="button"
+                href={href}
+                target="_blank"
+                rel="noreferrer"
                 aria-label={label}
-                className="flex size-9 items-center justify-center rounded-full border border-white/15 text-brand-muted hover:text-white transition"
+                className="flex size-9 items-center justify-center rounded-full border border-white/15 text-brand-muted hover:text-white hover:border-brand-orange/40 hover:text-brand-orange transition"
               >
                 <Icon size={16} stroke={1.75} />
-              </button>
+              </a>
             ))}
           </div>
         </div>
@@ -840,18 +868,18 @@ function SiteFooter() {
 
         <FooterColumn title="Get in Touch">
           <a
-            href="mailto:info@placevalue.com"
+            href="mailto:hello@placevalue.in"
             className="flex items-center gap-3 text-[13px] leading-4 text-brand-muted hover:text-white transition"
           >
             <IconMail size={14} />
-            info@placevalue.com
+            hello@placevalue.in
           </a>
           <a
-            href="tel:+911234567890"
+            href="tel:+918317474679"
             className="flex items-center gap-3 text-[13px] leading-4 text-brand-muted hover:text-white transition"
           >
             <IconPhone size={14} />
-            +91 12345 67890
+            +91 83174 74679
           </a>
           <span className="flex items-center gap-3 text-[13px] leading-4 text-brand-muted">
             <IconMapPin size={14} />

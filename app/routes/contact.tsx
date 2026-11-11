@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import {
   IconArrowDown,
@@ -6,6 +6,7 @@ import {
   IconArrowUpRight,
   IconBrandInstagram,
   IconBrandLinkedin,
+  IconBrandThreads,
   IconBrandX,
   IconBrandYoutube,
   IconCheck,
@@ -113,7 +114,7 @@ function ContactFormSection({
   return (
     <section
       id="conversation-form"
-      className="relative overflow-hidden px-6 py-10 md:px-12 md:py-16 lg:px-16 xl:px-24"
+      className="scroll-mt-24 sm:scroll-mt-28 relative overflow-hidden px-6 py-10 md:px-12 md:py-16 lg:px-16 xl:px-24"
     >
       <WatermarkText text="CONNECT" />
       <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14 items-start">
@@ -373,18 +374,8 @@ function ContactFormSection({
             A conversation starts here.
           </h2>
           <WordReveal className="mt-2 text-sm sm:text-base leading-relaxed text-brand-body mb-6" delay={0.15}>
-            Prefer to connect directly? Our official contact channels will be
-            shared here once confirmed.
+            Prefer to connect directly? Reach out to our team through any of our official channels below.
           </WordReveal>
-
-          {/* Verification notice box */}
-          <div className="mb-6 flex items-start gap-3 rounded-2xl border border-brand-line bg-brand-sand/60 p-4 text-xs text-brand-muted leading-relaxed">
-            <IconInfoCircle size={18} className="shrink-0 text-brand-muted mt-0.5" />
-            <span>
-              Contact details are awaiting verification. The placeholders below are not
-              active contact channels.
-            </span>
-          </div>
 
           {/* Direct channels list */}
           <div className="space-y-4">
@@ -397,9 +388,12 @@ function ContactFormSection({
                 <span className="text-[10px] font-bold uppercase tracking-wider text-brand-muted">
                   Business email
                 </span>
-                <span className="text-sm font-bold text-foreground">
-                  [Email to be confirmed]
-                </span>
+                <a
+                  href="mailto:hello@placevalue.in"
+                  className="text-sm font-bold text-foreground hover:text-brand-orange transition"
+                >
+                  hello@placevalue.in
+                </a>
               </div>
             </div>
 
@@ -412,9 +406,12 @@ function ContactFormSection({
                 <span className="text-[10px] font-bold uppercase tracking-wider text-brand-muted">
                   Phone number
                 </span>
-                <span className="text-sm font-bold text-foreground">
-                  [Phone number to be confirmed]
-                </span>
+                <a
+                  href="tel:+918317474679"
+                  className="text-sm font-bold text-foreground hover:text-brand-orange transition"
+                >
+                  +91 83174 74679
+                </a>
               </div>
             </div>
 
@@ -428,7 +425,7 @@ function ContactFormSection({
                   Office address
                 </span>
                 <span className="text-sm font-bold text-foreground">
-                  [Office address to be confirmed]
+                  Bengaluru, Karnataka, India
                 </span>
               </div>
             </div>
@@ -443,7 +440,7 @@ function ContactFormSection({
                   Working hours
                 </span>
                 <span className="text-sm font-bold text-foreground">
-                  [Working hours to be confirmed]
+                  Monday – Friday: 9:00 AM – 6:00 PM IST
                 </span>
               </div>
             </div>
@@ -456,24 +453,23 @@ function ContactFormSection({
             </span>
             <div className="flex flex-wrap gap-2.5">
               {[
-                { name: "LinkedIn", icon: IconBrandLinkedin },
-                { name: "X", icon: IconBrandX },
-                { name: "YouTube", icon: IconBrandYoutube },
-                { name: "Instagram", icon: IconBrandInstagram },
-              ].map(({ name, icon: Icon }) => (
-                <span
+                { name: "LinkedIn", icon: IconBrandLinkedin, href: "https://www.linkedin.com/company/placevalue-in" },
+                { name: "Instagram", icon: IconBrandInstagram, href: "https://www.instagram.com/placevalue.in/" },
+                { name: "Threads", icon: IconBrandThreads, href: "https://www.threads.net/@placevalue.in" },
+              ].map(({ name, icon: Icon, href }) => (
+                <a
                   key={name}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-brand-line bg-brand-sand/70 px-4 py-2 text-xs font-semibold text-foreground"
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-brand-line bg-brand-sand/70 px-4 py-2 text-xs font-semibold text-foreground hover:bg-brand-sand hover:border-brand-orange/40 hover:text-brand-orange transition-all"
                 >
                   <Icon size={14} />
                   {name}
                   <IconArrowUpRight size={12} className="text-brand-muted" />
-                </span>
+                </a>
               ))}
             </div>
-            <p className="mt-2 text-xs italic text-brand-muted">
-              Social destinations · to be confirmed
-            </p>
           </div>
         </div>
         </ScrollReveal>
@@ -726,8 +722,23 @@ function SiteFooter() {
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
         {/* Col 1: Brand */}
         <div className="flex flex-col gap-4">
-          <Link to="/" aria-label="PlaceValue home">
-            <Logo />
+          <Link
+            to="/"
+            onClick={() => {
+              if (typeof window !== "undefined" && window.location.pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            aria-label="PlaceValue Home"
+            className="inline-flex items-center transition-transform hover:scale-[1.03] w-fit"
+          >
+            <div className="flex items-center rounded-full bg-white px-3.5 py-1.5 shadow-sm">
+              <img
+                src="/placevalue-logo.png"
+                alt="PlaceValue"
+                className="h-7 sm:h-8 w-auto"
+              />
+            </div>
           </Link>
           <p className="text-xs font-semibold tracking-wider text-brand-muted uppercase">
             Technology · Consulting · Innovation
@@ -736,12 +747,9 @@ function SiteFooter() {
             Empowering education and organisations through technology and
             strategic insight.
           </p>
-          <p className="text-xs text-brand-muted italic mt-1">
-            Social links · awaiting verification
-          </p>
-          <div className="mt-1 flex items-center gap-3 text-brand-muted">
+          <div className="mt-2 flex items-center gap-3 text-brand-muted">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/placevalue-in"
               aria-label="LinkedIn"
               target="_blank"
               rel="noreferrer"
@@ -750,31 +758,22 @@ function SiteFooter() {
               <IconBrandLinkedin size={15} />
             </a>
             <a
-              href="https://x.com"
-              aria-label="X (Twitter)"
+              href="https://www.threads.net/@placevalue.in"
+              aria-label="Threads"
               target="_blank"
               rel="noreferrer"
               className="flex size-8 items-center justify-center rounded-full bg-brand-panel hover:text-white transition"
             >
-              <IconBrandX size={15} />
+              <IconBrandThreads size={15} />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/placevalue.in/"
               aria-label="Instagram"
               target="_blank"
               rel="noreferrer"
               className="flex size-8 items-center justify-center rounded-full bg-brand-panel hover:text-white transition"
             >
               <IconBrandInstagram size={15} />
-            </a>
-            <a
-              href="https://youtube.com"
-              aria-label="YouTube"
-              target="_blank"
-              rel="noreferrer"
-              className="flex size-8 items-center justify-center rounded-full bg-brand-panel hover:text-white transition"
-            >
-              <IconBrandYoutube size={15} />
             </a>
           </div>
         </div>
@@ -831,17 +830,23 @@ function SiteFooter() {
           <h3 className="font-display text-[13px] leading-4 font-bold text-white">
             Get in Touch
           </h3>
-          <span className="flex items-center gap-3 text-[13px] leading-4 text-brand-muted">
+          <a
+            href="mailto:hello@placevalue.in"
+            className="flex items-center gap-3 text-[13px] leading-4 text-brand-muted hover:text-white transition"
+          >
             <IconMail size={14} />
-            Email · to be confirmed
-          </span>
-          <span className="flex items-center gap-3 text-[13px] leading-4 text-brand-muted">
+            hello@placevalue.in
+          </a>
+          <a
+            href="tel:+918317474679"
+            className="flex items-center gap-3 text-[13px] leading-4 text-brand-muted hover:text-white transition"
+          >
             <IconPhone size={14} />
-            Phone · to be confirmed
-          </span>
+            +91 83174 74679
+          </a>
           <span className="flex items-center gap-3 text-[13px] leading-4 text-brand-muted">
             <IconMapPin size={14} />
-            Office address · to be confirmed
+            Bengaluru, Karnataka, India
           </span>
 
           <div className="mt-4 flex flex-col gap-2.5">
@@ -879,6 +884,17 @@ function SiteFooter() {
 
 export default function ContactRoute() {
   const [selectedEnquiry, setSelectedEnquiry] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash === "#conversation-form") {
+      const el = document.getElementById("conversation-form");
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 150);
+      }
+    }
+  }, []);
 
   return (
     <div className="min-h-full bg-background text-foreground">

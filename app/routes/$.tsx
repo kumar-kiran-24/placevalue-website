@@ -4,6 +4,10 @@ export function meta() {
   return [{ title: "Coming soon · PlaceValue" }];
 }
 
+export async function clientAction() {
+  return { ok: true };
+}
+
 export default function ComingSoonRoute() {
   return (
     <div className="flex min-h-full flex-col items-center justify-center gap-4 bg-background px-6 py-24 text-center">

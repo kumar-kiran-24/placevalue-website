@@ -4,6 +4,7 @@ import {
   IconArrowUpRight,
   IconBrandInstagram,
   IconBrandLinkedin,
+  IconBrandThreads,
   IconBrandX,
   IconBrandYoutube,
   IconChartBar,
@@ -25,7 +26,7 @@ import {
 import { cn } from "@/lib/utils";
 import { MotionNav, NAV_ITEMS } from "@/components/motion/MotionNav";
 import { FaqSection, TASKVERSE_FAQS } from "@/components/ui/FaqSection";
-import { TaskverseDashboardShowcase } from "@/components/taskverse/TaskverseDashboardShowcase";
+import { TaskverseHeroTypography } from "@/components/taskverse/TaskverseHeroTypography";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
@@ -226,7 +227,15 @@ function TaskverseEnterpriseStandards() {
                 <span className="size-3 rounded-full bg-brand-orange" />
                 <span className="text-xs font-bold tracking-wider uppercase text-white/80">TASKVERSE Live Feed</span>
               </div>
-              <span className="text-[11px] font-semibold text-[#DFCFB6] bg-white/10 px-3 py-1 rounded-full">v3.4 Production</span>
+              <a
+                href="https://taskverse.placevalue.in/login"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[11px] font-semibold text-[#DFCFB6] hover:text-white bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full inline-flex items-center gap-1 transition"
+              >
+                <span>Platform Login</span>
+                <IconArrowUpRight size={12} />
+              </a>
             </div>
 
             <div className="mt-6 flex flex-col gap-4 font-mono text-xs">
@@ -275,21 +284,24 @@ function TaskverseCta() {
         </p>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center">
-          <Link
-            to="/contact"
+          <a
+            href="https://taskverse.placevalue.in/login"
+            target="_blank"
+            rel="noreferrer"
             className={cn(
               orangePill,
               "h-[52px] px-8 text-sm font-bold shadow-md hover:brightness-105 transition-all",
             )}
           >
-            Request Institutional Demo
-            <IconArrowRight size={16} />
-          </Link>
+            Login to TASKVERSE
+            <IconArrowUpRight size={16} />
+          </a>
           <Link
-            to="/consultancy"
+            to="/contact"
             className="inline-flex h-[52px] items-center gap-2 rounded-full border border-brand-line bg-brand-sand px-8 text-sm font-bold text-foreground hover:bg-brand-sand/80 transition-colors"
           >
-            Explore Consulting Services
+            Request Institutional Demo
+            <IconArrowRight size={16} />
           </Link>
         </div>
       </ScrollReveal>
@@ -302,12 +314,45 @@ function SiteFooter() {
     <footer className="bg-brand-footer text-white px-6 md:px-12 lg:px-16 xl:px-24 pt-16 pb-12">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10 border-b border-white/10 pb-12">
         <div className="md:col-span-5 flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <span className="font-display text-2xl font-black tracking-tight text-white">PlaceValue</span>
-          </div>
+          <Link
+            to="/"
+            onClick={() => {
+              if (typeof window !== "undefined" && window.location.pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            aria-label="PlaceValue Home"
+            className="inline-flex items-center transition-transform hover:scale-[1.03] w-fit"
+          >
+            <div className="flex items-center rounded-full bg-white px-3.5 py-1.5 shadow-sm">
+              <img
+                src="/placevalue-logo.png"
+                alt="PlaceValue"
+                className="h-7 sm:h-8 w-auto"
+              />
+            </div>
+          </Link>
           <p className="max-w-sm text-sm text-brand-muted leading-relaxed">
             Empowering education through technology, strategic consulting and intelligent software solutions.
           </p>
+          <div className="flex gap-2 mt-1">
+            {[
+              { icon: IconBrandLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/placevalue-in" },
+              { icon: IconBrandThreads, label: "Threads", href: "https://www.threads.net/@placevalue.in" },
+              { icon: IconBrandInstagram, label: "Instagram", href: "https://www.instagram.com/placevalue.in/" },
+            ].map(({ icon: Icon, label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={label}
+                className="flex size-9 items-center justify-center rounded-full border border-white/15 text-brand-muted hover:text-white hover:border-brand-orange/40 hover:text-brand-orange transition"
+              >
+                <Icon size={16} stroke={1.75} />
+              </a>
+            ))}
+          </div>
         </div>
         <div className="md:col-span-3 flex flex-col gap-3">
           <p className="text-xs font-bold uppercase tracking-widest text-[#DFCFB6]">Quick Links</p>
@@ -322,13 +367,37 @@ function SiteFooter() {
           </ul>
         </div>
         <div className="md:col-span-4 flex flex-col gap-3">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#DFCFB6]">Platform Access</p>
-          <p className="text-sm text-brand-muted leading-relaxed">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#DFCFB6]">Get in Touch</p>
+          <a
+            href="mailto:hello@placevalue.in"
+            className="flex items-center gap-2 text-sm text-brand-muted hover:text-white transition"
+          >
+            <IconMail size={15} />
+            hello@placevalue.in
+          </a>
+          <a
+            href="tel:+918317474679"
+            className="flex items-center gap-2 text-sm text-brand-muted hover:text-white transition"
+          >
+            <IconPhone size={15} />
+            +91 83174 74679
+          </a>
+          <p className="text-xs text-brand-muted leading-relaxed mt-1">
             TASKVERSE is available for licensed university campuses, academies and enterprise partner organizations.
           </p>
-          <Link to="/contact" className="text-sm font-bold text-brand-orange hover:underline inline-flex items-center gap-1.5 mt-2">
-            Contact Support & Licensing <IconArrowUpRight size={14} />
-          </Link>
+          <div className="flex flex-wrap items-center gap-4 mt-1">
+            <a
+              href="https://taskverse.placevalue.in/login"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-bold text-white hover:text-brand-orange inline-flex items-center gap-1.5 transition"
+            >
+              Sign In to Platform <IconArrowUpRight size={14} />
+            </a>
+            <Link to="/contact" className="text-sm font-bold text-brand-orange hover:underline inline-flex items-center gap-1.5">
+              Contact Support & Licensing <IconArrowUpRight size={14} />
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -353,9 +422,6 @@ function TaskverseHero() {
 
   return (
     <section className="relative min-h-[85vh] lg:min-h-screen bg-background text-foreground overflow-hidden flex flex-col justify-between">
-      {/* Motion Nav */}
-      <MotionNav activeNav="TASKVERSE" theme="light" />
-
       {/* Decorative Oversized Watermark */}
       <WatermarkText text="TASKVERSE" opacity={0.035} />
 
@@ -395,12 +461,21 @@ function TaskverseHero() {
             {/* Action Buttons */}
             <ScrollReveal direction="up" delay={0.2}>
               <div className="mt-8 flex flex-wrap items-center gap-3.5">
-                <Link
-                  to="/contact"
+                <a
+                  href="https://taskverse.placevalue.in/login"
+                  target="_blank"
+                  rel="noreferrer"
                   className={cn(
                     orangePill,
                     "h-[50px] px-7 text-sm font-bold shadow-sm hover:brightness-105 transition-all"
                   )}
+                >
+                  <span>Login to TASKVERSE</span>
+                  <IconArrowUpRight size={15} />
+                </a>
+                <Link
+                  to="/contact"
+                  className="inline-flex h-[50px] items-center gap-2 rounded-full border border-brand-line bg-brand-sand/60 px-6 text-sm font-semibold text-foreground hover:bg-brand-sand/90 hover:border-brand-orange/40 hover:text-brand-orange transition-all"
                 >
                   Request Institutional Demo
                   <IconArrowRight size={15} />
@@ -408,19 +483,19 @@ function TaskverseHero() {
                 <button
                   type="button"
                   onClick={scrollToOverview}
-                  className="inline-flex h-[50px] items-center gap-2 rounded-full border border-brand-line bg-brand-sand/40 px-6 text-sm font-semibold text-foreground hover:bg-brand-sand/70 transition-all cursor-pointer"
+                  className="inline-flex h-[50px] items-center gap-2 rounded-full border border-brand-line/60 bg-transparent px-5 text-sm font-medium text-brand-body hover:text-foreground hover:bg-brand-sand/40 transition-all cursor-pointer"
                 >
-                  <span>Architecture</span>
+                  <span>Explore TASKVERSE</span>
                   <IconChevronDown size={15} className="text-brand-muted" />
                 </button>
               </div>
             </ScrollReveal>
           </div>
 
-          {/* Right Column: Clean Light-Themed Dashboard Preview */}
+          {/* Right Column: Sophisticated Animated Typography Experience */}
           <div className="lg:col-span-7">
             <ScrollReveal direction="up" delay={0.15} yOffset={24}>
-              <TaskverseDashboardShowcase theme="light" />
+              <TaskverseHeroTypography />
             </ScrollReveal>
           </div>
         </div>
@@ -431,7 +506,8 @@ function TaskverseHero() {
 
 export default function TaskverseRoute() {
   return (
-    <div className="min-h-full bg-background text-foreground">
+    <div className="min-h-full bg-background text-foreground relative">
+      <MotionNav activeNav="TASKVERSE" theme="light" />
       <TaskverseHero />
       <TaskversePlatformOverview />
       <TaskverseStatsBand />

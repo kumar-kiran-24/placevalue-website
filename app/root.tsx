@@ -1,5 +1,3 @@
-import { configureTracking } from "@agent-native/core/client/analytics";
-import { appPath } from "@agent-native/core/client/api-path";
 import { createAgentNativeQueryClient } from "@agent-native/core/client/hooks";
 import { AppProviders } from "@agent-native/toolkit/app/providers";
 import { useState } from "react";
@@ -9,16 +7,9 @@ import type { LinksFunction } from "react-router";
 import { Layout as AppLayout } from "@/components/layout/Layout";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { AppToolkitProvider } from "@/components/ui/toolkit-provider";
-import { APP_NAME, APP_TITLE } from "@/lib/app-config";
+import { APP_TITLE } from "@/lib/app-config";
 
 import stylesheet from "./global.css?url";
-
-configureTracking({
-  getDefaultProps: (_name, properties) => ({
-    ...properties,
-    app: APP_NAME,
-  }),
-});
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },

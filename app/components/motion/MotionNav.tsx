@@ -104,7 +104,15 @@ export function MotionNav({ activeNav = "Home", theme = "dark" }: MotionNavProps
         {/* Right: CTA Button */}
         <div className="hidden md:flex items-center shrink-0">
           <Link
-            to="/contact"
+            to="/contact#conversation-form"
+            onClick={() => {
+              if (typeof window !== "undefined" && window.location.pathname === "/contact") {
+                const el = document.getElementById("conversation-form");
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth" });
+                }
+              }
+            }}
             className={cn(
               orangePill,
               isScrolled
@@ -120,7 +128,16 @@ export function MotionNav({ activeNav = "Home", theme = "dark" }: MotionNavProps
         {/* Mobile controls */}
         <div className="flex items-center gap-2 md:hidden shrink-0">
           <Link
-            to="/contact"
+            to="/contact#conversation-form"
+            onClick={() => {
+              setMobileOpen(false);
+              if (typeof window !== "undefined" && window.location.pathname === "/contact") {
+                const el = document.getElementById("conversation-form");
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth" });
+                }
+              }
+            }}
             className={cn(
               orangePill,
               isScrolled ? "h-[30px] px-3 text-[11px]" : "h-[36px] px-3.5 text-xs"

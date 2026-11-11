@@ -20,6 +20,20 @@ export default defineConfig({
     },
   },
   plugins: [
+    {
+      name: "agent-native-api-mock",
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.url && req.url.startsWith("/_agent-native/")) {
+            res.statusCode = 200;
+            res.setHeader("Content-Type", "application/json");
+            res.end(JSON.stringify({ ok: true, stored: false }));
+            return;
+          }
+          next();
+        });
+      },
+    },
     tailwindcss(),
     reactRouter(),
   ],

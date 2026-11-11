@@ -5,6 +5,7 @@ import {
   IconBookmark,
   IconBrandInstagram,
   IconBrandLinkedin,
+  IconBrandThreads,
   IconBrandX,
   IconBrandYoutube,
   IconCalendar,
@@ -272,12 +273,45 @@ function SiteFooter() {
     <footer className="bg-brand-footer text-white px-6 md:px-12 lg:px-16 xl:px-24 pt-16 pb-12">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10 border-b border-white/10 pb-12">
         <div className="md:col-span-5 flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <span className="font-display text-2xl font-black tracking-tight text-white">PlaceValue</span>
-          </div>
+          <Link
+            to="/"
+            onClick={() => {
+              if (typeof window !== "undefined" && window.location.pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            aria-label="PlaceValue Home"
+            className="inline-flex items-center transition-transform hover:scale-[1.03] w-fit"
+          >
+            <div className="flex items-center rounded-full bg-white px-3.5 py-1.5 shadow-sm">
+              <img
+                src="/placevalue-logo.png"
+                alt="PlaceValue"
+                className="h-7 sm:h-8 w-auto"
+              />
+            </div>
+          </Link>
           <p className="max-w-sm text-sm text-brand-muted leading-relaxed">
             Leading conversations in educational technology, system architectures and meaningful learning outcomes.
           </p>
+          <div className="flex gap-2 mt-1">
+            {[
+              { icon: IconBrandLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/placevalue-in" },
+              { icon: IconBrandThreads, label: "Threads", href: "https://www.threads.net/@placevalue.in" },
+              { icon: IconBrandInstagram, label: "Instagram", href: "https://www.instagram.com/placevalue.in/" },
+            ].map(({ icon: Icon, label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={label}
+                className="flex size-9 items-center justify-center rounded-full border border-white/15 text-brand-muted hover:text-white hover:border-brand-orange/40 hover:text-brand-orange transition"
+              >
+                <Icon size={16} stroke={1.75} />
+              </a>
+            ))}
+          </div>
         </div>
         <div className="md:col-span-3 flex flex-col gap-3">
           <p className="text-xs font-bold uppercase tracking-widest text-[#DFCFB6]">Quick Links</p>
@@ -292,12 +326,23 @@ function SiteFooter() {
           </ul>
         </div>
         <div className="md:col-span-4 flex flex-col gap-3">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#DFCFB6]">Editorial Submissions</p>
-          <p className="text-sm text-brand-muted leading-relaxed">
-            Interested in collaborating with the PlaceValue Research & Strategy team on publications?
-          </p>
+          <p className="text-xs font-bold uppercase tracking-widest text-[#DFCFB6]">Get in Touch</p>
+          <a
+            href="mailto:hello@placevalue.in"
+            className="flex items-center gap-2 text-sm text-brand-muted hover:text-white transition"
+          >
+            <IconMail size={15} />
+            hello@placevalue.in
+          </a>
+          <a
+            href="tel:+918317474679"
+            className="flex items-center gap-2 text-sm text-brand-muted hover:text-white transition"
+          >
+            <IconPhone size={15} />
+            +91 83174 74679
+          </a>
           <Link to="/contact" className="text-sm font-bold text-brand-orange hover:underline inline-flex items-center gap-1.5 mt-2">
-            Get in touch with editorial <IconArrowUpRight size={14} />
+            Contact Editorial & Strategy <IconArrowUpRight size={14} />
           </Link>
         </div>
       </div>

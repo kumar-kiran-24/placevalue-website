@@ -6,6 +6,7 @@ import {
   IconArrowUpRight,
   IconBrandInstagram,
   IconBrandLinkedin,
+  IconBrandThreads,
   IconBrandX,
   IconBrandYoutube,
   IconBulb,
@@ -661,14 +662,14 @@ function AboutCta() {
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
-            to="/contact"
+            to="/contact#conversation-form"
             className="inline-flex items-center gap-2 rounded-full bg-brand-orange px-7 py-3.5 text-sm font-bold text-white shadow-md transition hover:brightness-105 active:scale-95"
           >
             Start a Project
             <IconArrowRight size={15} />
           </Link>
           <Link
-            to="/contact"
+            to="/contact#conversation-form"
             className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
           >
             Get In Touch
@@ -685,8 +686,23 @@ function SiteFooter() {
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
         {/* Col 1: Brand */}
         <div className="flex flex-col gap-4">
-          <Link to="/" aria-label="PlaceValue home">
-            <Logo />
+          <Link
+            to="/"
+            onClick={() => {
+              if (typeof window !== "undefined" && window.location.pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            aria-label="PlaceValue Home"
+            className="inline-flex items-center transition-transform hover:scale-[1.03] w-fit"
+          >
+            <div className="flex items-center rounded-full bg-white px-3.5 py-1.5 shadow-sm">
+              <img
+                src="/placevalue-logo.png"
+                alt="PlaceValue"
+                className="h-7 sm:h-8 w-auto"
+              />
+            </div>
           </Link>
           <p className="text-xs font-semibold tracking-wider text-brand-muted uppercase">
             Technology · Consulting · Innovation
@@ -697,7 +713,7 @@ function SiteFooter() {
           </p>
           <div className="mt-2 flex items-center gap-3 text-brand-muted">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/placevalue-in"
               aria-label="LinkedIn"
               target="_blank"
               rel="noreferrer"
@@ -706,31 +722,22 @@ function SiteFooter() {
               <IconBrandLinkedin size={15} />
             </a>
             <a
-              href="https://x.com"
-              aria-label="X (Twitter)"
+              href="https://www.threads.net/@placevalue.in"
+              aria-label="Threads"
               target="_blank"
               rel="noreferrer"
               className="flex size-8 items-center justify-center rounded-full bg-brand-panel hover:text-white transition"
             >
-              <IconBrandX size={15} />
+              <IconBrandThreads size={15} />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/placevalue.in/"
               aria-label="Instagram"
               target="_blank"
               rel="noreferrer"
               className="flex size-8 items-center justify-center rounded-full bg-brand-panel hover:text-white transition"
             >
               <IconBrandInstagram size={15} />
-            </a>
-            <a
-              href="https://youtube.com"
-              aria-label="YouTube"
-              target="_blank"
-              rel="noreferrer"
-              className="flex size-8 items-center justify-center rounded-full bg-brand-panel hover:text-white transition"
-            >
-              <IconBrandYoutube size={15} />
             </a>
           </div>
         </div>
@@ -788,18 +795,18 @@ function SiteFooter() {
             Get in Touch
           </h3>
           <a
-            href="mailto:info@placevalue.com"
+            href="mailto:hello@placevalue.in"
             className="flex items-center gap-3 text-[13px] leading-4 text-brand-muted hover:text-white transition"
           >
             <IconMail size={14} />
-            info@placevalue.com
+            hello@placevalue.in
           </a>
           <a
-            href="tel:+911234567890"
+            href="tel:+918317474679"
             className="flex items-center gap-3 text-[13px] leading-4 text-brand-muted hover:text-white transition"
           >
             <IconPhone size={14} />
-            +91 12345 67890
+            +91 83174 74679
           </a>
           <span className="flex items-center gap-3 text-[13px] leading-4 text-brand-muted">
             <IconMapPin size={14} />
