@@ -110,20 +110,6 @@ const PILLARS: { title: string; body: string }[] = [
   },
 ];
 
-const HERO_STATS = [
-  { value: "50+", label: "Projects Delivered" },
-  { value: "100+", label: "Students Empowered" },
-  { value: "4+", label: "Years of Excellence" },
-];
-
-const IMPACT_METRICS = [
-  { value: "50+", label: "Projects Delivered", tone: "text-foreground" },
-  { value: "20+", label: "Happy Clients", tone: "text-brand-blue" },
-  { value: "100+", label: "Students Empowered", tone: "text-brand-orange" },
-  { value: "4+", label: "Years of Experience", tone: "text-foreground" },
-];
-
-
 const FOOTER_QUICK_LINKS = NAV_ITEMS;
 
 const FOOTER_SERVICES = [
@@ -149,12 +135,8 @@ function Logo({ className }: { className?: string }) {
   );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase mx-auto sm:mx-0">
-      {children}
-    </span>
-  );
+function SectionLabel({ children }: { children?: React.ReactNode }) {
+  return null;
 }
 
 function Hero() {
@@ -293,10 +275,10 @@ function Hero() {
 
           {/* Short supporting sentence underneath */}
           <ScrollReveal delay={0.46} trigger={isIntroComplete}>
-            <p className="mt-3.5 sm:mt-5 max-w-[540px] text-[14px] xs:text-[15px] sm:text-[16.5px] md:text-[17.5px] leading-[1.55] sm:leading-[1.6] text-[#F5EFEB]/85 font-normal">
+            <WordReveal className="mt-3.5 sm:mt-5 max-w-[540px] text-[14px] xs:text-[15px] sm:text-[16.5px] md:text-[17.5px] leading-[1.55] sm:leading-[1.6] text-[#F5EFEB]/85 font-normal">
               We blend technology, strategy and innovation to help educational
               institutions and organisations create lasting impact.
-            </p>
+            </WordReveal>
           </ScrollReveal>
 
           {/* Thin elegant golden underline directly beneath supporting sentence */}
@@ -354,9 +336,9 @@ function ServiceCard({
           <h3 className="mt-4 font-display text-[20px] lg:text-[22px] font-extrabold tracking-[-0.02em] text-foreground transition-colors group-hover:text-brand-night text-center sm:text-left">
             {title}
           </h3>
-          <p className="mt-2 text-[13px] sm:text-[14px] leading-[1.55] text-brand-body text-center sm:text-left">
+          <WordReveal className="mt-2 text-[13px] sm:text-[14px] leading-[1.55] text-brand-body text-center sm:text-left">
             {body}
-          </p>
+          </WordReveal>
         </div>
         <div className="mt-6 border-t border-brand-line/60 pt-3 text-center sm:text-left">
           <span className="text-xs leading-tight text-brand-muted font-medium">
@@ -382,9 +364,6 @@ function Services() {
         {/* Left info column with ScrollReveal */}
         <ScrollReveal>
           <div className="flex flex-col items-center text-center sm:items-start sm:text-left gap-4 max-w-md mx-auto sm:mx-0">
-            <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase mx-auto sm:mx-0">
-              OUR SERVICES
-            </span>
             <h2 className="font-display text-[38px] sm:text-[46px] lg:text-[50px] leading-[1.0] font-extrabold tracking-[-0.03em] text-foreground text-center sm:text-left">
               <span>Expertise that</span>
               <br />
@@ -462,33 +441,6 @@ function About() {
             Know More About Us
             <IconArrowRight size={14} />
           </Link>
-        </div>
-      </ScrollReveal>
-    </section>
-  );
-}
-
-function Impact() {
-  return (
-    <section
-      data-node-id="3311:1274"
-      className="px-6 pb-16 md:hidden"
-    >
-      <ScrollReveal>
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[20px] border border-brand-line bg-brand-line">
-          {IMPACT_METRICS.map((metric) => (
-            <div key={metric.label} className="flex flex-col items-center text-center gap-1 bg-background p-4">
-              <span
-                className={cn(
-                  "font-display text-[40px] leading-none font-extrabold tracking-[-1.5px]",
-                  metric.tone,
-                )}
-              >
-                {metric.value}
-              </span>
-              <span className="text-xs text-brand-body">{metric.label}</span>
-            </div>
-          ))}
         </div>
       </ScrollReveal>
     </section>
@@ -693,9 +645,9 @@ function TaskverseSection() {
             TASKVERSE
           </h2>
 
-          <p className="mt-5 text-[16px] sm:text-[17px] leading-[1.65] text-brand-body max-w-md text-center lg:text-left mx-auto lg:mx-0">
+          <WordReveal className="mt-5 text-[16px] sm:text-[17px] leading-[1.65] text-brand-body max-w-md text-center lg:text-left mx-auto lg:mx-0">
             Adaptive skill diagnostics and verifiable capability portfolios engineered for modern education.
-          </p>
+          </WordReveal>
 
           <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3.5">
             <Link
@@ -748,18 +700,15 @@ function ProjectCta() {
       />
 
       <ScrollReveal className="relative z-10 mx-auto flex max-w-[860px] flex-col items-center">
-        <span className="inline-flex items-center rounded-full bg-white/10 px-5 py-2 text-[11px] font-bold tracking-[2px] text-white/60">
-          LET&apos;S BUILD TOGETHER
-        </span>
-        <h2 className="mt-8 font-display text-[44px] sm:text-[56px] md:text-[68px] lg:text-[74px] leading-[0.98] font-extrabold tracking-[-0.03em] text-white">
+        <h2 className="font-display text-[44px] sm:text-[56px] md:text-[68px] lg:text-[74px] leading-[0.98] font-extrabold tracking-[-0.03em] text-white">
           <span className="block">Ready to Start Your</span>
           <span className="block text-outline">Next Project?</span>
         </h2>
-        <p className="mt-6 max-w-[560px] text-base leading-6 text-white/60 md:text-[17px] md:leading-[26px]">
+        <WordReveal className="mt-6 max-w-[560px] text-base leading-6 text-white/60 md:text-[17px] md:leading-[26px]">
           Let&apos;s collaborate to bring your ideas to life — whether it&apos;s
           a technology solution, a consulting engagement, or a student
           programme.
-        </p>
+        </WordReveal>
         <div className="mt-10 flex w-full flex-col sm:flex-row items-center justify-center gap-3.5">
           <Link
             to="/contact#conversation-form"
@@ -958,7 +907,6 @@ export default function HomeRoute() {
       <Hero />
       <Services />
       <About />
-      <Impact />
       <TaskverseSection />
       <FaqSection />
       <ProjectCta />

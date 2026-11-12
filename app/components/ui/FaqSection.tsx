@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { IconArrowRight } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
-import { ScrollReveal, WatermarkText } from "@/components/motion/MotionText";
+import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export interface FaqItem {
   id: string;
@@ -364,9 +364,9 @@ export function FaqSection({
 
             {showContactPrompt && (
               <div className="mt-8 sm:mt-10 pt-6 border-t border-brand-line/60 flex flex-col items-center text-center lg:items-start lg:text-left w-full">
-                <p className="text-sm leading-relaxed text-brand-muted max-w-sm mx-auto lg:mx-0">
+                <WordReveal className="text-sm leading-relaxed text-brand-muted max-w-sm mx-auto lg:mx-0">
                   Have a specific question about your institution or project? We are always glad to connect.
-                </p>
+                </WordReveal>
                 <Link
                   to="/contact"
                   className="mt-3.5 inline-flex items-center justify-center lg:justify-start gap-2 text-sm font-bold text-brand-orange hover:gap-3 transition-all"

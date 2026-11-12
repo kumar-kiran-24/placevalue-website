@@ -68,12 +68,8 @@ function Logo({ className }: { className?: string }) {
   );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase mx-auto sm:mx-0">
-      {children}
-    </span>
-  );
+function SectionLabel({ children }: { children?: React.ReactNode }) {
+  return null;
 }
 
 function ContactFormSection({
@@ -581,9 +577,9 @@ function WhatCanWeHelpWith({
                   <h3 className="font-display text-xl font-bold tracking-tight text-foreground">
                     {card.type}
                   </h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-brand-body">
+                  <WordReveal className="mt-2.5 text-sm leading-relaxed text-brand-body">
                     {card.body}
-                  </p>
+                  </WordReveal>
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-brand-line/60 flex items-center justify-between">
@@ -638,9 +634,9 @@ function WhatCanWeHelpWith({
                   <h3 className="font-display text-xl font-bold tracking-tight text-foreground">
                     {card.type}
                   </h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-brand-body">
+                  <WordReveal className="mt-2.5 text-sm leading-relaxed text-brand-body">
                     {card.body}
-                  </p>
+                  </WordReveal>
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-brand-line/60 flex items-center justify-between">
@@ -922,8 +918,6 @@ export default function ContactRoute() {
     <div className="min-h-full bg-background text-foreground">
       <PlainHero
         activeNav="Contact"
-        badge="LET'S BUILD TOGETHER"
-        badgeRight="START A CONVERSATION"
         watermarkText="CONNECT"
         line1="Good things start"
         line2Outline="with a"

@@ -58,12 +58,8 @@ function Logo({ className }: { className?: string }) {
   );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase mx-auto sm:mx-0">
-      {children}
-    </span>
-  );
+function SectionLabel({ children }: { children?: React.ReactNode }) {
+  return null;
 }
 
 const PLATFORM_PILLARS = [
@@ -122,9 +118,9 @@ function TaskversePlatformOverview() {
             <br />
             <span className="text-outline">through intelligent assessment.</span>
           </h2>
-          <p className="mt-2 text-[15px] sm:text-[16px] leading-[1.65] text-brand-body text-center md:text-left">
+          <WordReveal className="mt-2 text-[15px] sm:text-[16px] leading-[1.65] text-brand-body text-center md:text-left">
             TASKVERSE was engineered from the ground up to solve the disconnect between academic evaluation and real-world workplace readiness.
-          </p>
+          </WordReveal>
         </ScrollReveal>
 
         {/* 2x2 Grid of Capabilities */}
@@ -147,9 +143,9 @@ function TaskversePlatformOverview() {
                     <h3 className="mt-6 font-display text-[22px] sm:text-[24px] font-extrabold text-foreground group-hover:text-brand-night transition-colors">
                       {pillar.title}
                     </h3>
-                    <p className="mt-3 text-[14px] sm:text-[15px] leading-[1.6] text-brand-body">
+                    <WordReveal className="mt-3 text-[14px] sm:text-[15px] leading-[1.6] text-brand-body">
                       {pillar.description}
-                    </p>
+                    </WordReveal>
                   </div>
 
                   <div className="mt-8 border-t border-brand-line/50 pt-5">

@@ -41,12 +41,8 @@ const primaryPill =
 const orangePill =
   "inline-flex items-center justify-center gap-2 rounded-full bg-brand-orange text-sm font-bold text-white";
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase mx-auto sm:mx-0">
-      {children}
-    </span>
-  );
+function SectionLabel({ children }: { children?: React.ReactNode }) {
+  return null;
 }
 
 const FEATURED_ARTICLE = {
@@ -198,9 +194,9 @@ function ArticlesGrid() {
                   <h3 className="mt-4 font-display text-[20px] sm:text-[22px] font-extrabold leading-snug text-foreground">
                     {art.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-[1.6] text-brand-body">
+                  <WordReveal className="mt-3 text-sm leading-[1.6] text-brand-body">
                     {art.excerpt}
-                  </p>
+                  </WordReveal>
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-brand-line/50 flex items-center justify-between">
@@ -249,9 +245,9 @@ function WhitepapersSection() {
                   <h3 className="mt-4 font-display text-xl font-extrabold text-foreground">
                     {wp.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-brand-body">
+                  <WordReveal className="mt-2 text-sm leading-relaxed text-brand-body">
                     {wp.desc}
-                  </p>
+                  </WordReveal>
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-brand-line/60">
@@ -380,8 +376,6 @@ export default function InsightsRoute() {
     <div className="min-h-full bg-background text-foreground">
       <PlainHero
         activeNav="Insights"
-        badge="THOUGHT LEADERSHIP"
-        badgeRight="PERSPECTIVES & ESSAYS"
         watermarkText="INSIGHTS"
         line1="Perspectives on the"
         line2Outline="Future of"

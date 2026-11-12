@@ -4,7 +4,7 @@ import { MaskedLine, ScrollReveal, WatermarkText, WordReveal } from "@/component
 
 export interface PlainHeroProps {
   activeNav: "About" | "Consultancy" | "TASKVERSE" | "Insights" | "Contact";
-  badge: string;
+  badge?: string;
   badgeRight?: string;
   watermarkText: string;
   line1: string;
@@ -55,20 +55,8 @@ export function PlainHero({
         <WatermarkText text={watermarkText} />
 
         <div className="relative z-10 max-w-6xl mx-auto">
-          {/* Top badges row */}
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between items-center text-center sm:text-left">
-            <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase mx-auto sm:mx-0">
-              {badge}
-            </span>
-            {badgeRight && (
-              <span className="text-[11px] font-bold tracking-[0.25em] text-brand-muted uppercase text-center sm:text-right">
-                {badgeRight}
-              </span>
-            )}
-          </div>
-
           {/* Headline matching the editorial typography in reference recording */}
-          <div className="mt-8 sm:mt-10 max-w-5xl flex flex-col items-center text-center sm:items-start sm:text-left mx-auto sm:mx-0">
+          <div className="max-w-5xl flex flex-col items-center text-center sm:items-start sm:text-left mx-auto sm:mx-0">
             <h1 className="font-display font-extrabold tracking-[-0.035em] text-foreground text-[44px] sm:text-[64px] md:text-[76px] lg:text-[88px] leading-[1.02] text-center sm:text-left">
               {/* Line 1: Solid bold */}
               <MaskedLine delay={0.06}>

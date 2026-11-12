@@ -65,12 +65,8 @@ function Logo({ className }: { className?: string }) {
   );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase mx-auto sm:mx-0">
-      {children}
-    </span>
-  );
+function SectionLabel({ children }: { children?: React.ReactNode }) {
+  return null;
 }
 
 function OurBeginnings() {
@@ -111,11 +107,11 @@ function OurBeginnings() {
             <h3 className="mt-3 text-xl sm:text-2xl font-bold tracking-tight text-foreground text-center lg:text-left">
               Bridging the divide between talent and opportunity.
             </h3>
-            <p className="mt-2 text-sm sm:text-base leading-relaxed text-brand-body text-center lg:text-left">
+            <WordReveal className="mt-2 text-sm sm:text-base leading-relaxed text-brand-body text-center lg:text-left">
               PlaceValue was established by Abhishek Sarangapani and Nikita Valke under the foundational conviction
               that talent is universal, but opportunity is not. We unite technology consulting, modern digital platforms,
               and experiential student initiatives to create lasting capability for educational institutions and learners.
-            </p>
+            </WordReveal>
           </div>
         </ScrollReveal>
       </div>
@@ -177,10 +173,10 @@ function WhatGuidesUs() {
                 01
               </span>
             </div>
-            <p className="my-8 text-lg sm:text-xl font-medium leading-relaxed text-white/90">
+            <WordReveal className="my-8 text-lg sm:text-xl font-medium leading-relaxed text-white/90">
               To connect education and technology in ways that make learning more
               meaningful and change more practical.
-            </p>
+            </WordReveal>
             <span className="self-start rounded-full border border-brand-orange/30 bg-brand-orange/15 px-3.5 py-1 text-[11px] font-bold tracking-[0.15em] text-brand-orange uppercase">
               WHY WE DO IT
             </span>
@@ -198,10 +194,10 @@ function WhatGuidesUs() {
                 02
               </span>
             </div>
-            <p className="my-8 text-lg sm:text-xl font-medium leading-relaxed text-white/90">
+            <WordReveal className="my-8 text-lg sm:text-xl font-medium leading-relaxed text-white/90">
               An education ecosystem where people can learn, contribute and grow,
               supported by thoughtful technology.
-            </p>
+            </WordReveal>
             <span className="self-start rounded-full border border-brand-blue/30 bg-brand-blue/15 px-3.5 py-1 text-[11px] font-bold tracking-[0.15em] text-brand-blue uppercase">
               WHAT WE LOOK TOWARDS
             </span>
@@ -481,10 +477,10 @@ function ContextSection() {
         <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground">
           Different perspectives. Shared possibilities.
         </h2>
-        <p className="mt-4 max-w-3xl text-base sm:text-lg leading-relaxed text-brand-body">
+        <WordReveal className="mt-4 max-w-3xl text-base sm:text-lg leading-relaxed text-brand-body">
           Our work brings education technology and consulting into conversations
           with institutions, students and organisations.
-        </p>
+        </WordReveal>
       </div>
 
       {/* 2-column layout */}
@@ -873,8 +869,6 @@ export default function AboutRoute() {
     <div className="min-h-full bg-background text-foreground">
       <PlainHero
         activeNav="About"
-        badge="ABOUT PLACEVALUE"
-        badgeRight="PEOPLE · PURPOSE · POSSIBILITY"
         watermarkText="ABOUT"
         line1="Built on Innovation."
         line2Outline="Driven by"
