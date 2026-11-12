@@ -33,7 +33,7 @@ export function meta() {
   return createSeoMeta({
     title: "PlaceValue | Education Technology & Digital Innovation",
     description:
-      "We blend technology, strategy and innovation to help educational institutions and organisations create lasting impact.",
+      "PlaceValue combines education technology, consulting, software development and innovation to create meaningful impact. Discover our platforms and strategic technology.",
     canonicalPath: "/",
   });
 }

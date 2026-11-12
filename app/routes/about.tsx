@@ -32,7 +32,7 @@ export function meta() {
   return createSeoMeta({
     title: "About PlaceValue | Our Story, Mission & Vision",
     description:
-      "PlaceValue works at the intersection of education technology and consulting, connecting the needs of institutions, students and organisations.",
+      "Learn about PlaceValue, our mission, vision and values. We partner with educational institutions, businesses and innovators to build transformative digital solutions.",
     canonicalPath: "/about",
   });
 }

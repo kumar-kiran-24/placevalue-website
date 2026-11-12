@@ -25,9 +25,9 @@ import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/Mot
 
 export function meta() {
   return createSeoMeta({
-    title: "Insights | PlaceValue",
+    title: "Insights | Technology, Education & Innovation | PlaceValue",
     description:
-      "Research, editorial viewpoints and practical frameworks on educational technology, artificial intelligence and modern institutional transformation.",
+      "Explore insights, articles and strategic perspectives on education technology, software engineering, AI adoption and digital innovation from PlaceValue.",
     canonicalPath: "/insights",
   });
 }

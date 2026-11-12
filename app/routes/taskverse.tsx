@@ -34,7 +34,7 @@ export function meta() {
   return createSeoMeta({
     title: "TASKVERSE | AI-Powered Assessment & Learning Platform",
     description:
-      "TASKVERSE is PlaceValue's proprietary educational platform bringing real-time analytics, adaptive skill pathways and verifiable project experience together in one place.",
+      "Discover TASKVERSE by PlaceValue — an AI-powered assessment and learning platform transforming student evaluations, skill verification and personalized learning workflows.",
     canonicalPath: "/taskverse",
   });
 }

@@ -24,7 +24,7 @@ export function OrganizationJsonLd() {
     logo: "https://placevalue.in/placevalue-logo.png",
     image: "https://placevalue.in/placevalue-logo.png",
     description:
-      "We blend technology, strategy and innovation to help educational institutions and organisations create lasting impact.",
+      "PlaceValue combines education technology, consulting, software development and innovation to create meaningful impact.",
     email: "hello@placevalue.in",
     telephone: "+918317474679",
     address: {
@@ -38,6 +38,14 @@ export function OrganizationJsonLd() {
       "https://www.instagram.com/placevalue.in/",
       "https://www.threads.net/@placevalue.in",
     ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+918317474679",
+      contactType: "customer service",
+      email: "hello@placevalue.in",
+      areaServed: "IN",
+      availableLanguage: ["en"],
+    },
   };
 
   return <JsonLd data={organizationData} />;
@@ -51,10 +59,11 @@ export function WebSiteJsonLd() {
     name: "PlaceValue",
     url: "https://placevalue.in",
     description:
-      "Empowering Education for a Brighter Tomorrow through technology, strategy and innovation.",
+      "PlaceValue combines education technology, consulting, software development and innovation to create meaningful impact.",
     publisher: {
       "@id": "https://placevalue.in/#organization",
     },
+    inLanguage: "en-US",
   };
 
   return <JsonLd data={websiteData} />;

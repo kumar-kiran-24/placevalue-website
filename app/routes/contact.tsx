@@ -35,7 +35,7 @@ export function meta() {
   return createSeoMeta({
     title: "Contact PlaceValue | Let's Work Together",
     description:
-      "Educational institutions, businesses, startups and individuals — bring your ideas, challenges and ambitions to PlaceValue. Let's explore what we can build together.",
+      "Connect with PlaceValue. Discuss educational technology partnerships, custom software development, consulting engagements and innovative digital solutions.",
     canonicalPath: "/contact",
   });
 }
