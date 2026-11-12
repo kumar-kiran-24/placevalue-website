@@ -26,25 +26,28 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
+import { createSeoMeta, createCanonicalLink } from "@/lib/seo";
 import { PlainHero } from "@/components/layout/PlainHero";
 import { FaqSection, CONTACT_FAQS } from "@/components/ui/FaqSection";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
-  return [
-    { title: "Contact Us — PlaceValue" },
-    {
-      name: "description",
-      content:
-        "Educational institutions, businesses, startups and individuals — bring your ideas, challenges and ambitions to PlaceValue. Let's explore what we can build together.",
-    },
-  ];
+  return createSeoMeta({
+    title: "Contact PlaceValue | Let's Work Together",
+    description:
+      "Educational institutions, businesses, startups and individuals — bring your ideas, challenges and ambitions to PlaceValue. Let's explore what we can build together.",
+    canonicalPath: "/contact",
+  });
+}
+
+export function links() {
+  return createCanonicalLink("/contact");
 }
 
 const NAV_ITEMS = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
-  { label: "Consultancy", to: "/consultancy" },
+  { label: "Consultancy", to: "https://consultancy.placevalue.in", external: true },
   { label: "TASKVERSE", to: "/taskverse" },
   { label: "Insights", to: "/insights" },
   { label: "Contact", to: "/contact" },
@@ -67,7 +70,7 @@ function Logo({ className }: { className?: string }) {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase">
+    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase mx-auto sm:mx-0">
       {children}
     </span>
   );
@@ -120,11 +123,11 @@ function ContactFormSection({
       <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14 items-start">
         {/* Left: Contact Form Card */}
         <ScrollReveal direction="up" delay={0.1} className="lg:col-span-7">
-          <div className="rounded-[28px] border border-brand-line bg-[#ebe2d8] p-6 sm:p-10 shadow-xs">
-          <h2 className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
+          <div className="rounded-[28px] border border-brand-line bg-[#ebe2d8] p-6 sm:p-10 shadow-xs flex flex-col items-center text-center sm:items-start sm:text-left">
+          <h2 className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground text-center sm:text-left">
             Tell us what&apos;s on your mind.
           </h2>
-          <p className="mt-1 text-xs text-brand-muted mb-7">
+          <p className="mt-1 text-xs text-brand-muted mb-7 text-center sm:text-left">
             A little context helps us understand your needs. Fields marked * are required.
           </p>
 
@@ -346,7 +349,7 @@ function ContactFormSection({
               </div>
 
               {/* Submit Button */}
-              <div className="pt-2">
+              <div className="pt-2 flex justify-center sm:justify-start">
                 <button
                   type="submit"
                   disabled={submitting}
@@ -369,11 +372,11 @@ function ContactFormSection({
 
         {/* Right: "A conversation starts here." direct contact info */}
         <ScrollReveal direction="up" delay={0.2} className="lg:col-span-5">
-          <div className="flex flex-col">
-          <h2 className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground">
+          <div className="flex flex-col items-center text-center sm:items-start sm:text-left">
+          <h2 className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground text-center sm:text-left">
             A conversation starts here.
           </h2>
-          <WordReveal className="mt-2 text-sm sm:text-base leading-relaxed text-brand-body mb-6" delay={0.15}>
+          <WordReveal className="mt-2 text-sm sm:text-base leading-relaxed text-brand-body mb-6 text-center sm:text-left" delay={0.15}>
             Prefer to connect directly? Reach out to our team through any of our official channels below.
           </WordReveal>
 
@@ -786,16 +789,33 @@ function SiteFooter() {
             </h3>
             {NAV_ITEMS.map((item) => {
               const isActive = item.label === "Contact";
+              const isExternal = "external" in item && item.external;
+              const linkClasses = cn(
+                "text-[13px] leading-[18px] transition",
+                isActive
+                  ? "font-semibold text-brand-orange underline underline-offset-4"
+                  : "text-brand-muted hover:text-white",
+              );
+
+              if (isExternal) {
+                return (
+                  <a
+                    key={item.label}
+                    href={item.to}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={linkClasses}
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
+
               return (
                 <Link
                   key={item.label}
                   to={item.to}
-                  className={cn(
-                    "text-[13px] leading-[18px] transition",
-                    isActive
-                      ? "font-semibold text-brand-orange underline underline-offset-4"
-                      : "text-brand-muted hover:text-white",
-                  )}
+                  className={linkClasses}
                 >
                   {item.label}
                 </Link>
@@ -814,13 +834,15 @@ function SiteFooter() {
               "Cloud & DevOps",
               "Student Programmes",
             ].map((service) => (
-              <Link
+              <a
                 key={service}
-                to="/consultancy"
+                href="https://consultancy.placevalue.in"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[13px] leading-[18px] text-brand-muted hover:text-white transition"
               >
                 {service}
-              </Link>
+              </a>
             ))}
           </div>
         </div>

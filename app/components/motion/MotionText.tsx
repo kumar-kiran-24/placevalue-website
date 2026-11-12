@@ -13,6 +13,7 @@ interface MaskedLineProps {
   delay?: number;
   className?: string;
   lineClassName?: string;
+  trigger?: boolean;
 }
 
 /**
@@ -24,6 +25,7 @@ export function MaskedLine({
   delay = 0,
   className,
   lineClassName,
+  trigger = true,
 }: MaskedLineProps) {
   const shouldReduceMotion = useReducedMotion();
 
@@ -31,7 +33,11 @@ export function MaskedLine({
     <div className={cn("overflow-hidden leading-none py-1", className)}>
       <motion.div
         initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { y: "115%", opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        animate={
+          shouldReduceMotion || trigger
+            ? { y: 0, opacity: 1 }
+            : { y: "115%", opacity: 0 }
+        }
         transition={{
           duration: shouldReduceMotion ? 0 : 0.65,
           delay: shouldReduceMotion ? 0 : delay,
@@ -52,6 +58,7 @@ interface ScrollRevealProps {
   yOffset?: number;
   duration?: number;
   direction?: "up" | "down" | "left" | "right" | "none";
+  trigger?: boolean;
 }
 
 /**
@@ -64,8 +71,10 @@ export function ScrollReveal({
   yOffset = 24,
   duration = 0.55,
   direction = "up",
+  trigger,
 }: ScrollRevealProps) {
   const shouldReduceMotion = useReducedMotion();
+  const isControlled = typeof trigger === "boolean";
 
   const getInitialPosition = () => {
     if (shouldReduceMotion) return { opacity: 1, x: 0, y: 0 };
@@ -83,6 +92,27 @@ export function ScrollReveal({
         return { opacity: 0, y: yOffset, x: 0 };
     }
   };
+
+  if (isControlled) {
+    return (
+      <motion.div
+        initial={getInitialPosition()}
+        animate={
+          shouldReduceMotion || trigger
+            ? { opacity: 1, x: 0, y: 0 }
+            : getInitialPosition()
+        }
+        transition={{
+          duration: shouldReduceMotion ? 0 : duration,
+          delay: shouldReduceMotion ? 0 : delay,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div
@@ -105,6 +135,7 @@ interface DrawingUnderlineProps {
   delay?: number;
   duration?: number;
   className?: string;
+  trigger?: boolean;
 }
 
 /**
@@ -114,13 +145,14 @@ export function DrawingUnderline({
   delay = 0.5,
   duration = 0.85,
   className,
+  trigger = true,
 }: DrawingUnderlineProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
     <motion.div
       initial={shouldReduceMotion ? { scaleX: 1 } : { scaleX: 0 }}
-      animate={{ scaleX: 1 }}
+      animate={shouldReduceMotion || trigger ? { scaleX: 1 } : { scaleX: 0 }}
       transition={{
         duration: shouldReduceMotion ? 0 : duration,
         delay: shouldReduceMotion ? 0 : delay,

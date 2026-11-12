@@ -1,0 +1,11 @@
+# Robots.txt for https://placevalue.in
+# Allow crawling of all public assets, pages, styles, scripts and images
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_agent/
+
+# Sitemap Index
+Sitemap: https://placevalue.in/sitemap.xml

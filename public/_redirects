@@ -1,0 +1,5 @@
+# Redirect rules for PlaceValue
+/consultancy          https://consultancy.placevalue.in  301!
+/privacy-policy       /privacy                           301!
+/terms-and-conditions /terms                             301!
+

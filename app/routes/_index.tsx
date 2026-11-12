@@ -18,6 +18,9 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { MotionNav } from "@/components/motion/MotionNav";
 import { FaqSection } from "@/components/ui/FaqSection";
+import { useLoadingIntro } from "@/components/ui/LoadingIntro";
+import { createSeoMeta, createCanonicalLink } from "@/lib/seo";
+import { WebSiteJsonLd } from "@/components/seo/JsonLd";
 import {
   DrawingUnderline,
   MaskedLine,
@@ -27,14 +30,16 @@ import {
 } from "@/components/motion/MotionText";
 
 export function meta() {
-  return [
-    { title: "PlaceValue — Empowering Education for a Brighter Tomorrow" },
-    {
-      name: "description",
-      content:
-        "We blend technology, strategy and innovation to help educational institutions and organisations create lasting impact.",
-    },
-  ];
+  return createSeoMeta({
+    title: "PlaceValue | Education Technology & Digital Innovation",
+    description:
+      "We blend technology, strategy and innovation to help educational institutions and organisations create lasting impact.",
+    canonicalPath: "/",
+  });
+}
+
+export function links() {
+  return createCanonicalLink("/");
 }
 
 type Tone = "orange" | "blue";
@@ -47,7 +52,7 @@ const TONE_BG: Record<Tone, string> = {
 const NAV_ITEMS = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
-  { label: "Consultancy", to: "/consultancy" },
+  { label: "Consultancy", to: "https://consultancy.placevalue.in", external: true },
   { label: "TASKVERSE", to: "/taskverse" },
   { label: "Insights", to: "/insights" },
   { label: "Contact", to: "/contact" },
@@ -146,7 +151,7 @@ function Logo({ className }: { className?: string }) {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase">
+    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase mx-auto sm:mx-0">
       {children}
     </span>
   );
@@ -154,6 +159,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function Hero() {
   const shouldReduceMotion = useReducedMotion();
+  const { isIntroComplete } = useLoadingIntro();
   const heroRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -198,7 +204,7 @@ function Hero() {
       ref={heroRef}
       id="hero"
       data-node-id="3311:1376"
-      className="relative w-full h-[100svh] min-h-[100svh] flex flex-col justify-between overflow-hidden bg-[#0A0D11] text-white"
+      className="relative w-full h-[100dvh] min-h-[100dvh] flex flex-col justify-between overflow-hidden bg-[#0A0D11] text-white"
     >
       {/* Animated MP4 Video Background spanning 100% full screen */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden transform-gpu will-change-transform" aria-hidden="true">
@@ -241,7 +247,11 @@ function Hero() {
         <div className="flex flex-col items-center sm:items-end text-center sm:text-right">
           <motion.div
             initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: -14 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={
+              shouldReduceMotion || isIntroComplete
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: -14 }
+            }
             transition={{
               duration: shouldReduceMotion ? 0 : 0.75,
               delay: shouldReduceMotion ? 0 : 0.2,
@@ -257,6 +267,7 @@ function Hero() {
           <DrawingUnderline
             delay={0.45}
             duration={0.85}
+            trigger={isIntroComplete}
             className="mt-2 sm:mt-2.5 sm:mt-3 h-[1.5px] w-40 sm:w-60 md:w-72 bg-gradient-to-r from-transparent via-[#DFCFB6] to-transparent sm:to-[#DFCFB6]"
           />
         </div>
@@ -267,13 +278,13 @@ function Hero() {
         <div className="max-w-2xl lg:max-w-3xl xl:max-w-4xl flex flex-col items-center text-center sm:items-start sm:text-left mx-auto sm:mx-0">
           {/* Main Headline with Staggered Line-by-Line Reveal out of clipping mask */}
           <h1 className="font-display font-extrabold tracking-[-0.035em] text-white text-[32px] xs:text-[36px] sm:text-[50px] md:text-[62px] lg:text-[72px] xl:text-[80px] leading-[1.04] sm:leading-[1.02]">
-            <MaskedLine delay={0.1}>
+            <MaskedLine delay={0.1} trigger={isIntroComplete}>
               <span className="block text-[#F5EFEB]">Empowering</span>
             </MaskedLine>
-            <MaskedLine delay={0.22}>
+            <MaskedLine delay={0.22} trigger={isIntroComplete}>
               <span className="block text-[#F5EFEB]/95">Education for a</span>
             </MaskedLine>
-            <MaskedLine delay={0.34}>
+            <MaskedLine delay={0.34} trigger={isIntroComplete}>
               <span className="block text-brand-orange animate-text-shimmer">
                 Brighter Tomorrow.
               </span>
@@ -281,7 +292,7 @@ function Hero() {
           </h1>
 
           {/* Short supporting sentence underneath */}
-          <ScrollReveal delay={0.46}>
+          <ScrollReveal delay={0.46} trigger={isIntroComplete}>
             <p className="mt-3.5 sm:mt-5 max-w-[540px] text-[14px] xs:text-[15px] sm:text-[16.5px] md:text-[17.5px] leading-[1.55] sm:leading-[1.6] text-[#F5EFEB]/85 font-normal">
               We blend technology, strategy and innovation to help educational
               institutions and organisations create lasting impact.
@@ -292,6 +303,7 @@ function Hero() {
           <DrawingUnderline
             delay={0.62}
             duration={0.9}
+            trigger={isIntroComplete}
             className="mt-5 sm:mt-7 h-[1.5px] w-32 sm:w-52 md:w-64 bg-gradient-to-r from-transparent via-[#DFCFB6] to-transparent sm:from-[#DFCFB6] sm:via-[#DFCFB6]/80 sm:to-transparent"
           />
         </div>
@@ -339,14 +351,14 @@ function ServiceCard({
               {tag}
             </span>
           </div>
-          <h3 className="mt-4 font-display text-[20px] lg:text-[22px] font-extrabold tracking-[-0.02em] text-foreground transition-colors group-hover:text-brand-night">
+          <h3 className="mt-4 font-display text-[20px] lg:text-[22px] font-extrabold tracking-[-0.02em] text-foreground transition-colors group-hover:text-brand-night text-center sm:text-left">
             {title}
           </h3>
-          <p className="mt-2 text-[13px] sm:text-[14px] leading-[1.55] text-brand-body">
+          <p className="mt-2 text-[13px] sm:text-[14px] leading-[1.55] text-brand-body text-center sm:text-left">
             {body}
           </p>
         </div>
-        <div className="mt-6 border-t border-brand-line/60 pt-3">
+        <div className="mt-6 border-t border-brand-line/60 pt-3 text-center sm:text-left">
           <span className="text-xs leading-tight text-brand-muted font-medium">
             {highlight}
           </span>
@@ -369,16 +381,16 @@ function Services() {
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[380px_minmax(0,1fr)] xl:grid-cols-[400px_minmax(0,1fr)] items-start gap-10 lg:gap-14">
         {/* Left info column with ScrollReveal */}
         <ScrollReveal>
-          <div className="flex flex-col gap-4 max-w-md">
-            <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase">
+          <div className="flex flex-col items-center text-center sm:items-start sm:text-left gap-4 max-w-md mx-auto sm:mx-0">
+            <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase mx-auto sm:mx-0">
               OUR SERVICES
             </span>
-            <h2 className="font-display text-[38px] sm:text-[46px] lg:text-[50px] leading-[1.0] font-extrabold tracking-[-0.03em] text-foreground">
+            <h2 className="font-display text-[38px] sm:text-[46px] lg:text-[50px] leading-[1.0] font-extrabold tracking-[-0.03em] text-foreground text-center sm:text-left">
               <span>Expertise that</span>
               <br />
               <span className="text-outline">drives impact.</span>
             </h2>
-            <WordReveal className="mt-2 text-[15px] sm:text-[16px] leading-[1.6] text-brand-body">
+            <WordReveal className="mt-2 text-[15px] sm:text-[16px] leading-[1.6] text-brand-body text-center sm:text-left">
               From strategy to delivery, we help institutions and organisations
               build modern technology foundations, smarter systems and
               meaningful opportunities for students.
@@ -407,29 +419,29 @@ function About() {
       <WatermarkText text="PURPOSE" />
 
       <ScrollReveal className="relative z-10">
-        <div>
+        <div className="flex flex-col items-center text-center sm:items-start sm:text-left max-w-4xl mx-auto sm:mx-0">
           <SectionLabel>ABOUT PLACEVALUE</SectionLabel>
-          <h2 className="mt-6 font-display text-[40px] sm:text-[50px] lg:text-[56px] leading-[1.02] font-extrabold tracking-[-0.03em] text-foreground">
+          <h2 className="mt-6 font-display text-[40px] sm:text-[50px] lg:text-[56px] leading-[1.02] font-extrabold tracking-[-0.03em] text-foreground text-center sm:text-left">
             <span>A Consultancy With</span>
             <br />
             <span>a </span>
             <span className="text-outline">Bigger Purpose.</span>
           </h2>
-          <WordReveal className="mt-5 max-w-[860px] text-base leading-[27px] text-brand-body">
+          <WordReveal className="mt-5 max-w-[860px] text-base leading-[27px] text-brand-body text-center sm:text-left mx-auto sm:mx-0">
             We partner with organisations and educational institutions to solve
             complex challenges through technology — while creating meaningful
             opportunities for students to learn, build and grow in real
             environments.
           </WordReveal>
 
-          <ul className="mt-8 flex flex-col max-w-[860px]">
+          <ul className="mt-8 flex flex-col w-full max-w-[860px]">
             {PILLARS.map(({ title, body }, idx) => (
               <ScrollReveal key={title} delay={idx * 0.08} yOffset={16}>
-                <li className="flex items-start gap-4 border-t border-brand-line py-4">
+                <li className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-4 border-t border-brand-line py-4">
                   <span className="font-mono text-xs font-bold text-brand-orange pt-0.5">
                     {`0${idx + 1}`}
                   </span>
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col gap-1 items-center sm:items-start">
                     <h3 className="font-display text-[14px] leading-5 font-bold text-foreground">
                       {title}
                     </h3>
@@ -444,7 +456,7 @@ function About() {
             to="/about"
             className={cn(
               primaryPill,
-              "mt-7 h-[50px] w-full max-w-[860px] justify-center text-sm font-bold shadow-sm hover:bg-black transition-colors",
+              "mt-7 h-[50px] w-full max-w-[860px] justify-center text-sm font-bold shadow-sm hover:bg-black transition-colors mx-auto sm:mx-0",
             )}
           >
             Know More About Us
@@ -465,7 +477,7 @@ function Impact() {
       <ScrollReveal>
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[20px] border border-brand-line bg-brand-line">
           {IMPACT_METRICS.map((metric) => (
-            <div key={metric.label} className="flex flex-col gap-1 bg-background p-4">
+            <div key={metric.label} className="flex flex-col items-center text-center gap-1 bg-background p-4">
               <span
                 className={cn(
                   "font-display text-[40px] leading-none font-extrabold tracking-[-1.5px]",
@@ -599,16 +611,16 @@ function TaskverseKineticTypography() {
               duration: shouldReduceMotion ? 0.2 : 0.65,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="flex flex-col"
+            className="flex flex-col items-center text-center lg:items-start lg:text-left"
           >
-            <span className="font-display font-black text-[40px] sm:text-[54px] md:text-[64px] lg:text-[68px] xl:text-[76px] leading-[1.02] tracking-[-0.035em] text-foreground">
+            <span className="font-display font-black text-[40px] sm:text-[54px] md:text-[64px] lg:text-[68px] xl:text-[76px] leading-[1.02] tracking-[-0.035em] text-foreground text-center lg:text-left">
               <span className="block">{current.leadWord}</span>
               <span className={cn("block", current.accentColor)}>
                 {current.accentWord}
               </span>
             </span>
 
-            <p className="mt-4 sm:mt-5 text-[15px] sm:text-[16.5px] leading-[1.6] text-brand-body max-w-lg font-normal">
+            <p className="mt-4 sm:mt-5 text-[15px] sm:text-[16.5px] leading-[1.6] text-brand-body max-w-lg font-normal text-center lg:text-left mx-auto lg:mx-0">
               {current.description}
             </p>
           </motion.div>
@@ -674,18 +686,18 @@ function TaskverseSection() {
 
       <div className="relative z-10 grid gap-12 lg:grid-cols-[440px_minmax(0,1fr)] xl:grid-cols-[480px_minmax(0,1fr)] lg:items-center">
         {/* Left Column: Refined, Minimalist Product Introduction */}
-        <ScrollReveal className="flex flex-col">
+        <ScrollReveal className="flex flex-col items-center text-center lg:items-start lg:text-left">
           <SectionLabel>AI-POWERED ASSESSMENT & LEARNING PLATFORM</SectionLabel>
 
-          <h2 className="mt-6 font-display text-[46px] sm:text-[56px] lg:text-[62px] leading-[0.94] font-extrabold tracking-[-0.035em] text-foreground">
+          <h2 className="mt-6 font-display text-[46px] sm:text-[56px] lg:text-[62px] leading-[0.94] font-extrabold tracking-[-0.035em] text-foreground text-center lg:text-left">
             TASKVERSE
           </h2>
 
-          <p className="mt-5 text-[16px] sm:text-[17px] leading-[1.65] text-brand-body max-w-md">
+          <p className="mt-5 text-[16px] sm:text-[17px] leading-[1.65] text-brand-body max-w-md text-center lg:text-left mx-auto lg:mx-0">
             Adaptive skill diagnostics and verifiable capability portfolios engineered for modern education.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3.5">
+          <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3.5">
             <Link
               to="/taskverse"
               className={cn(
@@ -776,7 +788,7 @@ function FooterColumn({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 items-center text-center md:items-start md:text-left">
       <h3 className="font-display text-[13px] leading-4 font-bold text-white">
         {title}
       </h3>
@@ -791,8 +803,8 @@ function SiteFooter() {
       data-node-id="3311:1568"
       className="border-t border-white/10 bg-brand-footer px-6 md:px-12 lg:px-16 xl:px-24 pt-14 pb-10 text-white"
     >
-      <div className="flex flex-col gap-10 md:flex-row md:justify-between">
-        <div className="flex max-w-[300px] flex-col gap-5">
+      <div className="flex flex-col gap-10 md:flex-row md:justify-between items-center text-center md:items-start md:text-left">
+        <div className="flex max-w-[340px] flex-col gap-5 items-center text-center md:items-start md:text-left mx-auto md:mx-0">
           <Link
             to="/"
             onClick={() => {
@@ -801,7 +813,7 @@ function SiteFooter() {
               }
             }}
             aria-label="PlaceValue Home"
-            className="inline-flex items-center transition-transform hover:scale-[1.03] w-fit"
+            className="inline-flex items-center transition-transform hover:scale-[1.03] w-fit mx-auto md:mx-0"
           >
             <div className="flex items-center rounded-full bg-white px-3.5 py-1.5 shadow-sm">
               <img
@@ -811,14 +823,14 @@ function SiteFooter() {
               />
             </div>
           </Link>
-          <div className="text-[13px] leading-[21px] text-brand-muted">
+          <div className="text-[13px] leading-[21px] text-brand-muted text-center md:text-left">
             <p>Technology · Consulting · Innovation</p>
             <p className="mt-3">
               Empowering education and organisations through technology and
               strategic insight.
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 justify-center md:justify-start">
             {[
               { icon: IconBrandLinkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/placevalue-in" },
               { icon: IconBrandThreads, label: "Threads", href: "https://www.threads.net/@placevalue.in" },
@@ -838,30 +850,48 @@ function SiteFooter() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-8 md:flex md:gap-[72px]">
+        <div className="grid grid-cols-2 gap-8 md:flex md:gap-[72px] w-full md:w-auto justify-items-center md:justify-items-start">
           <FooterColumn title="Quick Links">
-            {FOOTER_QUICK_LINKS.map((item) => (
-              <Link
-                key={item.label}
-                to={item.to}
-                className={cn(
-                  "text-[13px] leading-[18px] text-brand-muted hover:text-white transition",
-                  item.label === "Home" && "text-brand-blue",
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {FOOTER_QUICK_LINKS.map((item) => {
+              const isExternal = "external" in item && item.external;
+              if (isExternal) {
+                return (
+                  <a
+                    key={item.label}
+                    href={item.to}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[13px] leading-[18px] text-brand-muted hover:text-white transition"
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
+              return (
+                <Link
+                  key={item.label}
+                  to={item.to}
+                  className={cn(
+                    "text-[13px] leading-[18px] text-brand-muted hover:text-white transition",
+                    item.label === "Home" && "text-brand-blue",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </FooterColumn>
           <FooterColumn title="Our Services">
             {FOOTER_SERVICES.map((service) => (
-              <Link
+              <a
                 key={service}
-                to="/consultancy"
+                href="https://consultancy.placevalue.in"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[13px] leading-[18px] text-brand-muted hover:text-white transition"
               >
                 {service}
-              </Link>
+              </a>
             ))}
           </FooterColumn>
         </div>
@@ -869,26 +899,26 @@ function SiteFooter() {
         <FooterColumn title="Get in Touch">
           <a
             href="mailto:hello@placevalue.in"
-            className="flex items-center gap-3 text-[13px] leading-4 text-brand-muted hover:text-white transition"
+            className="flex items-center justify-center md:justify-start gap-3 text-[13px] leading-4 text-brand-muted hover:text-white transition"
           >
             <IconMail size={14} />
             hello@placevalue.in
           </a>
           <a
             href="tel:+918317474679"
-            className="flex items-center gap-3 text-[13px] leading-4 text-brand-muted hover:text-white transition"
+            className="flex items-center justify-center md:justify-start gap-3 text-[13px] leading-4 text-brand-muted hover:text-white transition"
           >
             <IconPhone size={14} />
             +91 83174 74679
           </a>
-          <span className="flex items-center gap-3 text-[13px] leading-4 text-brand-muted">
+          <span className="flex items-center justify-center md:justify-start gap-3 text-[13px] leading-4 text-brand-muted">
             <IconMapPin size={14} />
             Bengaluru, Karnataka, India
           </span>
 
-          <div className="mt-4 flex flex-col gap-2.5">
+          <div className="mt-4 flex flex-col gap-2.5 items-center md:items-start w-full">
             <span className="text-xs font-semibold text-white">Stay Updated</span>
-            <div className="flex h-10 items-center justify-between rounded-full border border-white/15 bg-brand-panel pr-1 pl-4">
+            <div className="flex h-10 items-center justify-between rounded-full border border-white/15 bg-brand-panel pr-1 pl-4 max-w-xs w-full">
               <span className="text-xs text-brand-body">Your email address</span>
               <button
                 type="button"
@@ -901,16 +931,16 @@ function SiteFooter() {
         </FooterColumn>
       </div>
 
-      <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-brand-muted md:mt-10 md:flex-row md:items-center md:justify-between">
+      <div className="mt-12 flex flex-col items-center text-center gap-4 border-t border-white/10 pt-6 text-xs text-brand-muted md:mt-10 md:flex-row md:items-center md:justify-between md:text-left">
         <p>© 2024 PlaceValue. All rights reserved.</p>
-        <div className="flex flex-wrap gap-6">
+        <div className="flex flex-wrap gap-6 justify-center md:justify-end">
           <Link to="/privacy" className="hover:text-white transition">
             Privacy Policy
           </Link>
           <Link to="/terms" className="hover:text-white transition">
             Terms of Service
           </Link>
-          <Link to="/cookies" className="hover:text-white transition">
+          <Link to="/privacy" className="hover:text-white transition">
             Cookie Policy
           </Link>
         </div>
@@ -922,6 +952,7 @@ function SiteFooter() {
 export default function HomeRoute() {
   return (
     <div className="min-h-full bg-background text-foreground relative">
+      <WebSiteJsonLd />
       {/* Dynamic Sticky Morphing Navigation: transforms from expanded to compact floating pill on scroll */}
       <MotionNav activeNav="Home" theme="dark" />
       <Hero />

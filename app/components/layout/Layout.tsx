@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router";
 import { HeaderActionsProvider } from "@agent-native/toolkit/app-shell";
+import { LoadingIntroProvider } from "@/components/ui/LoadingIntro";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -25,26 +26,9 @@ export function Layout({ children }: LayoutProps) {
   }, [location.pathname]);
 
   return (
-    <HeaderActionsProvider>
-      <div
-        className="relative h-screen w-screen overflow-hidden presentation-backdrop select-none flex items-center justify-center p-0 sm:p-1.5 md:p-2"
-      >
-        {/* Architectural drafting arc line matching reference image */}
-        <div className="hidden sm:block pointer-events-none absolute inset-0 overflow-hidden select-none" aria-hidden="true">
-          <svg
-            className="absolute -top-[100px] left-1/2 -translate-x-1/2 w-[1400px] max-w-none h-[760px] text-black/[0.12] sm:text-black/[0.15]"
-            fill="none"
-            viewBox="0 0 1400 760"
-          >
-            <circle cx="700" cy="380" r="480" stroke="currentColor" strokeWidth="1.2" />
-            <circle cx="700" cy="380" r="620" stroke="currentColor" strokeWidth="0.8" strokeDasharray="6 6" opacity="0.65" />
-            <line x1="60" y1="380" x2="1340" y2="380" stroke="currentColor" strokeWidth="0.75" opacity="0.5" />
-            <line x1="700" y1="0" x2="700" y2="760" stroke="currentColor" strokeWidth="0.75" strokeDasharray="6 6" opacity="0.4" />
-          </svg>
-        </div>
-
-        {/* Centered elevated floating website canvas: true edge-to-edge full screen on mobile, elegantly framed on desktop */}
-        <div className="relative z-10 w-full h-full flex flex-col overflow-hidden rounded-none sm:rounded-[18px] md:rounded-[22px] border-0 sm:border border-black/15 bg-background text-foreground presentation-card-shadow ring-0 sm:ring-1 ring-white/80 select-text transform-gpu">
+    <LoadingIntroProvider>
+      <HeaderActionsProvider>
+        <div className="relative flex h-[100dvh] w-full flex-col overflow-hidden bg-background text-foreground">
           <main
             ref={mainRef}
             tabIndex={0}
@@ -53,7 +37,7 @@ export function Layout({ children }: LayoutProps) {
             {children}
           </main>
         </div>
-      </div>
-    </HeaderActionsProvider>
+      </HeaderActionsProvider>
+    </LoadingIntroProvider>
   );
 }

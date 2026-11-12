@@ -344,10 +344,10 @@ export function FaqSection({
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-start">
           {/* LEFT COLUMN: Fixed/Sticky Visual Hierarchy with dot, label & bold 2-line heading */}
-          <ScrollReveal direction="up" className="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-28">
+          <ScrollReveal direction="up" className="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-28 flex flex-col items-center text-center lg:items-start lg:text-left">
             {/* Small decorative circular accent marker matching reference */}
             <div
-              className={cn("size-3 sm:size-3.5 rounded-full mb-6 sm:mb-8", dotColorClass)}
+              className={cn("size-3 sm:size-3.5 rounded-full mb-6 sm:mb-8 mx-auto lg:mx-0", dotColorClass)}
               aria-hidden="true"
             />
 
@@ -357,19 +357,19 @@ export function FaqSection({
             </span>
 
             {/* Large, bold, oversized heading split across two lines */}
-            <h2 className="mt-4 sm:mt-5 font-display font-black text-[46px] sm:text-[58px] md:text-[66px] lg:text-[72px] leading-[0.92] tracking-[-0.04em] text-foreground uppercase">
+            <h2 className="mt-4 sm:mt-5 font-display font-black text-[46px] sm:text-[58px] md:text-[66px] lg:text-[72px] leading-[0.92] tracking-[-0.04em] text-foreground uppercase text-center lg:text-left">
               <span className="block">{headingLine1}</span>
               <span className="block mt-1 sm:mt-1.5">{headingLine2}</span>
             </h2>
 
             {showContactPrompt && (
-              <div className="mt-8 sm:mt-10 pt-6 border-t border-brand-line/60">
-                <p className="text-sm leading-relaxed text-brand-muted max-w-sm">
+              <div className="mt-8 sm:mt-10 pt-6 border-t border-brand-line/60 flex flex-col items-center text-center lg:items-start lg:text-left w-full">
+                <p className="text-sm leading-relaxed text-brand-muted max-w-sm mx-auto lg:mx-0">
                   Have a specific question about your institution or project? We are always glad to connect.
                 </p>
                 <Link
                   to="/contact"
-                  className="mt-3.5 inline-flex items-center gap-2 text-sm font-bold text-brand-orange hover:gap-3 transition-all"
+                  className="mt-3.5 inline-flex items-center justify-center lg:justify-start gap-2 text-sm font-bold text-brand-orange hover:gap-3 transition-all"
                 >
                   <span>Speak with our team</span>
                   <IconArrowRight size={15} />

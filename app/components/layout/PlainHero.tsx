@@ -56,20 +56,20 @@ export function PlainHero({
 
         <div className="relative z-10 max-w-6xl mx-auto">
           {/* Top badges row */}
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between items-center text-center sm:text-left">
+            <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase mx-auto sm:mx-0">
               {badge}
             </span>
             {badgeRight && (
-              <span className="text-[11px] font-bold tracking-[0.25em] text-brand-muted uppercase">
+              <span className="text-[11px] font-bold tracking-[0.25em] text-brand-muted uppercase text-center sm:text-right">
                 {badgeRight}
               </span>
             )}
           </div>
 
           {/* Headline matching the editorial typography in reference recording */}
-          <div className="mt-8 sm:mt-10 max-w-5xl">
-            <h1 className="font-display font-extrabold tracking-[-0.035em] text-foreground text-[44px] sm:text-[64px] md:text-[76px] lg:text-[88px] leading-[1.02]">
+          <div className="mt-8 sm:mt-10 max-w-5xl flex flex-col items-center text-center sm:items-start sm:text-left mx-auto sm:mx-0">
+            <h1 className="font-display font-extrabold tracking-[-0.035em] text-foreground text-[44px] sm:text-[64px] md:text-[76px] lg:text-[88px] leading-[1.02] text-center sm:text-left">
               {/* Line 1: Solid bold */}
               <MaskedLine delay={0.06}>
                 <span className="block text-foreground">{line1}</span>
@@ -117,7 +117,7 @@ export function PlainHero({
 
             {/* Supporting intro paragraph with word-by-word reveal */}
             <ScrollReveal delay={0.46}>
-              <WordReveal className="mt-6 sm:mt-8 max-w-2xl text-[16px] sm:text-[18px] md:text-[19px] leading-[1.65] text-brand-body font-normal">
+              <WordReveal className="mt-6 sm:mt-8 max-w-2xl text-[16px] sm:text-[18px] md:text-[19px] leading-[1.65] text-brand-body font-normal text-center sm:text-left mx-auto sm:mx-0">
                 {supportingText}
               </WordReveal>
             </ScrollReveal>

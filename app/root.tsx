@@ -6,6 +6,7 @@ import type { LinksFunction } from "react-router";
 
 import { Layout as AppLayout } from "@/components/layout/Layout";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import { AppToolkitProvider } from "@/components/ui/toolkit-provider";
 import { APP_TITLE } from "@/lib/app-config";
 
@@ -31,7 +32,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
         />
         <script
           suppressHydrationWarning
@@ -53,6 +54,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <link rel="apple-touch-icon" href="/favicon.png?v=2" />
         <Meta />
         <Links />
+        <OrganizationJsonLd />
       </head>
       <body>
         {children}

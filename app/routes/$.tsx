@@ -1,7 +1,12 @@
 import { Link } from "react-router";
+import { createSeoMeta } from "@/lib/seo";
 
 export function meta() {
-  return [{ title: "Coming soon · PlaceValue" }];
+  return createSeoMeta({
+    title: "Page Not Found | PlaceValue",
+    description: "The page you are looking for does not exist or has moved.",
+    noIndex: true,
+  });
 }
 
 export async function clientAction() {

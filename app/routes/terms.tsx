@@ -11,16 +11,19 @@ import {
   IconPhone,
 } from "@tabler/icons-react";
 import { MotionNav, NAV_ITEMS } from "@/components/motion/MotionNav";
+import { createSeoMeta, createCanonicalLink } from "@/lib/seo";
 
 export function meta() {
-  return [
-    { title: "Terms & Conditions — PlaceValue" },
-    {
-      name: "description",
-      content:
-        "Terms governing the use of PlaceValue websites, products, services and platforms.",
-    },
-  ];
+  return createSeoMeta({
+    title: "Terms of Service | PlaceValue",
+    description:
+      "Review the terms and conditions governing the use of PlaceValue websites, products, services, and educational platforms.",
+    canonicalPath: "/terms",
+  });
+}
+
+export function links() {
+  return createCanonicalLink("/terms");
 }
 
 interface SectionItem {

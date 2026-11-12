@@ -23,25 +23,28 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
+import { createSeoMeta, createCanonicalLink } from "@/lib/seo";
 import { PlainHero } from "@/components/layout/PlainHero";
 import { FaqSection, ABOUT_FAQS } from "@/components/ui/FaqSection";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
-  return [
-    { title: "About Us — PlaceValue" },
-    {
-      name: "description",
-      content:
-        "PlaceValue works at the intersection of education technology and consulting, connecting the needs of institutions, students and organisations.",
-    },
-  ];
+  return createSeoMeta({
+    title: "About PlaceValue | Our Story, Mission & Vision",
+    description:
+      "PlaceValue works at the intersection of education technology and consulting, connecting the needs of institutions, students and organisations.",
+    canonicalPath: "/about",
+  });
+}
+
+export function links() {
+  return createCanonicalLink("/about");
 }
 
 const NAV_ITEMS = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
-  { label: "Consultancy", to: "/consultancy" },
+  { label: "Consultancy", to: "https://consultancy.placevalue.in", external: true },
   { label: "TASKVERSE", to: "/taskverse" },
   { label: "Insights", to: "/insights" },
   { label: "Contact", to: "/contact" },
@@ -64,7 +67,7 @@ function Logo({ className }: { className?: string }) {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase">
+    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase mx-auto sm:mx-0">
       {children}
     </span>
   );
@@ -80,35 +83,35 @@ function OurBeginnings() {
 
       <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-start">
         {/* Left Column */}
-        <ScrollReveal className="lg:col-span-5">
+        <ScrollReveal className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left">
           <SectionLabel>OUR BEGINNINGS</SectionLabel>
-          <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground">
+          <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground text-center lg:text-left">
             Every journey starts with a question.
           </h2>
-          <WordReveal className="mt-5 text-lg sm:text-xl font-medium leading-snug text-brand-body" delay={0.15}>
+          <WordReveal className="mt-5 text-lg sm:text-xl font-medium leading-snug text-brand-body text-center lg:text-left" delay={0.15}>
             What could education make possible when technology serves people?
           </WordReveal>
         </ScrollReveal>
 
         {/* Right Column */}
-        <ScrollReveal delay={0.15} className="lg:col-span-7 flex flex-col justify-center">
-          <WordReveal className="text-base sm:text-lg leading-[30px] text-brand-body" delay={0.2}>
+        <ScrollReveal delay={0.15} className="lg:col-span-7 flex flex-col justify-center items-center text-center lg:items-start lg:text-left">
+          <WordReveal className="text-base sm:text-lg leading-[30px] text-brand-body text-center lg:text-left" delay={0.2}>
             Education and technology meet in everyday decisions: how people learn,
             how institutions adapt and how organisations move ideas forward.
             PlaceValue brings an education technology and consulting perspective to
             that shared space.
           </WordReveal>
 
-          <div className="my-8 border-t border-brand-line" />
+          <div className="my-8 border-t border-brand-line w-full" />
 
-          <div>
-            <span className="inline-block rounded-full border border-brand-line bg-brand-sand/70 px-3.5 py-1 text-[11px] font-bold tracking-wider text-brand-muted uppercase">
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+            <span className="inline-block rounded-full border border-brand-line bg-brand-sand/70 px-3.5 py-1 text-[11px] font-bold tracking-wider text-brand-muted uppercase mx-auto lg:mx-0">
               FOUNDING CONVICTION
             </span>
-            <h3 className="mt-3 text-xl sm:text-2xl font-bold tracking-tight text-foreground">
+            <h3 className="mt-3 text-xl sm:text-2xl font-bold tracking-tight text-foreground text-center lg:text-left">
               Bridging the divide between talent and opportunity.
             </h3>
-            <p className="mt-2 text-sm sm:text-base leading-relaxed text-brand-body">
+            <p className="mt-2 text-sm sm:text-base leading-relaxed text-brand-body text-center lg:text-left">
               PlaceValue was established by Abhishek Sarangapani and Nikita Valke under the foundational conviction
               that talent is universal, but opportunity is not. We unite technology consulting, modern digital platforms,
               and experiential student initiatives to create lasting capability for educational institutions and learners.
@@ -147,16 +150,16 @@ function WhatGuidesUs() {
     >
       <WatermarkText text="VALUES" />
       {/* Header row */}
-      <ScrollReveal direction="up" className="relative z-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <div>
-          <span className="inline-flex w-fit items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-white/80 uppercase">
+      <ScrollReveal direction="up" className="relative z-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between items-center text-center md:items-end md:text-left">
+        <div className="flex flex-col items-center text-center md:items-start md:text-left">
+          <span className="inline-flex w-fit items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-white/80 uppercase mx-auto md:mx-0">
             WHAT GUIDES US
           </span>
-          <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-white">
+          <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-white text-center md:text-left">
             A clear purpose. A human perspective.
           </h2>
         </div>
-        <p className="text-xs text-white/50 md:text-right shrink-0">
+        <p className="text-xs text-white/50 text-center md:text-right shrink-0">
           Mission, vision & core values · Draft positioning statements for approval.
         </p>
       </ScrollReveal>
@@ -237,9 +240,9 @@ function Leadership() {
     <section className="relative overflow-hidden px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24">
       <WatermarkText text="LEADERS" />
       {/* Header */}
-      <ScrollReveal direction="up" className="relative z-10 mb-14 sm:mb-16">
+      <ScrollReveal direction="up" className="relative z-10 mb-14 sm:mb-16 flex flex-col items-center text-center sm:items-start sm:text-left">
         <SectionLabel>THE PEOPLE BEHIND THE PURPOSE</SectionLabel>
-        <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground">
+        <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground text-center sm:text-left">
           Leadership with a personal perspective.
         </h2>
       </ScrollReveal>
@@ -247,7 +250,7 @@ function Leadership() {
       {/* Founder Message Block */}
       <ScrollReveal direction="up" delay={0.1} className="relative z-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14 items-center mb-16">
         {/* Left: Founder Portrait */}
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-5 flex justify-center lg:justify-start">
           <div className="relative aspect-square sm:aspect-[4/5] max-w-[420px] overflow-hidden rounded-[28px] border border-brand-line bg-brand-sand shadow-sm group">
             <img
               src="/about-founder.jpg"
@@ -261,16 +264,16 @@ function Leadership() {
         </div>
 
         {/* Right: Founder Message Body */}
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-7 flex flex-col items-center text-center lg:items-start lg:text-left">
           <span className="text-xs font-bold tracking-[0.2em] text-brand-muted uppercase">
             FOUNDER&apos;S PERSPECTIVE
           </span>
-          <h3 className="mt-3 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground leading-tight">
+          <h3 className="mt-3 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground leading-tight text-center lg:text-left">
             Building where purpose meets possibility.
           </h3>
 
           {/* Core Guiding Quotes */}
-          <div className="my-6 border-l-2 border-brand-orange pl-5 sm:pl-6 space-y-3.5">
+          <div className="my-6 border-l-2 border-brand-orange pl-5 sm:pl-6 space-y-3.5 text-left">
             <blockquote className="font-display text-[17px] sm:text-[19px] font-medium tracking-tight text-foreground italic leading-snug">
               &ldquo;Talent is universal. Opportunity is not.&rdquo;
             </blockquote>
@@ -282,13 +285,13 @@ function Leadership() {
             </blockquote>
           </div>
 
-          <WordReveal className="text-base sm:text-lg leading-[29px] text-brand-body" delay={0.15}>
+          <WordReveal className="text-base sm:text-lg leading-[29px] text-brand-body text-center lg:text-left" delay={0.15}>
             PlaceValue was founded on a simple conviction: technology should expand human agency,
             not replace it. We partner with educational institutions, enterprises and student communities
             to cultivate real capability, dismantle barriers to opportunity, and build what comes next.
           </WordReveal>
 
-          <div className="mt-8 border-t border-brand-line pt-6">
+          <div className="mt-8 border-t border-brand-line pt-6 w-full flex flex-col items-center text-center lg:items-start lg:text-left">
             <h4 className="font-display text-xl sm:text-2xl font-bold text-foreground">
               Abhishek Sarangapani
             </h4>
@@ -305,7 +308,7 @@ function Leadership() {
       {/* Co-Founder Profile (Matching Founder UI Layout) */}
       <ScrollReveal direction="up" delay={0.15} className="relative z-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14 items-center">
         {/* Left: Co-Founder Portrait */}
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-5 flex justify-center lg:justify-start">
           <div className="relative aspect-square sm:aspect-[4/5] max-w-[420px] overflow-hidden rounded-[28px] border border-brand-line bg-brand-sand shadow-sm group">
             <img
               src="/about-cofounder.jpg"
@@ -319,16 +322,16 @@ function Leadership() {
         </div>
 
         {/* Right: Co-Founder Bio Body */}
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-7 flex flex-col items-center text-center lg:items-start lg:text-left">
           <span className="text-xs font-bold tracking-[0.2em] text-brand-muted uppercase">
             DIRECTOR & CO-FOUNDER
           </span>
-          <h3 className="mt-3 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground leading-tight">
+          <h3 className="mt-3 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground leading-tight text-center lg:text-left">
             Empowering potential through strong foundations.
           </h3>
 
-          {/* Three Core Guiding Principles (matching Founder's quote styling with blue accent) */}
-          <div className="my-6 border-l-2 border-brand-blue pl-5 sm:pl-6 space-y-3.5">
+          {/* Three Core Guiding Principles */}
+          <div className="my-6 border-l-2 border-brand-blue pl-5 sm:pl-6 space-y-3.5 text-left">
             <blockquote className="font-display text-[17px] sm:text-[19px] font-medium tracking-tight text-foreground italic leading-snug">
               &ldquo;Strong conceptual foundations.&rdquo;
             </blockquote>
@@ -340,14 +343,14 @@ function Leadership() {
             </blockquote>
           </div>
 
-          <WordReveal className="text-base sm:text-lg leading-[29px] text-brand-body" delay={0.15}>
+          <WordReveal className="text-base sm:text-lg leading-[29px] text-brand-body text-center lg:text-left" delay={0.15}>
             Steering institutional delivery and educational programmes at PlaceValue, Nikita is dedicated
             to fostering strong conceptual foundations, confidence in communication, and alignment with
             evolving industry expectations. Her leadership ensures that every engagement bridges the gap
             between theoretical learning and real-world execution.
           </WordReveal>
 
-          <div className="mt-8 border-t border-brand-line pt-6">
+          <div className="mt-8 border-t border-brand-line pt-6 w-full flex flex-col items-center text-center lg:items-start lg:text-left">
             <h4 className="font-display text-xl sm:text-2xl font-bold text-foreground">
               Nikita Valke
             </h4>
@@ -750,16 +753,33 @@ function SiteFooter() {
             </h3>
             {NAV_ITEMS.map((item) => {
               const isActive = item.label === "About";
+              const isExternal = "external" in item && item.external;
+              const linkClasses = cn(
+                "text-[13px] leading-[18px] transition",
+                isActive
+                  ? "font-semibold text-brand-orange underline underline-offset-4"
+                  : "text-brand-muted hover:text-white",
+              );
+
+              if (isExternal) {
+                return (
+                  <a
+                    key={item.label}
+                    href={item.to}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={linkClasses}
+                  >
+                    {item.label}
+                  </a>
+                );
+              }
+
               return (
                 <Link
                   key={item.label}
                   to={item.to}
-                  className={cn(
-                    "text-[13px] leading-[18px] transition",
-                    isActive
-                      ? "font-semibold text-brand-orange underline underline-offset-4"
-                      : "text-brand-muted hover:text-white",
-                  )}
+                  className={linkClasses}
                 >
                   {item.label}
                 </Link>
@@ -778,13 +798,15 @@ function SiteFooter() {
               "Cloud & DevOps",
               "Student Programmes",
             ].map((service) => (
-              <Link
+              <a
                 key={service}
-                to="/consultancy"
+                href="https://consultancy.placevalue.in"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[13px] leading-[18px] text-brand-muted hover:text-white transition"
               >
                 {service}
-              </Link>
+              </a>
             ))}
           </div>
         </div>

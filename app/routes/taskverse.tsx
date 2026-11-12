@@ -24,20 +24,23 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
+import { createSeoMeta, createCanonicalLink } from "@/lib/seo";
 import { MotionNav, NAV_ITEMS } from "@/components/motion/MotionNav";
 import { FaqSection, TASKVERSE_FAQS } from "@/components/ui/FaqSection";
 import { TaskverseHeroTypography } from "@/components/taskverse/TaskverseHeroTypography";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
-  return [
-    { title: "TASKVERSE — Intelligent Assessment Platform · PlaceValue" },
-    {
-      name: "description",
-      content:
-        "TASKVERSE is PlaceValue's proprietary educational platform bringing real-time analytics, adaptive skill pathways and verifiable project experience together in one place.",
-    },
-  ];
+  return createSeoMeta({
+    title: "TASKVERSE | AI-Powered Assessment & Learning Platform",
+    description:
+      "TASKVERSE is PlaceValue's proprietary educational platform bringing real-time analytics, adaptive skill pathways and verifiable project experience together in one place.",
+    canonicalPath: "/taskverse",
+  });
+}
+
+export function links() {
+  return createCanonicalLink("/taskverse");
 }
 
 const primaryPill =
@@ -57,7 +60,7 @@ function Logo({ className }: { className?: string }) {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase">
+    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase mx-auto sm:mx-0">
       {children}
     </span>
   );
@@ -112,14 +115,14 @@ function TaskversePlatformOverview() {
 
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Section Header */}
-        <ScrollReveal className="flex flex-col gap-4 max-w-2xl">
+        <ScrollReveal className="flex flex-col gap-4 max-w-2xl items-center text-center md:items-start md:text-left mx-auto md:mx-0">
           <SectionLabel>PLATFORM ARCHITECTURE</SectionLabel>
-          <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[50px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground">
+          <h2 className="font-display text-[34px] sm:text-[44px] lg:text-[50px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground text-center md:text-left">
             <span>Engineering better outcomes</span>
             <br />
             <span className="text-outline">through intelligent assessment.</span>
           </h2>
-          <p className="mt-2 text-[15px] sm:text-[16px] leading-[1.65] text-brand-body">
+          <p className="mt-2 text-[15px] sm:text-[16px] leading-[1.65] text-brand-body text-center md:text-left">
             TASKVERSE was engineered from the ground up to solve the disconnect between academic evaluation and real-world workplace readiness.
           </p>
         </ScrollReveal>

@@ -18,19 +18,22 @@ import {
 } from "@tabler/icons-react";
 
 import { cn } from "@/lib/utils";
+import { createSeoMeta, createCanonicalLink } from "@/lib/seo";
 import { PlainHero } from "@/components/layout/PlainHero";
 import { NAV_ITEMS } from "@/components/motion/MotionNav";
 import { ScrollReveal, WatermarkText, WordReveal } from "@/components/motion/MotionText";
 
 export function meta() {
-  return [
-    { title: "Insights & Perspectives — PlaceValue" },
-    {
-      name: "description",
-      content:
-        "Research, editorial viewpoints and practical frameworks on educational technology, artificial intelligence and modern institutional transformation.",
-    },
-  ];
+  return createSeoMeta({
+    title: "Insights | PlaceValue",
+    description:
+      "Research, editorial viewpoints and practical frameworks on educational technology, artificial intelligence and modern institutional transformation.",
+    canonicalPath: "/insights",
+  });
+}
+
+export function links() {
+  return createCanonicalLink("/insights");
 }
 
 const primaryPill =
@@ -40,7 +43,7 @@ const orangePill =
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase">
+    <span className="inline-flex w-fit items-center rounded-full border border-brand-line bg-brand-sand/70 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-foreground uppercase mx-auto sm:mx-0">
       {children}
     </span>
   );
@@ -112,17 +115,17 @@ function FeaturedInsight() {
       <WatermarkText text="RESEARCH" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        <ScrollReveal className="flex flex-col gap-4 max-w-xl">
+        <ScrollReveal className="flex flex-col gap-4 max-w-xl items-center text-center sm:items-start sm:text-left mx-auto sm:mx-0">
           <SectionLabel>LEAD BRIEFING</SectionLabel>
-          <h2 className="font-display text-[32px] sm:text-[42px] font-extrabold tracking-tight text-foreground leading-[1.08]">
+          <h2 className="font-display text-[32px] sm:text-[42px] font-extrabold tracking-tight text-foreground leading-[1.08] text-center sm:text-left">
             Featured Research & Viewpoints
           </h2>
         </ScrollReveal>
 
         {/* Lead Article Card */}
         <ScrollReveal delay={0.15}>
-          <div className="mt-10 rounded-[28px] border border-brand-line/80 bg-brand-sand p-8 sm:p-10 lg:p-12 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-black/15">
-            <div className="flex flex-wrap items-center gap-3 text-xs font-bold">
+          <div className="mt-10 rounded-[28px] border border-brand-line/80 bg-brand-sand p-8 sm:p-10 lg:p-12 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-black/15 text-center sm:text-left">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs font-bold">
               <span className="rounded-full bg-brand-night text-white px-3.5 py-1 tracking-wider uppercase">
                 {FEATURED_ARTICLE.tag}
               </span>
@@ -137,15 +140,15 @@ function FeaturedInsight() {
               </span>
             </div>
 
-            <h3 className="mt-6 font-display text-[26px] sm:text-[34px] lg:text-[40px] font-extrabold leading-[1.12] text-foreground">
+            <h3 className="mt-6 font-display text-[26px] sm:text-[34px] lg:text-[40px] font-extrabold leading-[1.12] text-foreground text-center sm:text-left">
               {FEATURED_ARTICLE.title}
             </h3>
 
-            <WordReveal className="mt-4 max-w-3xl text-[16px] sm:text-[18px] leading-[1.65] text-brand-body" delay={0.15}>
+            <WordReveal className="mt-4 max-w-3xl text-[16px] sm:text-[18px] leading-[1.65] text-brand-body text-center sm:text-left mx-auto sm:mx-0" delay={0.15}>
               {FEATURED_ARTICLE.summary}
             </WordReveal>
 
-            <div className="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 border-t border-brand-line/60">
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 pt-6 border-t border-brand-line/60 text-center sm:text-left">
               <span className="text-xs sm:text-sm font-semibold text-brand-muted">
                 By {FEATURED_ARTICLE.author}
               </span>
@@ -316,13 +319,27 @@ function SiteFooter() {
         <div className="md:col-span-3 flex flex-col gap-3">
           <p className="text-xs font-bold uppercase tracking-widest text-[#DFCFB6]">Quick Links</p>
           <ul className="flex flex-col gap-2 text-sm text-brand-muted">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.label}>
-                <Link to={item.to} className="hover:text-white transition">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const isExternal = "external" in item && item.external;
+              return (
+                <li key={item.label}>
+                  {isExternal ? (
+                    <a
+                      href={item.to}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-white transition"
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link to={item.to} className="hover:text-white transition">
+                      {item.label}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div className="md:col-span-4 flex flex-col gap-3">

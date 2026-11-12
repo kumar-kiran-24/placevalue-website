@@ -11,16 +11,19 @@ import {
   IconPhone,
 } from "@tabler/icons-react";
 import { MotionNav, NAV_ITEMS } from "@/components/motion/MotionNav";
+import { createSeoMeta, createCanonicalLink } from "@/lib/seo";
 
 export function meta() {
-  return [
-    { title: "Privacy Policy — PlaceValue" },
-    {
-      name: "description",
-      content:
-        "How PlaceValue collects, uses, stores, and protects your information across our platforms and services.",
-    },
-  ];
+  return createSeoMeta({
+    title: "Privacy Policy | PlaceValue",
+    description:
+      "Understand how PlaceValue collects, uses, stores, and protects personal information across our websites, educational products, and services.",
+    canonicalPath: "/privacy",
+  });
+}
+
+export function links() {
+  return createCanonicalLink("/privacy");
 }
 
 interface SectionItem {
