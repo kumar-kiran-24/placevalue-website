@@ -50,14 +50,14 @@ export function PlainHero({
       {/* Light theme sticky morphing navigation */}
       <MotionNav activeNav={activeNav} theme="light" />
 
-      <section className="relative overflow-hidden bg-background px-6 pt-24 pb-16 md:px-12 md:pt-32 md:pb-24 lg:px-16 xl:px-24">
+      <section className="relative overflow-hidden bg-background px-4 sm:px-6 pt-20 pb-12 sm:pt-28 sm:pb-16 md:px-12 md:pt-32 md:pb-24 lg:px-16 xl:px-24">
         {/* Oversized background watermark typography */}
         <WatermarkText text={watermarkText} />
 
         <div className="relative z-10 max-w-6xl mx-auto">
           {/* Headline matching the editorial typography in reference recording */}
           <div className="max-w-5xl flex flex-col items-center text-center sm:items-start sm:text-left mx-auto sm:mx-0">
-            <h1 className="font-display font-extrabold tracking-[-0.035em] text-foreground text-[44px] sm:text-[64px] md:text-[76px] lg:text-[88px] leading-[1.02] text-center sm:text-left">
+            <h1 className="font-display font-extrabold tracking-[-0.035em] text-foreground text-[32px] sm:text-[58px] md:text-[76px] lg:text-[88px] leading-[1.05] sm:leading-[1.02] text-center sm:text-left">
               {/* Line 1: Solid bold */}
               <MaskedLine delay={0.06}>
                 <span className="block text-foreground">{line1}</span>

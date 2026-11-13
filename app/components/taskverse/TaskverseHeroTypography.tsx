@@ -212,13 +212,13 @@ export function TaskverseHeroTypography({ className }: { className?: string }) {
                   hidden: { opacity: 0, x: -10 },
                   visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
                 }}
-                className="font-mono text-xl xs:text-2xl sm:text-3xl md:text-4xl font-black text-brand-orange/90 tracking-tight shrink-0 select-none"
+                className="font-mono text-base xs:text-xl sm:text-3xl md:text-4xl font-black text-brand-orange/90 tracking-tight shrink-0 select-none"
               >
                 {current.number} —
               </motion.span>
 
               {/* Oversized Bold Typography with Highlighted Keywords */}
-              <div className="font-display font-black text-[38px] xs:text-[46px] sm:text-[58px] md:text-[68px] lg:text-[72px] xl:text-[80px] leading-[0.98] tracking-[-0.038em] flex flex-wrap items-baseline gap-x-2.5 xs:gap-x-3.5 sm:gap-x-4">
+              <div className="font-display font-black text-[28px] xs:text-[36px] sm:text-[52px] md:text-[68px] lg:text-[72px] xl:text-[80px] leading-[0.98] tracking-[-0.038em] flex flex-wrap items-baseline gap-x-2.5 xs:gap-x-3.5 sm:gap-x-4">
                 <motion.span
                   variants={{
                     hidden: { opacity: 0, y: 16 },

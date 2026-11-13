@@ -107,44 +107,44 @@ const WHITEPAPERS = [
 
 function FeaturedInsight() {
   return (
-    <section id="featured-insights" className="relative overflow-hidden bg-background pt-16 pb-14 md:pt-24 md:pb-20 px-6 md:px-12 lg:px-16 xl:px-24">
+    <section id="featured-insights" className="relative overflow-hidden bg-background pt-12 pb-10 sm:pt-16 sm:pb-14 md:pt-24 md:pb-20 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
       <WatermarkText text="RESEARCH" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
         <ScrollReveal className="flex flex-col gap-4 max-w-xl items-center text-center sm:items-start sm:text-left mx-auto sm:mx-0">
           <SectionLabel>LEAD BRIEFING</SectionLabel>
-          <h2 className="font-display text-[32px] sm:text-[42px] font-extrabold tracking-tight text-foreground leading-[1.08] text-center sm:text-left">
+          <h2 className="font-display text-[26px] sm:text-[36px] md:text-[42px] font-extrabold tracking-tight text-foreground leading-[1.08] text-center sm:text-left">
             Featured Research & Viewpoints
           </h2>
         </ScrollReveal>
 
         {/* Lead Article Card */}
         <ScrollReveal delay={0.15}>
-          <div className="mt-10 rounded-[28px] border border-brand-line/80 bg-brand-sand p-8 sm:p-10 lg:p-12 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-black/15 text-center sm:text-left">
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs font-bold">
-              <span className="rounded-full bg-brand-night text-white px-3.5 py-1 tracking-wider uppercase">
+          <div className="mt-8 sm:mt-10 rounded-[28px] border border-brand-line/80 bg-brand-sand p-5 sm:p-8 lg:p-12 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-black/15 text-center sm:text-left">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5 sm:gap-3 text-xs font-bold">
+              <span className="rounded-full bg-brand-night text-white px-3 sm:px-3.5 py-1 tracking-wider uppercase text-[11px] sm:text-xs">
                 {FEATURED_ARTICLE.tag}
               </span>
-              <span className="flex items-center gap-1.5 text-brand-muted">
+              <span className="flex items-center gap-1.5 text-brand-muted text-[11px] sm:text-xs">
                 <IconCalendar size={14} />
                 {FEATURED_ARTICLE.date}
               </span>
               <span className="text-brand-line">•</span>
-              <span className="flex items-center gap-1.5 text-brand-muted">
+              <span className="flex items-center gap-1.5 text-brand-muted text-[11px] sm:text-xs">
                 <IconClock size={14} />
                 {FEATURED_ARTICLE.readTime}
               </span>
             </div>
 
-            <h3 className="mt-6 font-display text-[26px] sm:text-[34px] lg:text-[40px] font-extrabold leading-[1.12] text-foreground text-center sm:text-left">
+            <h3 className="mt-5 sm:mt-6 font-display text-[22px] sm:text-[30px] lg:text-[40px] font-extrabold leading-[1.12] text-foreground text-center sm:text-left">
               {FEATURED_ARTICLE.title}
             </h3>
 
-            <WordReveal className="mt-4 max-w-3xl text-[16px] sm:text-[18px] leading-[1.65] text-brand-body text-center sm:text-left mx-auto sm:mx-0" delay={0.15}>
+            <WordReveal className="mt-3 sm:mt-4 max-w-3xl text-[15px] sm:text-[18px] leading-[1.65] text-brand-body text-center sm:text-left mx-auto sm:mx-0" delay={0.15}>
               {FEATURED_ARTICLE.summary}
             </WordReveal>
 
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 pt-6 border-t border-brand-line/60 text-center sm:text-left">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center sm:justify-between gap-4 pt-5 sm:pt-6 border-t border-brand-line/60 text-center sm:text-left">
               <span className="text-xs sm:text-sm font-semibold text-brand-muted">
                 By {FEATURED_ARTICLE.author}
               </span>
@@ -165,21 +165,21 @@ function FeaturedInsight() {
 
 function ArticlesGrid() {
   return (
-    <section className="relative overflow-hidden bg-brand-sand/30 border-t border-brand-line/70 py-16 md:py-24 px-6 md:px-12 lg:px-16 xl:px-24">
+    <section className="relative overflow-hidden bg-brand-sand/30 border-t border-brand-line/70 py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
       <WatermarkText text="ESSAYS" />
       <div className="relative z-10 max-w-6xl mx-auto">
         <ScrollReveal direction="up" className="flex flex-col gap-3">
           <SectionLabel>PERSPECTIVES & ESSAYS</SectionLabel>
-          <h2 className="font-display text-[28px] sm:text-[36px] font-extrabold text-foreground tracking-tight">
+          <h2 className="font-display text-[24px] sm:text-[30px] md:text-[36px] font-extrabold text-foreground tracking-tight">
             Recent Analysis & Operational Frameworks
           </h2>
         </ScrollReveal>
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {INSIGHT_ARTICLES.map((art, idx) => (
             <ScrollReveal key={art.title} direction="up" delay={idx * 0.08}>
               <article
-                className="flex h-full flex-col justify-between rounded-[22px] border border-brand-line/70 bg-white p-7 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-black/15"
+                className="flex h-full flex-col justify-between rounded-[22px] border border-brand-line/70 bg-white p-5 sm:p-7 md:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-black/15"
               >
                 <div>
                   <div className="flex items-center justify-between text-xs font-bold">
@@ -191,15 +191,15 @@ function ArticlesGrid() {
                     </div>
                   </div>
 
-                  <h3 className="mt-4 font-display text-[20px] sm:text-[22px] font-extrabold leading-snug text-foreground">
+                  <h3 className="mt-4 font-display text-[18px] sm:text-[22px] font-extrabold leading-snug text-foreground">
                     {art.title}
                   </h3>
-                  <WordReveal className="mt-3 text-sm leading-[1.6] text-brand-body">
+                  <WordReveal className="mt-2.5 sm:mt-3 text-sm leading-[1.6] text-brand-body">
                     {art.excerpt}
                   </WordReveal>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-brand-line/50 flex items-center justify-between">
+                <div className="mt-5 sm:mt-6 pt-4 border-t border-brand-line/50 flex items-center justify-between">
                   <span className="text-xs font-bold text-brand-night">Educational Technology Series</span>
                   <Link
                     to="/contact"
@@ -219,21 +219,21 @@ function ArticlesGrid() {
 
 function WhitepapersSection() {
   return (
-    <section className="relative overflow-hidden bg-background py-16 md:py-24 px-6 md:px-12 lg:px-16 xl:px-24 border-t border-brand-line">
+    <section className="relative overflow-hidden bg-background py-12 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 border-t border-brand-line">
       <WatermarkText text="PAPERS" />
       <div className="relative z-10 max-w-6xl mx-auto">
         <ScrollReveal direction="up" className="flex flex-col gap-3 max-w-xl">
           <SectionLabel>DOWNLOADABLE BRIEFS</SectionLabel>
-          <h2 className="font-display text-[28px] sm:text-[36px] font-extrabold text-foreground tracking-tight">
+          <h2 className="font-display text-[24px] sm:text-[30px] md:text-[36px] font-extrabold text-foreground tracking-tight">
             Comprehensive Institutional Whitepapers
           </h2>
         </ScrollReveal>
 
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
           {WHITEPAPERS.map((wp, idx) => (
             <ScrollReveal key={wp.title} direction="up" delay={idx * 0.1}>
               <div
-                className="flex h-full flex-col justify-between rounded-[22px] border border-brand-line bg-brand-sand/60 p-7 sm:p-8"
+                className="flex h-full flex-col justify-between rounded-[22px] border border-brand-line bg-brand-sand/60 p-5 sm:p-7 md:p-8"
               >
                 <div>
                   <div className="flex items-center gap-2 text-xs font-bold text-[#142B3B]">
@@ -242,7 +242,7 @@ function WhitepapersSection() {
                     <span>•</span>
                     <span>{wp.pages}</span>
                   </div>
-                  <h3 className="mt-4 font-display text-xl font-extrabold text-foreground">
+                  <h3 className="mt-4 font-display text-lg sm:text-xl font-extrabold text-foreground">
                     {wp.title}
                   </h3>
                   <WordReveal className="mt-2 text-sm leading-relaxed text-brand-body">
@@ -250,7 +250,7 @@ function WhitepapersSection() {
                   </WordReveal>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-brand-line/60">
+                <div className="mt-5 sm:mt-6 pt-4 border-t border-brand-line/60">
                   <Link
                     to="/contact"
                     className="inline-flex items-center gap-2 text-sm font-bold text-brand-orange hover:text-foreground transition-colors"
@@ -269,7 +269,7 @@ function WhitepapersSection() {
 
 function SiteFooter() {
   return (
-    <footer className="bg-brand-footer text-white px-6 md:px-12 lg:px-16 xl:px-24 pt-16 pb-12">
+    <footer className="bg-brand-footer text-white px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pt-12 pb-10 sm:pt-16 sm:pb-12">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10 border-b border-white/10 pb-12">
         <div className="md:col-span-5 flex flex-col gap-4">
           <Link

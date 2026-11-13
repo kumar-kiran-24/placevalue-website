@@ -53,8 +53,8 @@ export function MotionNav({ activeNav = "Home", theme = "dark" }: MotionNavProps
         className={cn(
           "pointer-events-auto flex items-center justify-between transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu isolate",
           isScrolled
-            ? "mt-2.5 sm:mt-3 w-[94%] max-w-[1060px] h-[52px] sm:h-[56px] px-4 sm:px-6 rounded-full bg-brand-night/92 backdrop-blur-xl border border-white/15 shadow-[0_12px_36px_-6px_rgba(0,0,0,0.35)] text-white"
-            : "w-full h-[74px] md:h-[84px] px-6 md:px-10 lg:px-14 xl:px-20 bg-transparent"
+            ? "mt-2 sm:mt-3 w-[94%] max-w-[1060px] h-[52px] sm:h-[56px] px-3.5 sm:px-6 rounded-full bg-brand-night/92 backdrop-blur-xl border border-white/15 shadow-[0_12px_36px_-6px_rgba(0,0,0,0.35)] text-white"
+            : "w-full h-[68px] sm:h-[76px] md:h-[84px] px-4 sm:px-6 md:px-10 lg:px-14 xl:px-20 bg-transparent"
         )}
       >
         {/* Left: Brand Logo */}
@@ -159,10 +159,10 @@ export function MotionNav({ activeNav = "Home", theme = "dark" }: MotionNavProps
             rel="noopener noreferrer"
             className={cn(
               orangePill,
-              isScrolled ? "h-[30px] px-3 text-[11px]" : "h-[36px] px-3.5 text-xs"
+              isScrolled ? "h-[30px] px-2.5 sm:px-3 text-[11px]" : "h-[34px] sm:h-[36px] px-3 sm:px-3.5 text-[11px] sm:text-xs"
             )}
           >
-            Start a Project
+            <span>Start a Project</span>
             <IconArrowRight size={11} />
           </a>
           <button
@@ -171,18 +171,18 @@ export function MotionNav({ activeNav = "Home", theme = "dark" }: MotionNavProps
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((v) => !v)}
             className={cn(
-              "flex items-center justify-center rounded-full transition-all",
+              "flex items-center justify-center rounded-full transition-all active:scale-95",
               isScrolled
-                ? "size-8 bg-white/20 text-white"
-                : "size-9 bg-brand-sand/80 backdrop-blur-md text-foreground"
+                ? "size-8 sm:size-9 bg-white/20 text-white"
+                : "size-9 sm:size-10 bg-brand-sand/80 backdrop-blur-md text-foreground shadow-xs"
             )}
           >
-            {mobileOpen ? <IconX size={16} /> : <IconMenu2 size={16} />}
+            {mobileOpen ? <IconX size={18} /> : <IconMenu2 size={18} />}
           </button>
         </div>
       </motion.header>
 
-      {/* Full-Screen Mobile / Tablet Navigation Overlay matching reference design */}
+      {/* Full-Screen Mobile / Tablet Navigation Overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -190,10 +190,10 @@ export function MotionNav({ activeNav = "Home", theme = "dark" }: MotionNavProps
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[100] pointer-events-auto bg-[#FDFBF7]/98 backdrop-blur-2xl flex flex-col justify-between px-6 py-6 sm:px-8 sm:py-8 lg:hidden select-none"
+            className="fixed inset-0 z-[100] pointer-events-auto bg-[#FDFBF7]/98 backdrop-blur-2xl flex flex-col justify-between px-4 py-5 sm:px-8 sm:py-8 lg:hidden select-none overflow-y-auto overscroll-contain"
           >
             {/* Top pill bar: Logo on left, Close (X) button on right */}
-            <div className="w-full max-w-sm mx-auto flex items-center justify-between rounded-full border border-black/10 bg-white/95 px-5 py-2.5 sm:py-3 shadow-sm">
+            <div className="w-full max-w-sm mx-auto flex items-center justify-between rounded-full border border-black/10 bg-white/95 px-4 sm:px-5 py-2 sm:py-2.5 shadow-sm shrink-0">
               <Link
                 to="/"
                 onClick={() => setMobileOpen(false)}
@@ -209,19 +209,19 @@ export function MotionNav({ activeNav = "Home", theme = "dark" }: MotionNavProps
                 type="button"
                 onClick={() => setMobileOpen(false)}
                 aria-label="Close navigation menu"
-                className="flex items-center justify-center size-8 rounded-full text-foreground hover:bg-black/5 transition-colors"
+                className="flex items-center justify-center size-9 sm:size-10 rounded-full text-foreground hover:bg-black/5 active:scale-95 transition-all"
               >
                 <IconX size={20} />
               </button>
             </div>
 
             {/* Centered navigation items stack in bold uppercase typography */}
-            <nav className="flex flex-col items-center justify-center gap-5 sm:gap-6 my-auto py-8">
+            <nav className="flex flex-col items-center justify-center gap-4 sm:gap-6 my-auto py-6 sm:py-8">
               {NAV_ITEMS.map((item, index) => {
                 const isActive = item.label === activeNav;
                 const isExternal = "external" in item && item.external;
                 const linkClass = cn(
-                  "font-display text-[26px] sm:text-[30px] font-black uppercase tracking-[-0.01em] transition-colors",
+                  "font-display text-[24px] sm:text-[30px] font-black uppercase tracking-[-0.01em] transition-colors py-1",
                   isActive
                     ? "text-brand-orange"
                     : "text-[#0A0D11] hover:text-brand-orange"
@@ -263,13 +263,13 @@ export function MotionNav({ activeNav = "Home", theme = "dark" }: MotionNavProps
             </nav>
 
             {/* Bottom: Solid Black CTA Pill Button */}
-            <div className="w-full flex justify-center pb-4 sm:pb-6">
+            <div className="w-full flex justify-center pb-4 sm:pb-6 shrink-0">
               <a
                 href="https://consultancy.placevalue.in/contact"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}
-                className="w-full max-w-[280px] h-[52px] rounded-full bg-black text-white font-display font-extrabold text-[15px] tracking-wider uppercase flex items-center justify-center shadow-lg active:scale-95 hover:bg-neutral-900 transition-all"
+                className="w-full max-w-[280px] h-[50px] sm:h-[52px] rounded-full bg-black text-white font-display font-extrabold text-[14px] sm:text-[15px] tracking-wider uppercase flex items-center justify-center shadow-lg active:scale-95 hover:bg-neutral-900 transition-all"
               >
                 Start a Project
               </a>

@@ -225,7 +225,7 @@ function Hero() {
       </div>
 
       {/* 1. TOP-RIGHT FLOATING EDITORIAL COMPOSITION */}
-      <div className="relative z-10 w-full flex justify-center sm:justify-end px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 pt-20 sm:pt-28 md:pt-32 lg:pt-36">
+      <div className="relative z-10 w-full flex justify-center sm:justify-end px-4 sm:px-10 md:px-14 lg:px-20 xl:px-28 pt-16 sm:pt-28 md:pt-32 lg:pt-36">
         <div className="flex flex-col items-center sm:items-end text-center sm:text-right">
           <motion.div
             initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: -14 }}
@@ -241,7 +241,7 @@ function Hero() {
             }}
             className="flex flex-col items-center sm:items-end"
           >
-            <span className="text-[10px] xs:text-[11px] sm:text-[12px] md:text-[12.5px] font-semibold tracking-[0.24em] sm:tracking-[0.28em] text-[#F5EFEB] uppercase font-sans">
+            <span className="text-[10px] sm:text-[12px] md:text-[12.5px] font-semibold tracking-[0.22em] sm:tracking-[0.28em] text-[#F5EFEB] uppercase font-sans">
               EDUCATION • TECHNOLOGY • INNOVATION
             </span>
           </motion.div>
@@ -250,16 +250,16 @@ function Hero() {
             delay={0.45}
             duration={0.85}
             trigger={isIntroComplete}
-            className="mt-2 sm:mt-2.5 sm:mt-3 h-[1.5px] w-40 sm:w-60 md:w-72 bg-gradient-to-r from-transparent via-[#DFCFB6] to-transparent sm:to-[#DFCFB6]"
+            className="mt-2 sm:mt-2.5 sm:mt-3 h-[1.5px] w-36 sm:w-60 md:w-72 bg-gradient-to-r from-transparent via-[#DFCFB6] to-transparent sm:to-[#DFCFB6]"
           />
         </div>
       </div>
 
       {/* 2. HEADLINE COMPOSITION: Lifted higher & centered on mobile, anchored bottom-left on desktop */}
-      <div className="relative z-10 w-full px-6 sm:px-10 md:px-14 lg:px-20 xl:px-28 my-auto sm:my-0 sm:mt-auto pt-6 sm:pt-0 pb-10 sm:pb-16 md:pb-20 lg:pb-24">
+      <div className="relative z-10 w-full px-4 sm:px-10 md:px-14 lg:px-20 xl:px-28 my-auto sm:my-0 sm:mt-auto pt-4 sm:pt-0 pb-8 sm:pb-16 md:pb-20 lg:pb-24">
         <div className="max-w-2xl lg:max-w-3xl xl:max-w-4xl flex flex-col items-center text-center sm:items-start sm:text-left mx-auto sm:mx-0">
           {/* Main Headline with Staggered Line-by-Line Reveal out of clipping mask */}
-          <h1 className="font-display font-extrabold tracking-[-0.035em] text-white text-[32px] xs:text-[36px] sm:text-[50px] md:text-[62px] lg:text-[72px] xl:text-[80px] leading-[1.04] sm:leading-[1.02]">
+          <h1 className="font-display font-extrabold tracking-[-0.035em] text-white text-[30px] sm:text-[50px] md:text-[62px] lg:text-[72px] xl:text-[80px] leading-[1.06] sm:leading-[1.02]">
             <MaskedLine delay={0.1} trigger={isIntroComplete}>
               <span className="block text-[#F5EFEB]">Empowering</span>
             </MaskedLine>
@@ -275,7 +275,7 @@ function Hero() {
 
           {/* Short supporting sentence underneath */}
           <ScrollReveal delay={0.46} trigger={isIntroComplete}>
-            <WordReveal className="mt-3.5 sm:mt-5 max-w-[540px] text-[14px] xs:text-[15px] sm:text-[16.5px] md:text-[17.5px] leading-[1.55] sm:leading-[1.6] text-[#F5EFEB]/85 font-normal">
+            <WordReveal className="mt-3 sm:mt-5 max-w-[540px] text-[13.5px] sm:text-[16.5px] md:text-[17.5px] leading-[1.55] sm:leading-[1.6] text-[#F5EFEB]/85 font-normal">
               We blend technology, strategy and innovation to help educational
               institutions and organisations create lasting impact.
             </WordReveal>
@@ -286,7 +286,7 @@ function Hero() {
             delay={0.62}
             duration={0.9}
             trigger={isIntroComplete}
-            className="mt-5 sm:mt-7 h-[1.5px] w-32 sm:w-52 md:w-64 bg-gradient-to-r from-transparent via-[#DFCFB6] to-transparent sm:from-[#DFCFB6] sm:via-[#DFCFB6]/80 sm:to-transparent"
+            className="mt-4 sm:mt-7 h-[1.5px] w-28 sm:w-52 md:w-64 bg-gradient-to-r from-transparent via-[#DFCFB6] to-transparent sm:from-[#DFCFB6] sm:via-[#DFCFB6]/80 sm:to-transparent"
           />
         </div>
       </div>
@@ -355,21 +355,21 @@ function Services() {
     <section
       id="services"
       data-node-id="3311:1416"
-      className="relative overflow-hidden bg-background pt-12 pb-16 md:pt-20 md:pb-24 px-6 md:px-12 lg:px-16 xl:px-24"
+      className="relative overflow-hidden bg-background pt-10 pb-14 sm:pt-12 sm:pb-16 md:pt-20 md:pb-24 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24"
     >
       {/* Oversized background watermark typography */}
       <WatermarkText text="SERVICES" />
 
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[380px_minmax(0,1fr)] xl:grid-cols-[400px_minmax(0,1fr)] items-start gap-10 lg:gap-14">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[380px_minmax(0,1fr)] xl:grid-cols-[400px_minmax(0,1fr)] items-start gap-8 sm:gap-10 lg:gap-14">
         {/* Left info column with ScrollReveal */}
         <ScrollReveal>
-          <div className="flex flex-col items-center text-center sm:items-start sm:text-left gap-4 max-w-md mx-auto sm:mx-0">
-            <h2 className="font-display text-[38px] sm:text-[46px] lg:text-[50px] leading-[1.0] font-extrabold tracking-[-0.03em] text-foreground text-center sm:text-left">
+          <div className="flex flex-col items-center text-center sm:items-start sm:text-left gap-3.5 sm:gap-4 max-w-md mx-auto sm:mx-0">
+            <h2 className="font-display text-[30px] sm:text-[46px] lg:text-[50px] leading-[1.06] sm:leading-[1.0] font-extrabold tracking-[-0.03em] text-foreground text-center sm:text-left">
               <span>Expertise that</span>
               <br />
               <span className="text-outline">drives impact.</span>
             </h2>
-            <WordReveal className="mt-2 text-[15px] sm:text-[16px] leading-[1.6] text-brand-body text-center sm:text-left">
+            <WordReveal className="mt-1 sm:mt-2 text-[14px] sm:text-[16px] leading-[1.6] text-brand-body text-center sm:text-left">
               From strategy to delivery, we help institutions and organisations
               build modern technology foundations, smarter systems and
               meaningful opportunities for students.
@@ -392,7 +392,7 @@ function About() {
   return (
     <section
       data-node-id="3311:1470"
-      className="relative overflow-hidden bg-background px-6 md:px-12 lg:px-16 xl:px-24 py-16 md:py-[88px]"
+      className="relative overflow-hidden bg-background px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-12 sm:py-16 md:py-[88px]"
     >
       {/* Oversized background watermark typography */}
       <WatermarkText text="PURPOSE" />
@@ -400,27 +400,27 @@ function About() {
       <ScrollReveal className="relative z-10">
         <div className="flex flex-col items-center text-center sm:items-start sm:text-left max-w-4xl mx-auto sm:mx-0">
           <SectionLabel>ABOUT PLACEVALUE</SectionLabel>
-          <h2 className="mt-6 font-display text-[40px] sm:text-[50px] lg:text-[56px] leading-[1.02] font-extrabold tracking-[-0.03em] text-foreground text-center sm:text-left">
+          <h2 className="mt-4 sm:mt-6 font-display text-[30px] sm:text-[50px] lg:text-[56px] leading-[1.06] sm:leading-[1.02] font-extrabold tracking-[-0.03em] text-foreground text-center sm:text-left">
             <span>A Consultancy With</span>
             <br />
             <span>a </span>
             <span className="text-outline">Bigger Purpose.</span>
           </h2>
-          <WordReveal className="mt-5 max-w-[860px] text-base leading-[27px] text-brand-body text-center sm:text-left mx-auto sm:mx-0">
+          <WordReveal className="mt-4 sm:mt-5 max-w-[860px] text-sm sm:text-base leading-[24px] sm:leading-[27px] text-brand-body text-center sm:text-left mx-auto sm:mx-0">
             We partner with organisations and educational institutions to solve
             complex challenges through technology — while creating meaningful
             opportunities for students to learn, build and grow in real
             environments.
           </WordReveal>
 
-          <ul className="mt-8 flex flex-col w-full max-w-[860px]">
+          <ul className="mt-6 sm:mt-8 flex flex-col w-full max-w-[860px]">
             {PILLARS.map(({ title, body }, idx) => (
               <ScrollReveal key={title} delay={idx * 0.08} yOffset={16}>
-                <li className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-4 border-t border-brand-line py-4">
+                <li className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1.5 sm:gap-4 border-t border-brand-line py-3.5 sm:py-4">
                   <span className="font-mono text-xs font-bold text-brand-orange pt-0.5">
                     {`0${idx + 1}`}
                   </span>
-                  <div className="flex flex-col gap-1 items-center sm:items-start">
+                  <div className="flex flex-col gap-0.5 sm:gap-1 items-center sm:items-start">
                     <h3 className="font-display text-[14px] leading-5 font-bold text-foreground">
                       {title}
                     </h3>
@@ -435,7 +435,7 @@ function About() {
             to="/about"
             className={cn(
               primaryPill,
-              "mt-7 h-[50px] w-full max-w-[860px] justify-center text-sm font-bold shadow-sm hover:bg-black transition-colors mx-auto sm:mx-0",
+              "mt-6 sm:mt-7 h-[48px] sm:h-[50px] w-full max-w-[860px] justify-center text-sm font-bold shadow-sm hover:bg-black transition-colors mx-auto sm:mx-0",
             )}
           >
             Know More About Us
@@ -622,7 +622,7 @@ function TaskverseSection() {
   return (
     <section
       data-node-id="3311:1505"
-      className="relative overflow-hidden bg-background px-6 md:px-12 lg:px-16 xl:px-24 py-16 md:py-24 border-t border-brand-line/60 text-foreground"
+      className="relative overflow-hidden bg-background px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-12 sm:py-16 md:py-24 border-t border-brand-line/60 text-foreground"
     >
       {/* Oversized background watermark typography */}
       <WatermarkText text="TASKVERSE" opacity={0.035} />
@@ -636,25 +636,25 @@ function TaskverseSection() {
         className="pointer-events-none absolute -right-20 -bottom-24 size-[340px] rounded-full bg-brand-orange/5 blur-[90px]"
       />
 
-      <div className="relative z-10 grid gap-12 lg:grid-cols-[440px_minmax(0,1fr)] xl:grid-cols-[480px_minmax(0,1fr)] lg:items-center">
+      <div className="relative z-10 grid gap-8 sm:gap-12 lg:grid-cols-[440px_minmax(0,1fr)] xl:grid-cols-[480px_minmax(0,1fr)] lg:items-center">
         {/* Left Column: Refined, Minimalist Product Introduction */}
         <ScrollReveal className="flex flex-col items-center text-center lg:items-start lg:text-left">
           <SectionLabel>AI-POWERED ASSESSMENT & LEARNING PLATFORM</SectionLabel>
 
-          <h2 className="mt-6 font-display text-[46px] sm:text-[56px] lg:text-[62px] leading-[0.94] font-extrabold tracking-[-0.035em] text-foreground text-center lg:text-left">
+          <h2 className="mt-4 sm:mt-6 font-display text-[36px] sm:text-[56px] lg:text-[62px] leading-[0.96] sm:leading-[0.94] font-extrabold tracking-[-0.035em] text-foreground text-center lg:text-left">
             TASKVERSE
           </h2>
 
-          <WordReveal className="mt-5 text-[16px] sm:text-[17px] leading-[1.65] text-brand-body max-w-md text-center lg:text-left mx-auto lg:mx-0">
+          <WordReveal className="mt-4 sm:mt-5 text-[15px] sm:text-[17px] leading-[1.65] text-brand-body max-w-md text-center lg:text-left mx-auto lg:mx-0">
             Adaptive skill diagnostics and verifiable capability portfolios engineered for modern education.
           </WordReveal>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3.5">
+          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 w-full sm:w-auto">
             <Link
               to="/taskverse"
               className={cn(
                 orangePill,
-                "h-[48px] px-7 text-sm font-bold shadow-sm hover:brightness-105 transition-all"
+                "h-[48px] w-full sm:w-auto px-7 text-sm font-bold shadow-sm hover:brightness-105 transition-all justify-center"
               )}
             >
               Explore TASKVERSE
@@ -664,7 +664,7 @@ function TaskverseSection() {
               href="https://taskverse.placevalue.in/login"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-[48px] items-center gap-2 rounded-full border border-brand-line bg-brand-sand/60 px-6 text-sm font-semibold text-foreground hover:bg-brand-sand/90 hover:border-brand-orange/40 hover:text-brand-orange transition-all"
+              className="inline-flex h-[48px] w-full sm:w-auto justify-center items-center gap-2 rounded-full border border-brand-line bg-brand-sand/60 px-6 text-sm font-semibold text-foreground hover:bg-brand-sand/90 hover:border-brand-orange/40 hover:text-brand-orange transition-all"
             >
               <span>Login to TASKVERSE</span>
               <IconArrowUpRight size={14} />
@@ -673,7 +673,7 @@ function TaskverseSection() {
         </ScrollReveal>
 
         {/* Right Column: Large-scale animated kinetic typography replacing dashboard UI */}
-        <div className="w-full flex flex-col justify-center min-h-[300px] sm:min-h-[340px] lg:min-h-[380px] lg:pl-6 xl:pl-10">
+        <div className="w-full flex flex-col justify-center min-h-[260px] sm:min-h-[340px] lg:min-h-[380px] lg:pl-6 xl:pl-10">
           <TaskverseKineticTypography />
         </div>
       </div>
@@ -685,7 +685,7 @@ function ProjectCta() {
   return (
     <section
       data-node-id="3311:1556"
-      className="relative overflow-hidden border-t border-white/10 bg-brand-night px-6 md:px-12 lg:px-16 xl:px-24 py-20 text-center text-white md:py-[88px]"
+      className="relative overflow-hidden border-t border-white/10 bg-brand-night px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 py-14 sm:py-20 text-center text-white md:py-[88px]"
     >
       {/* Oversized background watermark typography */}
       <WatermarkText text="COLLABORATE" />
@@ -700,16 +700,16 @@ function ProjectCta() {
       />
 
       <ScrollReveal className="relative z-10 mx-auto flex max-w-[860px] flex-col items-center">
-        <h2 className="font-display text-[44px] sm:text-[56px] md:text-[68px] lg:text-[74px] leading-[0.98] font-extrabold tracking-[-0.03em] text-white">
+        <h2 className="font-display text-[32px] sm:text-[56px] md:text-[68px] lg:text-[74px] leading-[1.02] sm:leading-[0.98] font-extrabold tracking-[-0.03em] text-white">
           <span className="block">Ready to Start Your</span>
           <span className="block text-outline">Next Project?</span>
         </h2>
-        <WordReveal className="mt-6 max-w-[560px] text-base leading-6 text-white/60 md:text-[17px] md:leading-[26px]">
+        <WordReveal className="mt-4 sm:mt-6 max-w-[560px] text-sm leading-relaxed text-white/65 md:text-[17px] md:leading-[26px] px-1">
           Let&apos;s collaborate to bring your ideas to life — whether it&apos;s
           a technology solution, a consulting engagement, or a student
           programme.
         </WordReveal>
-        <div className="mt-10 flex w-full flex-col sm:flex-row items-center justify-center gap-3.5">
+        <div className="mt-8 sm:mt-10 flex w-full flex-col sm:flex-row items-center justify-center gap-3.5">
           <Link
             to="/contact#conversation-form"
             className={cn(orangePill, "h-[50px] w-full sm:w-[220px] justify-center text-sm font-bold shadow-lg shadow-brand-orange/20")}
@@ -750,7 +750,7 @@ function SiteFooter() {
   return (
     <footer
       data-node-id="3311:1568"
-      className="border-t border-white/10 bg-brand-footer px-6 md:px-12 lg:px-16 xl:px-24 pt-14 pb-10 text-white"
+      className="border-t border-white/10 bg-brand-footer px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 pt-10 pb-8 sm:pt-14 sm:pb-10 text-white"
     >
       <div className="flex flex-col gap-10 md:flex-row md:justify-between items-center text-center md:items-start md:text-left">
         <div className="flex max-w-[340px] flex-col gap-5 items-center text-center md:items-start md:text-left mx-auto md:mx-0">

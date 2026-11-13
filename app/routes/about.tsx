@@ -73,41 +73,41 @@ function OurBeginnings() {
   return (
     <section
       id="beginnings"
-      className="relative overflow-hidden border-t border-brand-line px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24"
+      className="relative overflow-hidden border-t border-brand-line px-4 sm:px-6 py-12 sm:py-20 md:px-12 md:py-28 lg:px-16 xl:px-24"
     >
       <WatermarkText text="JOURNEY" />
 
-      <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-start">
+      <div className="relative z-10 grid grid-cols-1 gap-8 sm:gap-12 lg:grid-cols-12 lg:gap-16 items-start">
         {/* Left Column */}
         <ScrollReveal className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left">
           <SectionLabel>OUR BEGINNINGS</SectionLabel>
-          <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground text-center lg:text-left">
+          <h2 className="mt-4 sm:mt-6 font-display text-[28px] sm:text-[46px] lg:text-[52px] leading-[1.08] sm:leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground text-center lg:text-left">
             Every journey starts with a question.
           </h2>
-          <WordReveal className="mt-5 text-lg sm:text-xl font-medium leading-snug text-brand-body text-center lg:text-left" delay={0.15}>
+          <WordReveal className="mt-3 sm:mt-5 text-base sm:text-xl font-medium leading-snug text-brand-body text-center lg:text-left" delay={0.15}>
             What could education make possible when technology serves people?
           </WordReveal>
         </ScrollReveal>
 
         {/* Right Column */}
         <ScrollReveal delay={0.15} className="lg:col-span-7 flex flex-col justify-center items-center text-center lg:items-start lg:text-left">
-          <WordReveal className="text-base sm:text-lg leading-[30px] text-brand-body text-center lg:text-left" delay={0.2}>
+          <WordReveal className="text-sm sm:text-lg leading-[26px] sm:leading-[30px] text-brand-body text-center lg:text-left" delay={0.2}>
             Education and technology meet in everyday decisions: how people learn,
             how institutions adapt and how organisations move ideas forward.
             PlaceValue brings an education technology and consulting perspective to
             that shared space.
           </WordReveal>
 
-          <div className="my-8 border-t border-brand-line w-full" />
+          <div className="my-6 sm:my-8 border-t border-brand-line w-full" />
 
           <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
             <span className="inline-block rounded-full border border-brand-line bg-brand-sand/70 px-3.5 py-1 text-[11px] font-bold tracking-wider text-brand-muted uppercase mx-auto lg:mx-0">
               FOUNDING CONVICTION
             </span>
-            <h3 className="mt-3 text-xl sm:text-2xl font-bold tracking-tight text-foreground text-center lg:text-left">
+            <h3 className="mt-3 text-lg sm:text-2xl font-bold tracking-tight text-foreground text-center lg:text-left">
               Bridging the divide between talent and opportunity.
             </h3>
-            <WordReveal className="mt-2 text-sm sm:text-base leading-relaxed text-brand-body text-center lg:text-left">
+            <WordReveal className="mt-2 text-xs sm:text-base leading-relaxed text-brand-body text-center lg:text-left">
               PlaceValue was established by Abhishek Sarangapani and Nikita Valke under the foundational conviction
               that talent is universal, but opportunity is not. We unite technology consulting, modern digital platforms,
               and experiential student initiatives to create lasting capability for educational institutions and learners.
@@ -142,16 +142,16 @@ function WhatGuidesUs() {
   return (
     <section
       id="guides"
-      className="relative overflow-hidden border-y border-white/10 bg-brand-night text-white px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24"
+      className="relative overflow-hidden border-y border-white/10 bg-brand-night text-white px-4 sm:px-6 py-14 sm:py-20 md:px-12 md:py-28 lg:px-16 xl:px-24"
     >
       <WatermarkText text="VALUES" />
       {/* Header row */}
-      <ScrollReveal direction="up" className="relative z-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between items-center text-center md:items-end md:text-left">
+      <ScrollReveal direction="up" className="relative z-10 flex flex-col gap-3 sm:gap-4 md:flex-row md:items-end md:justify-between items-center text-center md:items-end md:text-left">
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
           <span className="inline-flex w-fit items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[10px] sm:text-[11px] font-bold tracking-[2px] text-white/80 uppercase mx-auto md:mx-0">
             WHAT GUIDES US
           </span>
-          <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-white text-center md:text-left">
+          <h2 className="mt-4 sm:mt-6 font-display text-[28px] sm:text-[46px] lg:text-[52px] leading-[1.08] sm:leading-[1.05] font-extrabold tracking-[-0.03em] text-white text-center md:text-left">
             A clear purpose. A human perspective.
           </h2>
         </div>
@@ -161,23 +161,23 @@ function WhatGuidesUs() {
       </ScrollReveal>
 
       {/* 2 Mission & Vision Cards */}
-      <div className="relative z-10 mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="relative z-10 mt-10 sm:mt-12 grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
         {/* Mission Card */}
         <ScrollReveal direction="up" delay={0.1}>
-          <div className="flex h-full flex-col justify-between rounded-[24px] border border-white/12 bg-[#183344] p-8 sm:p-10 transition hover:border-white/25">
+          <div className="flex h-full flex-col justify-between rounded-[22px] sm:rounded-[24px] border border-white/12 bg-[#183344] p-5 sm:p-10 transition hover:border-white/25">
             <div className="flex items-center justify-between">
-              <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">
+              <h3 className="font-display text-lg sm:text-2xl font-bold text-white tracking-tight">
                 Our mission
               </h3>
               <span className="font-mono text-xs font-bold tracking-wider text-brand-orange uppercase">
                 01
               </span>
             </div>
-            <WordReveal className="my-8 text-lg sm:text-xl font-medium leading-relaxed text-white/90">
+            <WordReveal className="my-6 sm:my-8 text-base sm:text-xl font-medium leading-relaxed text-white/90">
               To connect education and technology in ways that make learning more
               meaningful and change more practical.
             </WordReveal>
-            <span className="self-start rounded-full border border-brand-orange/30 bg-brand-orange/15 px-3.5 py-1 text-[11px] font-bold tracking-[0.15em] text-brand-orange uppercase">
+            <span className="self-start rounded-full border border-brand-orange/30 bg-brand-orange/15 px-3.5 py-1 text-[10px] sm:text-[11px] font-bold tracking-[0.15em] text-brand-orange uppercase">
               WHY WE DO IT
             </span>
           </div>
@@ -185,20 +185,20 @@ function WhatGuidesUs() {
 
         {/* Vision Card */}
         <ScrollReveal direction="up" delay={0.2}>
-          <div className="flex h-full flex-col justify-between rounded-[24px] border border-white/12 bg-[#183344] p-8 sm:p-10 transition hover:border-white/25">
+          <div className="flex h-full flex-col justify-between rounded-[22px] sm:rounded-[24px] border border-white/12 bg-[#183344] p-5 sm:p-10 transition hover:border-white/25">
             <div className="flex items-center justify-between">
-              <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">
+              <h3 className="font-display text-lg sm:text-2xl font-bold text-white tracking-tight">
                 Our vision
               </h3>
               <span className="font-mono text-xs font-bold tracking-wider text-brand-blue uppercase">
                 02
               </span>
             </div>
-            <WordReveal className="my-8 text-lg sm:text-xl font-medium leading-relaxed text-white/90">
+            <WordReveal className="my-6 sm:my-8 text-base sm:text-xl font-medium leading-relaxed text-white/90">
               An education ecosystem where people can learn, contribute and grow,
               supported by thoughtful technology.
             </WordReveal>
-            <span className="self-start rounded-full border border-brand-blue/30 bg-brand-blue/15 px-3.5 py-1 text-[11px] font-bold tracking-[0.15em] text-brand-blue uppercase">
+            <span className="self-start rounded-full border border-brand-blue/30 bg-brand-blue/15 px-3.5 py-1 text-[10px] sm:text-[11px] font-bold tracking-[0.15em] text-brand-blue uppercase">
               WHAT WE LOOK TOWARDS
             </span>
           </div>
@@ -206,21 +206,21 @@ function WhatGuidesUs() {
       </div>
 
       {/* Core Values */}
-      <div className="mt-16 border-t border-white/10 pt-10">
-        <span className="text-[11px] font-bold tracking-[0.25em] text-white/45 uppercase block mb-8">
+      <div className="mt-12 sm:mt-16 border-t border-white/10 pt-8 sm:pt-10">
+        <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.25em] text-white/45 uppercase block mb-6 sm:mb-8 text-center sm:text-left">
           OUR CORE VALUES
         </span>
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {CORE_VALUES.map(({ title, body }, idx) => (
-            <div key={title} className="flex flex-col">
-              <span className="font-mono text-xs font-bold text-brand-orange mb-3 tracking-widest uppercase">
+            <div key={title} className="flex flex-col text-center sm:text-left items-center sm:items-start">
+              <span className="font-mono text-xs font-bold text-brand-orange mb-2 sm:mb-3 tracking-widest uppercase">
                 {`0${idx + 1}`}
               </span>
-              <h4 className="font-display text-base font-bold text-white mb-2">
+              <h4 className="font-display text-base font-bold text-white mb-1.5 sm:mb-2">
                 {title}
               </h4>
-              <p className="text-sm leading-relaxed text-white/65">
+              <p className="text-xs sm:text-sm leading-relaxed text-white/65">
                 {body}
               </p>
             </div>
@@ -233,12 +233,12 @@ function WhatGuidesUs() {
 
 function Leadership() {
   return (
-    <section className="relative overflow-hidden px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24">
+    <section className="relative overflow-hidden px-4 sm:px-6 py-14 sm:py-20 md:px-12 md:py-28 lg:px-16 xl:px-24">
       <WatermarkText text="LEADERS" />
       {/* Header */}
-      <ScrollReveal direction="up" className="relative z-10 mb-14 sm:mb-16 flex flex-col items-center text-center sm:items-start sm:text-left">
+      <ScrollReveal direction="up" className="relative z-10 mb-10 sm:mb-16 flex flex-col items-center text-center sm:items-start sm:text-left">
         <SectionLabel>THE PEOPLE BEHIND THE PURPOSE</SectionLabel>
-        <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground text-center sm:text-left">
+        <h2 className="mt-4 sm:mt-6 font-display text-[28px] sm:text-[46px] lg:text-[52px] leading-[1.08] sm:leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground text-center sm:text-left">
           Leadership with a personal perspective.
         </h2>
       </ScrollReveal>

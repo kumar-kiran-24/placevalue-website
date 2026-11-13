@@ -113,13 +113,13 @@ function ContactFormSection({
   return (
     <section
       id="conversation-form"
-      className="scroll-mt-24 sm:scroll-mt-28 relative overflow-hidden px-6 py-10 md:px-12 md:py-16 lg:px-16 xl:px-24"
+      className="scroll-mt-24 sm:scroll-mt-28 relative overflow-hidden px-4 sm:px-6 py-8 sm:py-10 md:px-12 md:py-16 lg:px-16 xl:px-24"
     >
       <WatermarkText text="CONNECT" />
-      <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14 items-start">
+      <div className="relative z-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14 items-start">
         {/* Left: Contact Form Card */}
         <ScrollReveal direction="up" delay={0.1} className="lg:col-span-7">
-          <div className="rounded-[28px] border border-brand-line bg-[#ebe2d8] p-6 sm:p-10 shadow-xs flex flex-col items-center text-center sm:items-start sm:text-left">
+          <div className="rounded-[28px] border border-brand-line bg-[#ebe2d8] p-4 sm:p-8 md:p-10 shadow-xs flex flex-col items-center text-center sm:items-start sm:text-left">
           <h2 className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-foreground text-center sm:text-left">
             Tell us what&apos;s on your mind.
           </h2>
@@ -128,7 +128,7 @@ function ContactFormSection({
           </p>
 
           {submitted ? (
-            <div className="rounded-2xl border border-brand-orange/30 bg-white/90 p-8 text-center backdrop-blur-xs">
+            <div className="rounded-2xl border border-brand-orange/30 bg-white/90 p-6 sm:p-8 text-center backdrop-blur-xs">
               <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-brand-orange/15 text-brand-orange mb-4">
                 <IconCheck size={28} />
               </div>
@@ -163,7 +163,7 @@ function ContactFormSection({
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 w-full">
               {/* Row 1: Name & Work Email */}
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
@@ -182,7 +182,7 @@ function ContactFormSection({
                       setFormData({ ...formData, name: e.target.value })
                     }
                     placeholder="Your full name"
-                    className="w-full rounded-[14px] border border-brand-line bg-white px-4 py-3 text-sm text-foreground placeholder:text-brand-muted/70 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 focus:outline-hidden transition"
+                    className="w-full rounded-[14px] border border-brand-line bg-white px-4 py-3 text-base sm:text-sm text-foreground placeholder:text-brand-muted/70 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 focus:outline-hidden transition"
                   />
                 </div>
                 <div>
@@ -201,7 +201,7 @@ function ContactFormSection({
                       setFormData({ ...formData, email: e.target.value })
                     }
                     placeholder="Your work email address"
-                    className="w-full rounded-[14px] border border-brand-line bg-white px-4 py-3 text-sm text-foreground placeholder:text-brand-muted/70 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 focus:outline-hidden transition"
+                    className="w-full rounded-[14px] border border-brand-line bg-white px-4 py-3 text-base sm:text-sm text-foreground placeholder:text-brand-muted/70 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 focus:outline-hidden transition"
                   />
                 </div>
               </div>
@@ -223,7 +223,7 @@ function ContactFormSection({
                       setFormData({ ...formData, organisation: e.target.value })
                     }
                     placeholder="Your organisation"
-                    className="w-full rounded-[14px] border border-brand-line bg-white px-4 py-3 text-sm text-foreground placeholder:text-brand-muted/70 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 focus:outline-hidden transition"
+                    className="w-full rounded-[14px] border border-brand-line bg-white px-4 py-3 text-base sm:text-sm text-foreground placeholder:text-brand-muted/70 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 focus:outline-hidden transition"
                   />
                 </div>
                 <div>
@@ -241,7 +241,7 @@ function ContactFormSection({
                       setFormData({ ...formData, phone: e.target.value })
                     }
                     placeholder="Include country code"
-                    className="w-full rounded-[14px] border border-brand-line bg-white px-4 py-3 text-sm text-foreground placeholder:text-brand-muted/70 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 focus:outline-hidden transition"
+                    className="w-full rounded-[14px] border border-brand-line bg-white px-4 py-3 text-base sm:text-sm text-foreground placeholder:text-brand-muted/70 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 focus:outline-hidden transition"
                   />
                 </div>
               </div>
@@ -263,7 +263,7 @@ function ContactFormSection({
                       setFormData({ ...formData, enquiryType: e.target.value });
                       onTypeChange(e.target.value);
                     }}
-                    className="w-full appearance-none rounded-[14px] border border-brand-line bg-white px-4 py-3 text-sm text-foreground focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 focus:outline-hidden transition cursor-pointer"
+                    className="w-full appearance-none rounded-[14px] border border-brand-line bg-white px-4 py-3 text-base sm:text-sm text-foreground focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 focus:outline-hidden transition cursor-pointer"
                   >
                     <option value="" disabled>
                       Select an enquiry type
@@ -297,7 +297,7 @@ function ContactFormSection({
                     setFormData({ ...formData, subject: e.target.value })
                   }
                   placeholder="What would you like to discuss?"
-                  className="w-full rounded-[14px] border border-brand-line bg-white px-4 py-3 text-sm text-foreground placeholder:text-brand-muted/70 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 focus:outline-hidden transition"
+                  className="w-full rounded-[14px] border border-brand-line bg-white px-4 py-3 text-base sm:text-sm text-foreground placeholder:text-brand-muted/70 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 focus:outline-hidden transition"
                 />
               </div>
 
@@ -318,7 +318,7 @@ function ContactFormSection({
                     setFormData({ ...formData, message: e.target.value })
                   }
                   placeholder="Tell us about your idea, challenge or goals..."
-                  className="w-full rounded-[14px] border border-brand-line bg-white px-4 py-3 text-sm text-foreground placeholder:text-brand-muted/70 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 focus:outline-hidden transition resize-y"
+                  className="w-full rounded-[14px] border border-brand-line bg-white px-4 py-3 text-base sm:text-sm text-foreground placeholder:text-brand-muted/70 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 focus:outline-hidden transition resize-y"
                 />
               </div>
 
@@ -349,7 +349,7 @@ function ContactFormSection({
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="inline-flex items-center gap-2 rounded-full bg-brand-orange px-8 py-3.5 text-sm font-bold text-white shadow-md transition hover:brightness-105 active:scale-95 disabled:opacity-50 cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-orange px-8 py-3.5 text-sm font-bold text-white shadow-md transition hover:brightness-105 active:scale-95 disabled:opacity-50 cursor-pointer w-full sm:w-auto"
                 >
                   {submitting ? "Sending..." : "Send Enquiry"}
                   <IconArrowRight size={15} />
@@ -377,19 +377,19 @@ function ContactFormSection({
           </WordReveal>
 
           {/* Direct channels list */}
-          <div className="space-y-4">
+          <div className="space-y-3.5 sm:space-y-4 w-full">
             {/* Email */}
-            <div className="flex items-center gap-3.5 rounded-[18px] border border-brand-line bg-brand-sand/40 p-4">
+            <div className="flex items-center gap-3.5 rounded-[18px] border border-brand-line bg-brand-sand/40 p-3.5 sm:p-4">
               <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-sand border border-brand-line text-foreground">
                 <IconMail size={18} />
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col text-left">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-brand-muted">
                   Business email
                 </span>
                 <a
                   href="mailto:hello@placevalue.in"
-                  className="text-sm font-bold text-foreground hover:text-brand-orange transition"
+                  className="text-sm font-bold text-foreground hover:text-brand-orange transition break-all sm:break-normal"
                 >
                   hello@placevalue.in
                 </a>
@@ -397,11 +397,11 @@ function ContactFormSection({
             </div>
 
             {/* Phone */}
-            <div className="flex items-center gap-3.5 rounded-[18px] border border-brand-line bg-brand-sand/40 p-4">
+            <div className="flex items-center gap-3.5 rounded-[18px] border border-brand-line bg-brand-sand/40 p-3.5 sm:p-4">
               <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-sand border border-brand-line text-foreground">
                 <IconPhone size={18} />
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col text-left">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-brand-muted">
                   Phone number
                 </span>
@@ -415,11 +415,11 @@ function ContactFormSection({
             </div>
 
             {/* Address */}
-            <div className="flex items-center gap-3.5 rounded-[18px] border border-brand-line bg-brand-sand/40 p-4">
+            <div className="flex items-center gap-3.5 rounded-[18px] border border-brand-line bg-brand-sand/40 p-3.5 sm:p-4">
               <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-sand border border-brand-line text-foreground">
                 <IconMapPin size={18} />
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col text-left">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-brand-muted">
                   Office address
                 </span>
@@ -430,11 +430,11 @@ function ContactFormSection({
             </div>
 
             {/* Hours */}
-            <div className="flex items-center gap-3.5 rounded-[18px] border border-brand-line bg-brand-sand/40 p-4">
+            <div className="flex items-center gap-3.5 rounded-[18px] border border-brand-line bg-brand-sand/40 p-3.5 sm:p-4">
               <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-sand border border-brand-line text-foreground">
                 <IconClock size={18} />
               </div>
-              <div className="flex flex-col">
+              <div className="flex flex-col text-left">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-brand-muted">
                   Working hours
                 </span>
@@ -528,13 +528,13 @@ function WhatCanWeHelpWith({
   onSelectType: (type: string) => void;
 }) {
   return (
-    <section className="relative overflow-hidden border-t border-brand-line px-6 py-20 md:px-12 md:py-24 lg:px-16 xl:px-24">
+    <section className="relative overflow-hidden border-t border-brand-line px-4 sm:px-6 py-14 sm:py-20 md:px-12 md:py-24 lg:px-16 xl:px-24">
       <WatermarkText text="SERVICES" />
       {/* Header */}
-      <ScrollReveal direction="up" className="relative z-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+      <ScrollReveal direction="up" className="relative z-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
         <div>
           <SectionLabel>WHAT CAN WE HELP WITH?</SectionLabel>
-          <h2 className="mt-6 font-display text-[36px] sm:text-[46px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground">
+          <h2 className="mt-4 sm:mt-6 font-display text-[28px] sm:text-[42px] lg:text-[52px] leading-[1.05] font-extrabold tracking-[-0.03em] text-foreground">
             Different ideas.
             <br />
             Shared possibilities.
@@ -549,14 +549,14 @@ function WhatCanWeHelpWith({
       {/* Grid: 3 cards on top, 2 cards on bottom */}
       <div className="relative z-10 space-y-6">
         {/* Top 3 Cards */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-3">
           {SERVICE_ENQUIRY_CARDS.slice(0, 3).map((card, idx) => {
             const isOrange = card.tone === "orange";
 
             return (
               <div
                 key={card.type}
-                className="flex flex-col justify-between rounded-[24px] border border-brand-line bg-brand-sand/50 p-6 sm:p-7 shadow-xs hover:bg-brand-sand/75 transition"
+                className="flex flex-col justify-between rounded-[24px] border border-brand-line bg-brand-sand/50 p-5 sm:p-7 shadow-xs hover:bg-brand-sand/75 transition"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -606,14 +606,14 @@ function WhatCanWeHelpWith({
         </div>
 
         {/* Bottom 2 Cards */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
           {SERVICE_ENQUIRY_CARDS.slice(3, 5).map((card, idx) => {
             const isOrange = card.tone === "orange";
 
             return (
               <div
                 key={card.type}
-                className="flex flex-col justify-between rounded-[24px] border border-brand-line bg-brand-sand/50 p-6 sm:p-7 shadow-xs hover:bg-brand-sand/75 transition"
+                className="flex flex-col justify-between rounded-[24px] border border-brand-line bg-brand-sand/50 p-5 sm:p-7 shadow-xs hover:bg-brand-sand/75 transition"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -665,9 +665,9 @@ function WhatCanWeHelpWith({
 
 function PreFooterConversation() {
   return (
-    <section className="relative overflow-hidden border-t border-white/10 bg-brand-night px-6 py-20 text-white md:px-12 md:py-28 lg:px-16 xl:px-24">
+    <section className="relative overflow-hidden border-t border-white/10 bg-brand-night px-4 sm:px-6 py-14 sm:py-20 text-white md:px-12 md:py-28 lg:px-16 xl:px-24">
       <WatermarkText text="PARTNER" />
-      <div className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14 items-center max-w-7xl mx-auto">
+      <div className="relative z-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14 items-center max-w-7xl mx-auto">
         {/* Left: Meeting Scene Photo */}
         <ScrollReveal direction="up" delay={0.1} className="lg:col-span-5">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[24px] border border-white/15 bg-white/5 shadow-md">
@@ -688,22 +688,22 @@ function PreFooterConversation() {
             LET&apos;S BUILD TOGETHER
           </span>
 
-          <h2 className="mt-6 font-display text-[38px] sm:text-[50px] lg:text-[58px] leading-[1.05] font-extrabold tracking-[-0.035em] text-white">
+          <h2 className="mt-4 sm:mt-6 font-display text-[28px] sm:text-[44px] lg:text-[58px] leading-[1.05] font-extrabold tracking-[-0.035em] text-white">
             <span>Good things start with a </span>
             <span className="text-brand-orange text-outline font-extrabold">
               conversation.
             </span>
           </h2>
 
-          <p className="mt-5 text-base sm:text-lg leading-relaxed text-white/70 max-w-xl">
+          <p className="mt-3 sm:mt-5 text-sm sm:text-base md:text-lg leading-relaxed text-white/70 max-w-xl">
             You don&apos;t need a finished brief. Share a question, an early idea
             or an ambition — and let&apos;s find a thoughtful way forward.
           </p>
 
-          <div className="mt-8 flex items-center gap-4">
+          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
             <a
               href="#conversation-form"
-              className="inline-flex items-center gap-2 rounded-full bg-brand-orange px-8 py-3.5 text-sm font-bold text-white shadow-md transition hover:brightness-105 active:scale-95"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-orange px-8 py-3.5 text-sm font-bold text-white shadow-md transition hover:brightness-105 active:scale-95 w-full sm:w-auto"
             >
               Start a Conversation
               <IconArrowRight size={15} />
@@ -717,7 +717,7 @@ function PreFooterConversation() {
 
 function SiteFooter() {
   return (
-    <footer className="border-t border-white/10 bg-brand-footer px-6 pt-16 pb-12 text-white md:px-12 lg:px-16 xl:px-24">
+    <footer className="border-t border-white/10 bg-brand-footer px-4 sm:px-6 pt-12 pb-10 sm:pt-16 sm:pb-12 text-white md:px-12 lg:px-16 xl:px-24">
       <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
         {/* Col 1: Brand */}
         <div className="flex flex-col gap-4">

@@ -260,9 +260,9 @@ function AccordionItem({
         aria-expanded={isOpen}
         aria-controls={answerId}
         onClick={onToggle}
-        className="group flex w-full items-center justify-between py-6 sm:py-7 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange/50 rounded-sm cursor-pointer"
+        className="group flex w-full items-center justify-between py-4 sm:py-6 md:py-7 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange/50 rounded-sm cursor-pointer"
       >
-        <span className="pr-4 font-display text-[17px] sm:text-[19px] md:text-[21px] font-bold text-foreground tracking-[-0.015em] transition-colors group-hover:text-brand-orange">
+        <span className="pr-4 font-display text-[16px] sm:text-[19px] md:text-[21px] font-bold text-foreground tracking-[-0.015em] transition-colors group-hover:text-brand-orange">
           {item.question}
         </span>
         <AccordionToggleButton isOpen={isOpen} />
@@ -283,7 +283,7 @@ function AccordionItem({
             }}
             className="overflow-hidden"
           >
-            <div className="pb-6 sm:pb-7 pr-4 sm:pr-14 text-[15px] sm:text-[16px] leading-[1.68] text-brand-body font-normal">
+            <div className="pb-4 sm:pb-6 md:pb-7 pr-2 sm:pr-14 text-[14px] sm:text-[16px] leading-[1.65] text-brand-body font-normal">
               {item.answer}
             </div>
           </motion.div>
@@ -334,7 +334,7 @@ export function FaqSection({
       id={id}
       aria-label="Frequently Asked Questions"
       className={cn(
-        "relative overflow-hidden bg-background px-6 py-20 md:px-12 md:py-28 lg:px-16 xl:px-24 border-t border-brand-line/60 text-foreground",
+        "relative overflow-hidden bg-background px-4 sm:px-6 py-14 sm:py-20 md:px-12 md:py-28 lg:px-16 xl:px-24 border-t border-brand-line/60 text-foreground",
         className
       )}
     >
@@ -342,12 +342,12 @@ export function FaqSection({
       <WatermarkText text={watermarkText} opacity={0.035} />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-16 items-start">
           {/* LEFT COLUMN: Fixed/Sticky Visual Hierarchy with dot, label & bold 2-line heading */}
           <ScrollReveal direction="up" className="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-28 flex flex-col items-center text-center lg:items-start lg:text-left">
             {/* Small decorative circular accent marker matching reference */}
             <div
-              className={cn("size-3 sm:size-3.5 rounded-full mb-6 sm:mb-8 mx-auto lg:mx-0", dotColorClass)}
+              className={cn("size-3 sm:size-3.5 rounded-full mb-4 sm:mb-8 mx-auto lg:mx-0", dotColorClass)}
               aria-hidden="true"
             />
 
@@ -357,7 +357,7 @@ export function FaqSection({
             </span>
 
             {/* Large, bold, oversized heading split across two lines */}
-            <h2 className="mt-4 sm:mt-5 font-display font-black text-[46px] sm:text-[58px] md:text-[66px] lg:text-[72px] leading-[0.92] tracking-[-0.04em] text-foreground uppercase text-center lg:text-left">
+            <h2 className="mt-3 sm:mt-5 font-display font-black text-[30px] sm:text-[48px] md:text-[62px] lg:text-[72px] leading-[0.94] tracking-[-0.04em] text-foreground uppercase text-center lg:text-left">
               <span className="block">{headingLine1}</span>
               <span className="block mt-1 sm:mt-1.5">{headingLine2}</span>
             </h2>
